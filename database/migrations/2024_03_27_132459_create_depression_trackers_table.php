@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('depression_trackers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->boolean('question_1')->nullable();
             $table->boolean('question_2')->nullable();
             $table->boolean('question_3')->nullable();

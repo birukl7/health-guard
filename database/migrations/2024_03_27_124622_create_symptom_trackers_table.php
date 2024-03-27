@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('symptom_trackers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('student_profile_id')->constrained()->cascadeOnDelete();
             $table->date('date');
             $table->json('symptom');
             $table->string('severity');

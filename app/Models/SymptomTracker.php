@@ -17,7 +17,7 @@ class SymptomTracker extends Model
         'duration',
     ];
 
-    public function student(): BelongsTo {
+    public function studentProfile(): BelongsTo {
         return $this->belongsTo(StudentProfile::class);
     }
 }

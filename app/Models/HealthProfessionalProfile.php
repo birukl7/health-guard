@@ -25,7 +25,7 @@ class HealthProfessionalProfile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function healthProfessionalRatings(): HasMany {
-        return $this->hasMany(HealthProfessionalRating::class);
+    public function healthRatings(): HasMany {
+        return $this->hasMany(HealthRating::class);
     }
 }

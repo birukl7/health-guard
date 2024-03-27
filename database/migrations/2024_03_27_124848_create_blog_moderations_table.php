@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('blog_moderations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('blog_id')->constrained()->onDelete('cascade');
-            $table->foreignId('admin_profile_id')->constrained()->onDelete('cascade');
+            $table->foreignId('blog_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('admin_profile_id')->constrained()->cascadeOnDelete();
             $table->boolean('approved')->default(false);
             $table->text('reason')->nullable();
             $table->timestamps();
