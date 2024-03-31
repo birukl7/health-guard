@@ -13,7 +13,21 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                Roboto:['Roboto', 'sans-serif'],
+                GTpro: 'GT Walsheim Pro'
             },
+            colors:{
+                'custom-blue' : '#3561FF',
+                'custom-lgray' : '#9DA3B6',
+                'custom-mgray' : '#484F68',
+                'custom-dgray':'#212639',
+                'custom-vlgray': '#E5ECFF',
+                'custom-vvlgary': '#F2F4F7',
+                'custom-graish': '#F2F4F7'
+            },
+            width:{
+                'custom-4': '450px',
+            }
         },
     },
 

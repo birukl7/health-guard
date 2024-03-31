@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+  @font-face {
+    font-family: 'GT Walsheim Pro';
+    src: url(../../public/fonts/gt-walsheim-pro/GTWalsheimProRegular.OTF);
+  }
+}
