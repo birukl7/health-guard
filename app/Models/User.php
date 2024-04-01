@@ -65,7 +65,11 @@ class User extends Authenticatable
     }
 
     public function healthProfessionalRatings(): HasMany{
-        return $this->hasMany(HealthProfessionalRating::class);
+        return $this->hasMany(HealthRating::class);
+    }
+
+    public function meditataions(): HasMany{
+        return $this->hasMany(Meditation::class);
     }
     /**
      * The attributes that should be hidden for serialization.

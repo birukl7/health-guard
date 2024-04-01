@@ -14,7 +14,60 @@
 </head>
 <body class="font font-GTpro bg-custom-vvlgary">
   <div class="flex max-w-screen-2xl mx-auto my-0">
+  <header class="pr-3 w-80 pt-10 bg-custom-graish header-js transition-all  duration-200 ease-in-out">
+      <div class="flex items-center gap-x-5 m-4 ">
+        <span class="flex "><h1 class="text-3xl text-custom-blue font-bold">H</h1><h1 class="text-3xl text-custom-blue font-bold guard-js">ealth-Guard.</h1></span>
+
+        <button class="px-3 py-1 bg-custom-vlgray rounded-lg nav-toggle-js"><i class="fa-solid fa-less-than text-sm font-light" style="font-size: 8px;" ></i></button>
+      </div>
+
+      <nav>
+        <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
+        <ul>
+          <a href="" class=" ">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-user-doctor"></i><span>Pyschologists</span></div></li>
+          </a>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+          </a>
+          
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-regular fa-calendar mr-4"></i><span>Calender</span></div></li>
+          </a>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div></li>
+          </a>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div></li>
+          </a>
+        </ul>
+
+        <div class="mt-10">
+          <span class="text-custom-lgray text-sm capitalize mx-4">Tools</span>
+          <ul>
+            <a href="">
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
+            </a>
+
+            <a href="">
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
+            </a>
+          </ul>
+        </div>
+
+
+        <ul>
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 mr-4"></i><span>Log out</span></div></li>
+          </a>
+        </ul>
+      </nav>
+
+    </header>
     @yield('content')
-    </div>
+  </div>
 </body>
 </html>

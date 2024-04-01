@@ -14,35 +14,54 @@
 </head>
 <body class="font font-GTpro bg-custom-vvlgary">
   <div class="flex max-w-screen-2xl mx-auto my-0">
-    <header class="pr-3 w-80 pt-10 bg-custom-graish">
+    <header class="pr-3 w-80 pt-10 bg-custom-graish header-js transition-all  duration-200 ease-in-out">
       <div class="flex items-center gap-x-5 m-4 ">
-        <h1 class="text-3xl text-custom-blue  font-bold ">Health-Guard.</h1> 
-        <button class="px-3 py-1 bg-custom-vlgray rounded-lg"><i class="fa-solid fa-less-than text-sm font-light" style="font-size: 8px;"></i></button>
+        <h1 class="text-3xl text-custom-blue font-bold">H</h1><h1 class="text-3xl text-custom-blue font-bold -ml-5 guard-js">ealth-Guard.</h1> 
+        <button class="px-3 py-1 bg-custom-vlgray rounded-lg nav-toggle-js"><i class="fa-solid fa-less-than text-sm font-light" style="font-size: 8px;" ></i></button>
       </div>
 
       <nav>
         <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
         <ul>
           <a href="" class=" ">
-            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="mr-4 fa-solid fa-user-doctor"></i><span>Pyschologists</span></span></li>
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-user-doctor"></i><span>Pyschologists</span></div></li>
           </a>
-          <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></span></li>
-          <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="fa-regular fa-calendar mr-4"></i><span>Calender</span></span></li>
-          <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></span></li>
-          <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></span></li>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+          </a>
+          
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-regular fa-calendar mr-4"></i><span>Calender</span></div></li>
+          </a>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div></li>
+          </a>
+
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div></li>
+          </a>
         </ul>
 
         <div class="mt-10">
           <span class="text-custom-lgray text-sm capitalize mx-4">Tools</span>
           <ul>
-            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></span></li>
-            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></span></li>
+            <a href="">
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
+            </a>
+
+            <a href="">
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
+            </a>
           </ul>
         </div>
 
 
         <ul>
-          <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><span><i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 mr-4"></i><span>Log out</span></span></li>
+          <a href="">
+            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 mr-4"></i><span>Log out</span></div></li>
+          </a>
         </ul>
       </nav>
 
@@ -125,260 +144,53 @@
         <!-- grid for pychologists card -->
         <div class="grid  grid-cols-3 gap-x-5 gap-y-6">
 
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
+        @php 
+          for($x = 0; $x < 5; $x++ ){
+            echo '
+            <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
+                  <div class="flex items-start gap-x-6">
 
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+                    <div>
+                      <div class="w-10 h-10 rounded-full overflow-hidden">
+                        <img src="'.asset('images/michael-dam.jpg').'" alt="">
+                      </div>
+                      <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
+                        <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
+                        <span style="font-size: 12px;">5.0</span>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                      <strong class="text-xl">Dr. Sam Wallfolk</strong>
+                      <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
+                      <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
+                      <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
+                      <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
+                      </span>
+                    </div>
+
+
+                  </div>
+
+                  <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
+                    <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
+                    <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
+                    <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
+                  </div>
+
+                  <div class="flex justify-between mb-5">
+                    <div class="flex flex-col">
+                      <span class="font-bold">Free</span>
+                      <span class="text-sm  text-custom-lgray">Online/Offline</span>
+                    </div>
+                    <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
+                      Book Consultation
+                    </div>
+                  </div>
                 </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
-
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-                </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
-
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-                </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
-
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-                </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
-
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-                </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-          <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-            <div class="flex items-start gap-x-6">
-
-              <div>
-                <div class="w-10 h-10 rounded-full overflow-hidden">
-                  <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-                </div>
-                <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                  <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                  <span style="font-size: 12px;">5.0</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col">
-                <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                </span>
-              </div>
-
-
-            </div>
-
-            <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-              <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-              <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-            </div>
-
-            <div class="flex justify-between mb-5">
-              <div class="flex flex-col">
-                <span class="font-bold">Free</span>
-                <span class="text-sm  text-custom-lgray">Online/Offline</span>
-              </div>
-              <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                Book Consultation
-              </div>
-            </div>
-          </div>
-
-          
+            ';
+          }
+          @endphp       
         </div>
         
       </section>
@@ -422,6 +234,7 @@
         </div>
 
       </section>
+      <script src="{{asset('script/navBar.js')}}"></script>
     </main>
     
     <footer>

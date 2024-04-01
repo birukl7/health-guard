@@ -100,8 +100,11 @@
 
     <div class="grid grid-cols-3 gap-x-8">
 
+    @php 
+     for($x = 0; $x < 3; $x++ ){
+      echo '
       <div class="bg-white p-6 rounded-xl shadow-xl">
-        <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative" style="background-image: url('{{asset('images/daniel-mingook-kim.jpg')}}');">
+        <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative" style="background-image: url('.asset('images/daniel-mingook-kim.jpg').');">
           <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">Daily life</span>
         </div>
 
@@ -120,7 +123,7 @@
 
         <div class="flex items-center gap-x-4 p-4 ">
           <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+            <img src="'.asset('images/michael-dam.jpg').'" alt="">
           </div>
           <div class="flex flex-col">
             <strong>Dr. Nick Wilford</strong>
@@ -128,64 +131,10 @@
           </div>
         </div>
       </div>
+      ';
+     }
+    @endphp
 
-      <div class="bg-white p-6  shadow-md">
-        <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative" style="background-image: url('{{asset('images/daniel-mingook-kim.jpg')}}');">
-          <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">Daily life</span>
-        </div>
-
-        <div class="text-custom-lgray my-4" style="font-size: 13px;">
-          <i class="fa-regular fa-clock mx-2"></i>
-          <span class="mr-1">5</span><span>mins-read</span>
-        </div>
-
-        <h3 class="font-bold my-3 ">
-          The Positive Role of Consistency in Daily Life
-        </h3>
-
-        <p class="text-custom-lgray">
-        Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum, 
-        </p>
-
-        <div class="flex items-center gap-x-4 p-4">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <span class="text-custom-lgray text-sm">June 22, 21</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white p-6  shadow-md">
-        <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative" style="background-image: url('{{asset('images/daniel-mingook-kim.jpg')}}');">
-          <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">Daily life</span>
-        </div>
-
-        <div class="text-custom-lgray my-4" style="font-size: 13px;">
-          <i class="fa-regular fa-clock mx-2"></i>
-          <span class="mr-1">5</span><span>mins-read</span>
-        </div>
-
-        <h3 class="font-bold my-3 ">
-          The Positive Role of Consistency in Daily Life
-        </h3>
-
-        <p class="text-custom-lgray">
-          Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
-        </p>
-
-        <div class="flex items-center gap-x-4 p-4">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <span class="text-custom-lgray text-sm">June 22, 21</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="flex items-center justify-between my-10 mb-10">
@@ -195,12 +144,15 @@
 
     <div class="grid grid-cols-2 gap-x-5">
 
+    @php 
+     for($x = 0; $x < 3; $x++ ){
+      echo '
       <div class="shadow-xl rounded-xl p-5">
         <div class="flex justify-between items-center w-full">
 
           <div class="flex items-center gap-x-4 p-4 ">
             <div class="w-12 h-12 rounded-full overflow-hidden">
-              <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+              <img src="'.asset('images/michael-dam.jpg').'" alt="">
             </div>
             <div class="flex flex-col">
               <strong>Biruk Lemma</strong>
@@ -219,34 +171,13 @@
           <p class="text-custom-lgray px-5">Dr. Nick wilfors is a great psycologist! I highly recommend his consultations! I became calm and confident aftger just one session! Thanks a lot!</p>
         </div>
       </div>
-
-      <div class="shadow-xl rounded-xl p-5">
-        <div class="flex justify-between items-center w-full">
-
-          <div class="flex items-center gap-x-4 p-4 ">
-            <div class="w-12 h-12 rounded-full overflow-hidden">
-              <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-            </div>
-            <div class="flex flex-col">
-              <strong>Biruk Lemma</strong>
-              <span class="text-custom-lgray text-sm">student</span>
-            </div>
-          </div>
-
-          <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-            <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-            <span style="font-size: 12px;">5.0</span>
-          </div>
-
-        </div>
-
-        <div>
-          <p class="text-custom-lgray px-5">Dr. Nick wilfors is a great psycologist! I highly recommend his consultations! I became calm and confident aftger just one session! Thanks a lot!</p>
-        </div>
-      </div>
+      ';
+     }
+    @endphp
 
 
     </div>
   </div>
+  <script src="{{asset('script/navBar.js')}}"></script>
 </section>
 @endsection

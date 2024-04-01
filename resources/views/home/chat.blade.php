@@ -156,135 +156,34 @@
 
       <div class="flex flex-col mx-10 gap-y-3">
 
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
+      @php 
+        for($x = 0; $x < 10; $x++){
+          echo '
+          <div class="flex items-center justify-center gap-x-4 p-4  px-3 bg-white rounded-xl w-auto  grow-0">
+            <div class="w-10 h-10 rounded-full overflow-hidden">
+              <img src="'.asset('images/michael-dam.jpg').'" alt="">
+            </div>
 
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
+            <div class="flex flex-col">
+              <strong>Dr. Nick Wilford</strong>
+              <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
+            </div>
 
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
 
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
+            <div class="flex flex-col items-center ml-3">
             <span class="text-xs text-custom-lgray mb-1">Nov</span>
             <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
           </div>
         </div>
+        ';
+        }
+      @endphp
 
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-x-4 p-4  px-0 bg-white rounded-xl w-auto  grow-0">
-          <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-          </div>
-          <div class="flex flex-col">
-            <strong>Dr. Nick Wilford</strong>
-            <p class="text-custom-lgray text-sm">how are you? what are you doing</p>
-          </div>
-          <div class="flex flex-col items-center ml-3">
-            <span class="text-xs text-custom-lgray mb-1">Nov</span>
-            <span class="bg bg-green-200 text-green-700 p-1 px-2 rounded-full text-xs">2</span>
-          </div>
-        </div>
       </div>
 
     </div>
 
   </div>
+  <script src="{{asset('script/navBar.js')}}"></script>
 </section>
 @endsection

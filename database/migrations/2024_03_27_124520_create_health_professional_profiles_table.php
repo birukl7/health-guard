@@ -16,11 +16,15 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('first_name');
             $table->string('last_name');
+            $table->integer('age');
             $table->string('specialization');
             $table->string('hospital_affiliation');
-            $table->string('address');
+            $table->string('location');
+            $table->string('license');
+            $table->json('specialities');
+            $table->json('price');
             $table->string('years_of_experience');
-            $table->json('contribution_tags')->nullable();
+            $table->json('issues')->nullable();
             $table->timestamps();
         });
     }
