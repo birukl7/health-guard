@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('license');
             $table->json('specialities');
-            $table->json('price');
+            $table->string('price');
             $table->string('years_of_experience');
             $table->json('issues')->nullable();
             $table->timestamps();
