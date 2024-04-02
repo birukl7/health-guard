@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class HealthProfessionalProfile extends Model
 {
     use HasFactory;
+    
     protected $fillable=[
         'user_id',
         'first_name',

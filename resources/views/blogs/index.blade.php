@@ -7,18 +7,39 @@
 
     <div class="flex gap-x-3">
 
+    
       <div class=" py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
       <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
-        <i class="fa-regular fa-bell"></i>
-        <div class="w-2 h-2 absolute bg-red-700 rounded-full top-0 right-0"></div>
-      </div>
+        @if(Route::has('login'))
+          @auth
+          <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
+            <i class="fa-regular fa-bell"></i>
+            <div class="w-2 h-2 absolute bg-red-700 rounded-full top-0 right-0"></div>
+          </div>
 
-      <div class="w-10 h-10 rounded-full overflow-hidden">
-        <img src="{{asset('images/michael-dam.jpg')}}" alt="">
-      </div>
+          <div class="w-10 h-10 rounded-full overflow-hidden">
+            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+          </div>
+          @else
+            <a
+                href="{{ route('login') }}"
+                class="rounded-md px-3 py-2 bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out"
+            >
+                Log in
+            </a>
+
+              @if (Route::has('register'))
+                <a
+                    href="{{ route('register') }}"
+                    class="rounded-md px-3 py-2  bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out"
+                >
+                    Register
+                </a>
+              @endif
+            @endauth
+          @endif
     </div>
   </div>
 

@@ -24,8 +24,4 @@ class StudentProfile extends Model
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
-
-    public function symptomTrackers(): HasMany {
-        return $this->hasMany(SymptomTracker::class);
-    }
 }
