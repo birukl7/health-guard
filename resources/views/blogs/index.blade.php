@@ -277,7 +277,5 @@
       </div>
     </div>
 </div>
-
-  <script src="{{asset('script/navBar.js')}}"></script>
 </section>
 @endsection

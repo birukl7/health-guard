@@ -1,7 +1,7 @@
 @extends('home.layout')
 @section('content')
 
-    <main class="flex-1 p-4 pt-5 bg-white mt-10 rounded-3xl">
+    <main class=" md:w-full p-4 pt-5 bg-white mt-10 rounded-3xl">
     <!-- The welcome part -->
       <div class="flex justify-between">
 
@@ -48,9 +48,9 @@
         <p>
           Find the best psychologist for yourself Our specialists will help uou to find the best decisions for solving your problems!.
         </p>
-        <div class="absolute bg-white p-5 rounded-xl flex sh shadow-lg  top-24 right-5 left-5" >
+        <div class="absolute  bg-white p-5 rounded-xl flex flex-col md:flex-row gap-y-5 md:gap-0 shadow-lg  top-24 right-5 left-5" >
 
-          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between">
+          <div class="flex flex-1 flex-col items-start gap-y-3 pl-3 md:pl-0 justify-between">
             <span class="text- text-custom-lgray text-sm">Type of counseling</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
               <option value="counseling1">All types</option>
@@ -58,7 +58,7 @@
             </select>
           </div>
 
-          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between border-l-2 pl-3  border-custom-vlgray">
+          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2  pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">City</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
               <option value="counseling1">All Cities</option>
@@ -66,7 +66,7 @@
             </select>
           </div>
 
-          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between border-l-2 pl-3  border-custom-vlgray">
+          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2 pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">Age</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
               <option value="counseling1">35+</option>
@@ -74,7 +74,7 @@
             </select>
           </div>
 
-          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between border-l-2 pl-3  border-custom-vlgray">
+          <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2 pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">Gender</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
               <option value="counseling1">All</option>
@@ -95,14 +95,14 @@
         </div>
       </div>
 
-      <section class="mt-28 pl-5">
+      <section class=" mt-96 md:mt-28 pl-5">
         <div class="flex items-center justify-between my-5 mb-10">
           <h2 class="text-2xl font-bold ">Best for you</h2>
           <button class="bg-custom-vlgray px-6 py-2 rounded-full flex justify-between items-center gap-x-4"><span>See all</span> &gt;</button>
         </div>
 
         <!-- grid for pychologists card -->
-        <div class="grid  grid-cols-3 gap-x-5 gap-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-6" id="pychologist-card-contanier">
 
         @php 
           for($x = 0; $x < 5; $x++ ){
@@ -155,9 +155,9 @@
         
       </section>
 
-      <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start h-auto">
-        <div class="w-custom-4  rounded-xl overflow-hidden">
-          <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
+      <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start flex-col md:flex-row h-auto items-center">
+        <div class=" w-full  rounded-xl overflow-hidden">
+          <img src="{{asset('images/zachary-nelson.jpg')}}" class="mx-auto md:my-auto w-full" alt="">
         </div>
         <div class="flex flex-col py-20 px-28">
           <p class="font-semibold">Learn university life psychology now and teach your friend always to be happy!</p>
@@ -171,9 +171,10 @@
           <button class="bg-black text-white w-40 p-3 text-sm rounded-full mb-8"><span>View Meditations</span> &gt;</button>
         </div>
 
-        <div class="grid grid-cols-2 gap-x-3 gap-y-4">
-            <div>
-              <div class="overflow-hidden rounded-xl  w-custom-4 h-60 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-4">
+
+            <div class="flex flex-col">
+              <div class="overflow-hidden rounded-xl  w-full h-60 ">
                 <img src="{{asset('images/daniel-mingook-kim.jpg')}}" alt="">
               </div>
               <div class="p-3">
@@ -182,8 +183,8 @@
               </div>
             </div>
 
-            <div>
-              <div class="overflow-hidden rounded-xl  w-custom-4 h-60 ">
+            <div class="flex flex-col">
+              <div class="overflow-hidden rounded-xl  w-full h-60 ">
                 <img src="{{asset('images/colton-sturgeon.jpg')}}" alt="">
               </div>
               <div class="p-3">
@@ -192,8 +193,7 @@
               </div>
             </div>
         </div>
-
       </section>
-      <script src="{{asset('script/navBar.js')}}"></script>
+      <script src="{{asset('script/homeCards.js')}}"></script>
     </main>
 @endsection
