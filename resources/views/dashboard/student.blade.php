@@ -4,7 +4,7 @@
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
   <div class="flex justify-between items-center">
 
-    <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Dashboard</span></h2>
+    <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Dashboard For Student</span></h2>
 
     <div class="flex gap-x-3">
 
@@ -13,7 +13,7 @@
       </div>
 
       <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
-        <i class="fa-regular fa-bell"></i>
+        <i class="fa-regular fa-bell">You are logged in as a <strong>Student</strong> </i>
         <div class="w-2 h-2 absolute bg-red-700 rounded-full top-0 right-0"></div>
       </div>
 

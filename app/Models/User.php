@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
