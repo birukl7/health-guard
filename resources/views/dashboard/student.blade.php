@@ -41,7 +41,7 @@
       <p class=" font-bold px-5 ">Finish up your account by creating necessary student account informations.</p>
     </div>
 
-    <a href="/student" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >
+    <a href="{{ route('students.create') }}" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >
       Finish Up
     </a>
   </div>

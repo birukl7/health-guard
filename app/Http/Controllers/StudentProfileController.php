@@ -12,7 +12,7 @@ class StudentProfileController extends Controller
      */
     public function index()
     {
-        return view('students.index');
+        
     }
 
     /**
@@ -20,7 +20,7 @@ class StudentProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class StudentProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
