@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('registerPost') }}">
         @csrf
 
         <!-- Name -->
@@ -38,11 +38,13 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- user-role -->
         <div class="mt-4">
             <x-input-label for="role_id" :value="__('User Role')" />
+            
             <select id="role_id" name="role_id"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option value="student">Student</option>
+                <option value="student" selected>Student</option>
                 <option value="health_professional">Health Professional</option>
             </select>
         </div>

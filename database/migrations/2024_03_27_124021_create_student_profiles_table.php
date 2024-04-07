@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->date('date_of_birth');
+            $table->string('address');
             $table->json('allergies')->nullable(); // JSON column for storing allergies
             $table->string('emergency_contact_name')->nullable();
             $table->string('emergency_contact_number')->nullable();

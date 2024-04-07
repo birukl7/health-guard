@@ -10,6 +10,8 @@
         "laravel/framework": "^11.0",
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.9",
+        "munafio/chatify": "^1.6",
+        "pusher/pusher-php-server": "^7.2",
         "santigarcor/laratrust": "^8.3"
     },
     "require-dev": {
