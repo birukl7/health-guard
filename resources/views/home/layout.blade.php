@@ -32,39 +32,44 @@
               <button class="hidden md:inline-block px-3 py-1 bg-custom-vlgray rounded-lg nav-toggle-js"><i class="fa-solid fa-less-than text-sm font-light" style="font-size: 8px;" ></i></button>
             </div>
         </div>
-
+        @php
+          $bg = 'bg-custom-vlgray';
+        @endphp
         <nav class=" md:block  fixed bottom-0 top-20 shadow-xl md:shadow-none bg-white md:bg-inherit right-40 p-5 pt-8  md:p-0 left-full z-10 md:static  transition-all duration-200" id="nav-bar">
           <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
-          <ul>
-            <a href="/" class=" ">
-              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-user-doctor"></i><span>Pyschologists</span></div></li>
+          <ul id="general-nav">
+            <a href="/" class="">
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 {{ Request::path() === '/' ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-user-doctor" ></i><span>Pyschologists</span></div></li>
             </a>
 
             <a href="/dashboard">
-              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 {{ Request::is('dashboard*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
             </a>
             
 
             <a href="">
-              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div></li>
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 "><div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div></li>
             </a>
 
             <a href="{{route('blogs.index')}}">
-              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div></li>
+              <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 {{ Request::routeIs('blogs.*') ? $bg : '' }}"><div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div></li>
             </a>
           </ul>
 
         
           <div class="mt-10">
             <span class="text-custom-lgray text-sm capitalize mx-4">Tools</span>
+            @auth
             <ul>
-              <a href="{{route('chats.index')}}">
-                <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
+              <p>{{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}</p>
+              
+              <a href="/chatify/{{Auth::user()->id}}">
+                <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 {{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
               </a>
 
-        @auth
+        
               <a href="{{route('profile.edit')}}">
-                <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
+                <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 {{ Request::routeIs('profile.edit') ? $bg : '' }}"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
               </a>
             </ul>
           </div>
@@ -79,6 +84,17 @@
             </a>
           </ul>
           @else
+          <ul class="mt-10 flex flex-col justify-center items-center">
+            <div class="text-xs text-custom-lgray mb-5 text-center">
+              Sign Up to acces tools
+            </div>
+            <a
+                href="{{ route('register') }}"
+                class="rounded-md px-3 py-2  bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out"
+            >
+                Sign Up
+            </a>
+          </ul>
           @endauth
 
         </nav>

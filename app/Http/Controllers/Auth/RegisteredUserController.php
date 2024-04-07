@@ -27,26 +27,34 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'role_id' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' => $request->role_id,
             'password' => Hash::make($request->password),
         ]);
         //$user->addRole('admin');
-        $user->addRole($request->role_id);
-
+        // $user->addRole($request->role_id);
+        $role = $request->role_id;
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if($role === 'student'){
+            return view('dashboard.student');
+        } else {
+            return view('dashboard.health_professional');
+        }
+        // return redirect(route('dashboard', absolute: false));
     }
 }

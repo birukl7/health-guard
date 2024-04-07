@@ -1,5 +1,4 @@
-//The lessthan button next to health guard logo.
-const navToggleBtn = document.querySelector('.nav-toggle-js');
+const _navToggleBtn = document.querySelector('.nav-toggle-js');
 
 const navToggleBtnIcon = document.querySelector('.nav-toggle-js i')
 
@@ -28,8 +27,7 @@ bodyMain.addEventListener('click', ()=>{
 //The Guard logo name
 const guardText = document.querySelector('.guard-js')
 
- navToggleBtn.addEventListener('click', ()=>{
-   
+ _navToggleBtn.addEventListener('click', ()=>{
    guardText.classList.toggle('hidden')
    navToggleBtnIcon.classList.toggle('fa-less-than')
    navToggleBtnIcon.classList.toggle('fa-greater-than')
@@ -58,3 +56,17 @@ const guardText = document.querySelector('.guard-js')
    // navBar.classList.toggle('w-80');
    // navBar.classList.toggle('w-0');
  };
+
+
+//  const generalNavs = document.querySelectorAll('#general-nav a');
+//  console.log(generalNavs)
+
+//  generalNavs.forEach((generalNav)=>{
+//    generalNav.addEventListener('click',(e)=>{
+//       generalNavs.forEach((generalNavig)=>{
+//          console.log(generalNavig)
+//          generalNavig.classList.remove('bg-custom-vlgray')
+//       })
+//       e.target.classList.add('bg-custom-vlgray')
+//    })
+//  })

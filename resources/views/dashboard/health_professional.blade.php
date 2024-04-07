@@ -18,7 +18,9 @@
             </div>
 
             <div class="w-10 h-10 rounded-full overflow-hidden">
-                <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+                <a href="{{route('profile.edit')}}">
+                <img src="{{asset('storage/users-avatar/'.Auth::user()->avatar)}}" alt="">
+                </a>
             </div>
         </div>
     </div>

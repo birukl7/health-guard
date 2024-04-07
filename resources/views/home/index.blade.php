@@ -6,7 +6,11 @@
       <div class="flex justify-between">
 
         @auth
-        <h1 class="text-4xl font-bold">Welcome, Sarah!</h1>
+        <h1 class="text-4xl font-bold">Welcome, <span class="capitalize">
+          @php
+          echo (explode(' ',Auth::user()->name)[0]);
+          @endphp
+        </span>!</h1>
         @else
         <h1 class="text-4xl font-bold">Hi, there!</h1>
         @endauth
@@ -21,7 +25,9 @@
           </div>
 
           <div class="w-10 h-10 rounded-full overflow-hidden">
-            <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+            <a href="{{route('profile.edit')}}">
+            <img src="{{asset('storage/users-avatar/'.Auth::user()->avatar)}}" alt="">
+            </a>
           </div>
           @else
             <a
@@ -36,7 +42,7 @@
                     href="{{ route('register') }}"
                     class="rounded-md px-3 py-2  bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out"
                 >
-                    Register
+                    Sign Up
                 </a>
               @endif
             @endauth
@@ -53,33 +59,61 @@
           <div class="flex flex-1 flex-col items-start gap-y-3 pl-3 md:pl-0 justify-between">
             <span class="text- text-custom-lgray text-sm">Type of counseling</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
-              <option value="counseling1">All types</option>
-              <option value="counseling1">All types</option>
+              <option value="all">All Type</option>
+              <option value="clinical">Clinical</option>
+              <option value="depression">Depression</option>
+              <option value="alcholism">Alcholism</option>
+              <option value="drug">Drug</option>
             </select>
           </div>
 
           <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2  pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">City</span>
-            <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
-              <option value="counseling1">All Cities</option>
-              <option value="counseling1">All types</option>
-            </select>
+            <input type="text" list="cityOptions" name="city" class="outline-none border-none focus:outline-none p-0 w-11/12 outline outline-1 outline-custom-lgray rounded-md px-3 py-1" id="cityInput">
+            <datalist id="cityOptions">
+                <option value="addis ababa">
+                <option value="adama">
+                <option value="arba minch">
+                <option value="bahir dar">
+                <option value="bale robe"> 
+                <option value="debre markos">
+                <option value="dessie">
+                <option value="dire dawa"> 
+                <option value="gondar">
+                <option value="hawassa">
+                <option value="harar">
+                <option value="jijiga">
+                <option value="jimma">
+                <option value="mekelle">
+                <option value="nazarat">
+                <option value="sodo">
+                <option value="wolaita sodo"> 
+                <option value="dilla">
+                <option value="woldia">
+                <!-- Add more options for other cities as needed -->
+            </datalist>
           </div>
 
           <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2 pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">Age</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
-              <option value="counseling1">35+</option>
-              <option value="counseling1">30+</option>
+              <option value="all">All</option>
+              <option value="65+">65+</option>
+              <option value="50+">50+</option>
+              <option value="40+">40+</option>
+              <option value="35+">35+</option>
+              <option value="25+">25+</option>
+              <option value="20+">20+</option>
             </select>
           </div>
 
           <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2 pl-3  border-custom-vlgray">
             <span class="text- text-custom-lgray text-sm">Gender</span>
             <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
-              <option value="counseling1">All</option>
-              <option value="counseling1">Male</option>
-              <option value="counseling1">Female</option>
+              <option value="All">All</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
             </select>
           </div>
 
