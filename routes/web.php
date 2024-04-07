@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\StudentProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,12 @@ Route::middleware('auth')->group(
         return redirect()->back()->with('error', 'Failed to upload avatar.');
     } )->name('profile.picture');
 });
+
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('social/google', 'redirect')->name('auth.google');
+    Route::get('social/google/callback', 'googleCallback');
+});
+
 
 Route::resource('/blogs', BlogController::class);
 
