@@ -1,7 +1,7 @@
 @extends('home.layout')
 @section('content')
 
-    <main class=" md:w-full p-4 pt-5 bg-white mt-10 rounded-3xl">
+    <main class=" md:w-full bg-white rounded-2xl m-4 pt-10 p-7 w-full">
     <!-- The welcome part -->
       <div class="flex justify-between">
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepressionTrackerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\StudentProfileController;
@@ -25,6 +26,7 @@ Route::middleware('auth')->group(
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/chats', ChatMessageController::class);
     Route::resource('/students', StudentProfileController::class);
+    Route::resource('/depressions', DepressionTrackerController::class );
 
     Route::patch('/profile/picture',
      function(Request $request){

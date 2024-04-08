@@ -11,6 +11,8 @@ const bodyMain = document.querySelector('.js-main-container')
 const hamburger = document.querySelector('#hamburger');
 const navBar = document.querySelector('#nav-bar');
 
+let isToggled = false;
+
 bodyMain.addEventListener('click', ()=>{
    hamburger.classList.add('h-1')
    hamburger.classList.remove('h-0')
@@ -38,6 +40,15 @@ const guardText = document.querySelector('.guard-js')
    })
    headerJs.classList.toggle('w-full')
    headerJs.classList.toggle('md:w-80')
+   if(!isToggled){
+      bodyMain.classList.remove('pl-custom-5');
+      bodyMain.classList.add('pl-custom-6');
+      isToggled = !isToggled;
+   } else{
+      bodyMain.classList.remove('pl-custom-6');
+      bodyMain.classList.add('pl-custom-5');
+      isToggled = !isToggled;
+   }
   //  headerJs.classList.toggle('w-auto')
  })
  

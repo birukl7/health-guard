@@ -27,7 +27,17 @@ export default {
             },
             width:{
                 'custom-4': '450px',
+                
+            },
+            height:{
+                'custom-7': '460px',
+            },
+            spacing : {
+                'custom-5': '310px',
+                'custom-6': '114px',
             }
+
+
         },
     },
 
