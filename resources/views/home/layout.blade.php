@@ -39,12 +39,18 @@
         <nav class=" md:block  fixed bottom-0 top-20 shadow-xl md:shadow-none bg-white md:bg-inherit right-40 p-5 pt-8  md:p-0 left-full z-10 md:static  transition-all duration-200" id="nav-bar">
           <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
           <ul id="general-nav">
+
+            <a href="#" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1"><div><i class="fa-solid fa-house mr-4"></i><span class="">Home</span></div></li>
+            </a>
+
             <a href="/" class="">
               <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1 {{ Request::path() === '/' ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
             </a>
 
             <a href="/dashboard">
-              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }} {{ Request::is('students*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }} 
+              {{ Request::is('depressions*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
             </a>
             
 
@@ -66,6 +72,14 @@
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
               </a>
 
+              <a href="#">
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 "><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
+              </a>
+
+              <a href="{{route('students.create')}}">
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
+              </a>
+
         
               <a href="{{route('profile.edit')}}">
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('profile.edit') ? $bg : '' }}"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
@@ -73,12 +87,16 @@
             </ul>
           </div>
 
+          <form action="{{route('logout')}}" method="Post">
+            @method('post')
+            @csrf
             <ul>
             <a href="{{route('logout')}}" onclick="event.preventDefault();
             this.closest('form').submit();">
               <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1"><div><i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 mr-4"></i><span>Log out</span></div></li>
             </a>
           </ul>
+        </form>
           @else
           <ul class="mt-10 flex flex-col justify-center items-center">
             <div class="text-xs text-custom-lgray mb-5 text-center">

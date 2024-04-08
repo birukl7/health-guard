@@ -139,7 +139,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-6" id="pychologist-card-contanier">
 
         @php 
-          for($x = 0; $x < 5; $x++ ){
+          for($x = 0; $x < 6; $x++ ){
             echo '
             <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
                   <div class="flex items-start gap-x-6">
