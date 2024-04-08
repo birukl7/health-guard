@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
-
+use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
+    public function index()
     {
-        return view('blogs.index');
+        $blogs = Blog::with('user')->get();
+
+        return view('all_blog', compact('blogs'));
+
     }
 
     /**
@@ -53,7 +56,12 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $blogs = Blog::find($id);
+        $blogs->name = $request->input('name');
+        $blogs->title = $request->input('title');
+        $blogs->content = $request->input('content');
+        $blogs->update();
+        return redirect('/blogs')->with('status', 'Info updated successfully!');
     }
 
     /**

@@ -11,13 +11,13 @@ class DashboardController extends Controller
     public function index() 
     {
         if (Auth::user()->hasRole('student')) {
-            return view('dashboard.student');
+            return view('student.dashboard');
         } elseif (Auth::user()->hasRole('health_professional')) {
 
-            return view('dashboard.health_professional');
+            return view('health_pro.dashboard');
         } elseif (Auth::user()->hasRole('admin')) {
 
-            return view('dashboard.admin');
+            return view('admin.dashboard');
         }
     }
 }
