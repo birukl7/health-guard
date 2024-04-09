@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class DrugUseTracker extends Model
 {
     use HasFactory;
-    protected $fillabe = [
+    protected $fillable = [
         'user_id',
         'question_1',
         'question_2',

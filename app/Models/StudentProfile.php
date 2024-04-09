@@ -10,11 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class StudentProfile extends Model
 {
     use HasFactory;
+    protected $table = 'student_profiles';
     protected $fillable = [
         'user_id',
         'first_name',
         'last_name',
         'date_of_birth',
+        'address',
         'allergies',
         'emergency_contact_name',
         'emergency_contact_number'

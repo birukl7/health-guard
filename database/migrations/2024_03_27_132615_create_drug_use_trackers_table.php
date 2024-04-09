@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('drug_use_trackers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->boolean('question_1')->nullable();
-            $table->boolean('question_2')->nullable();
-            $table->boolean('question_3')->nullable();
-            $table->boolean('question_4')->nullable();
-            $table->boolean('question_5')->nullable();
-            $table->boolean('question_6')->nullable();
-            $table->boolean('question_7')->nullable();
-            $table->boolean('question_8')->nullable();
-            $table->boolean('question_9')->nullable();
-            $table->boolean('question_10')->nullable();
+            $table->string('question_1')->nullable();
+            $table->string('question_2')->nullable();
+            $table->string('question_3')->nullable();
+            $table->string('question_4')->nullable();
+            $table->string('question_5')->nullable();
+            $table->string('question_6')->nullable();
+            $table->string('question_7')->nullable();
+            $table->string('question_8')->nullable();
+            $table->string('question_9')->nullable();
+            $table->string('question_10')->nullable();
             $table->timestamps();
         });
     }
