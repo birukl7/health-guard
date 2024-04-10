@@ -60,8 +60,8 @@ class User extends Authenticatable
         return $this->hasOne(DrugUseTracker::class);
     }
 
-    public function healthProfessionalProfiles(): HasMany{
-        return $this->hasMany(HealthProfessionalProfile::class);
+    public function healthProfessionalProfile(): HasOne{
+        return $this->hasOne(HealthProfessionalProfile::class);
     }
 
     public function studentProfile(): HasOne{

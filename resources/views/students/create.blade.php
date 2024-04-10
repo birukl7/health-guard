@@ -5,9 +5,6 @@
         $user = Auth::user();
         $text_color = 'text-custom-blue';
     @endphp
-    @php
-    $user = Auth::user();
-@endphp
 
     <div class="flex justify-between items-center  px-8">
         <!-- <p><a href="/dashboard" class="hover:text-custom-blue underline {{ Request::is('dashboard*') ? $text_color : '' }}">Dashboard</a>
@@ -68,19 +65,35 @@
                             </a>
                         @endif
                     </div>
-  
                 </div>
             </section>
         @else
-            <div class="flex flex-col py-20 px-28">
-                <p class="font-semibold">
-                    wanna something interesting?
-                </p>
-            </div>
+        <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start ">
+                <div class="w-custom-4  rounded-xl h-full overflow-hidden">
+                    <img src="{{asset('images/helena-lopes.jpg')}}" alt="">
+                </div>
+                <div class="flex flex-col py-20 px-28">
+                    <p class="font-semibold">
+                        Wanna do something?
+                    </p>
+
+                    <div class="flex flex-col"> 
+                        <a href="{{route('depressions.create')}}">
+                            <button class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Meditations</span> &gt;</button>
+                        </a>
+                        <a href="{{route('depressions.create')}}">
+                            <button class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Read Blogs</span> &gt;</button>
+                        </a>
+                        <a href="{{route('depressions.create')}}">
+                            <button class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Pycholigist</span> &gt;</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
         @endif
 
         @if(!$user->studentProfile)
-            < class="p-4 sm:p-8 bg-white  shadow sm:rounded-lg pt-10 mt-28">
+            <div class="p-4 sm:p-8 bg-white  shadow sm:rounded-lg pt-10 mt-28">
             <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
 
                 <div class="max-w-xl" id="form-add">
@@ -91,7 +104,7 @@
             <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
 
                 <div class="flex items-center">
-                <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+                <i class="fa-solid fa-folder-open text-3xl"></i>
                 <p class=" font-bold px-5 ">Edit student profile you have created.</p>
                 </div>
 
@@ -120,7 +133,7 @@
             <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 ">
 
                 <div class="flex items-center">
-                <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+                <i class="fa-solid fa-folder text-3xl"></i>
                 <p class=" font-bold px-5 ">Edit depression assesment questions you have filed.</p>
                 </div>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\DepressionTrackerController;
 use App\Http\Controllers\DrugUseTrackerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\HealthProfessionalProfileController;
 use App\Http\Controllers\StudentProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(
   
     Route::resource('/students', StudentProfileController::class);
 
-    
+    Route::resource('/professionals', HealthProfessionalProfileController::class);
 
 // Index Route
 

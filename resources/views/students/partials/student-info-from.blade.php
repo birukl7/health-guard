@@ -23,7 +23,11 @@
 
         <div>
             <x-input-label for="add_last_name" :value="__('Last name')" />
-            <x-text-input id="add_last_naem" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $name_array[1])" autocomplete="last-name" />
+            @if(isset($name_array[1]))
+            <x-text-input id="add_last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $name_array[1])" autocomplete="last-name" />
+            @else
+            <x-text-input id="add_last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('')" autocomplete="last-name" />
+            @endif
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 

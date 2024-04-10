@@ -18,6 +18,9 @@
   <title>Health Guard</title>
 </head>
 <body class="font font-GTpro bg-custom-vvlgary">
+  @php
+    $user = Auth::user();
+  @endphp
   <div class="flex flex-col md:flex-row max-w-screen-2xl mx-auto my-0">
     @if(session()->has('success'))
       <div class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-500 text-white px-4 py-2 rounded-lg flex items-center">
@@ -68,6 +71,7 @@
 
             <a href="/dashboard">
               <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }} 
+              {{ Request::is('register*') ? $bg : '' }}
               "><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
             </a>
             
@@ -94,11 +98,20 @@
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 "><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
               </a>
 
+              @if(!$user->role_id === 'health_professional')
               <a href="{{route('students.create')}}">
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
+                {{ Request::is('depressions*') ? $bg : '' }}
+                {{ Request::is('alcohols*') ? $bg : '' }}
+                {{ Request::is('professionals/create') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
+              </a>
+              @else
+              <a href="{{route('professionals.create')}}">
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
                 {{ Request::is('depressions*') ? $bg : '' }}
                 {{ Request::is('alcohols*') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
               </a>
+              @endif
 
         
               <a href="{{route('profile.edit')}}">

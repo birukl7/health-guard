@@ -9,7 +9,7 @@
         <div class="flex gap-x-3">
 
             <div class=" py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
-                <i class="fa-regular fa-bell">You are logged in as a <strong>Health Professional</strong> </i>
+                <i class="fa-regular fa-bell"></i>
             </div>
 
             <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <p class="px-8">Here the information about your activity and mental condition.</p>
+    <p class="px-8">Here the information about your activity.</p>
 
     <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start h-auto">
         <div class="w-custom-4  rounded-xl overflow-hidden">
