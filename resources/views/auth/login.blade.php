@@ -13,13 +13,18 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+         <div class="mt-4" x-data="{ show: true }">
+            <span class="px-1 text-sm text-gray-600">Password</span>
+            <div class="relative">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+
+                <x-password-input name="password" required autocomplete="new-password" placeholder=""
+                    x-bind:show="show" />
+
+            @error('password')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
+            </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
