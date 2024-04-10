@@ -10,10 +10,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
   @vite('resources/css/app.css')
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+  </style>
   <title>Health Guard</title>
 </head>
 <body class="font font-GTpro bg-custom-vvlgary">
   <div class="flex flex-col md:flex-row max-w-screen-2xl mx-auto my-0">
+    @if(session()->has('success'))
+      <div class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-500 text-white px-4 py-2 rounded-lg flex items-center">
+          <div class="mr-2">
+              {{ session('success') }}
+          </div>
+          <button class="text-white" onclick="this.parentElement.style.display='none'">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+          </button>
+      </div>
+  @endif
+
 
     <header class="pr-3 w-full flex md:inline-block gap-x-4 md:gap-x-0 justify-start items-center md:w-80 pt-10 pl-1 md:pl-0 bg-custom-graish header-js transition-all  duration-200 ease-in-out fixed top-0 bottom-0  z-50">
 
@@ -50,7 +68,7 @@
 
             <a href="/dashboard">
               <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }} 
-              {{ Request::is('depressions*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+              "><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
             </a>
             
 
@@ -77,7 +95,9 @@
               </a>
 
               <a href="{{route('students.create')}}">
-                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
+                {{ Request::is('depressions*') ? $bg : '' }}
+                {{ Request::is('alcohols*') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
               </a>
 
         

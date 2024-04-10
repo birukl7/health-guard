@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\HasRolesAndPermissions;
@@ -32,8 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(AdminProfile::class);
     }
 
-    public function alcoholUseTrackers(): HasMany {
-        return $this->hasMany(AlcoholUseTracker::class);
+    public function alcoholUseTracker(): HasOne {
+        return $this->hasOne(AlcoholUseTracker::class);
     }
 
     public function blogs(): HasMany{
@@ -52,20 +53,20 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(ChatMessage::class);
     }
 
-    public function depressionTrackers(): HasMany{
-        return $this->hasMany(DepressionTracker::class);
+    public function depressionTracker(): HasOne{
+        return $this->hasOne(DepressionTracker::class);
     }
 
-    public function drugUseTrackers(): HasMany{
-        return $this->hasMany(DrugUseTracker::class);
+    public function drugUseTracker(): HasOne{
+        return $this->hasOne(DrugUseTracker::class);
     }
 
     public function healthProfessionalProfiles(): HasMany{
         return $this->hasMany(HealthProfessionalProfile::class);
     }
 
-    public function studentProfiles(): HasMany{
-        return $this->hasMany(StudentProfile::class);
+    public function studentProfile(): HasOne{
+        return $this->hasOne(StudentProfile::class);
     }
 
     public function healthProfessionalRatings(): HasMany{
