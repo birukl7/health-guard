@@ -1,6 +1,24 @@
 <section class="w-full">
     @php
         $name_array = explode(" ",Auth::user()->name);
+        $user = Auth::user();
+        $oldSpecialization = old('specialization', $user->healthProfessionalProfile->specialization ?? '');
+
+        $oldPrice = old('price', $user->healthProfessionalProfile->price ?? '');
+
+        $oldExperience = old('years_of_experience', $user->healthProfessionalProfile->years_of_experience ?? '');
+
+
+        $issuesJson = $user->healthProfessionalProfile->issues;
+
+        // Decode the JSON string into an array
+        $issuesArray = json_decode($issuesJson, true);
+
+        // Now $issuesArray should contain the array of issues
+        // If it's null, you can default it to an empty array
+        $oldIssues = $issuesArray ?? [];
+
+
     @endphp
     <header>
         <h2 class="text-lg font-medium text-gray-900 ">
@@ -35,60 +53,61 @@
 
         <div>
             <x-input-label for="about" :value="__('About you')" />
-            <textarea id="age" name="about" type="text" class="mt-1 block w-full" autocomplete="about"></textarea>
+            <textarea id="age" name="about" type="text" class="mt-1 block w-full" :value="old('about', $user->healthProfessionalProfile->about)"  autocomplete="about"></textarea>
             <x-input-error :messages="$errors->get('about')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="description" :value="__('Description (3000 characters )*')" />
             <x-input-label for="description" :value="__('Tip: Rezise the text box to write more')" />
-            <textarea id="description" name="description" type="text" class="mt-1 block w-full" autocomplete="about"></textarea>
+            <textarea id="description" name="description" type="text" class="mt-1 block w-full" autocomplete="about" :value="old('name', $user->healthProfessionalProfile->descripiton)"></textarea>
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="age" :value="__('Date of Birth')" />
-            <input id="age" name="date_of_birth" type="date" class="mt-1 block w-full" autocomplete="Date of birth" />
+            <input id="age" name="date_of_birth" type="date" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->date_of_birth)"autocomplete="Date of birth" />
             <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
         </div> 
 
         <div>
-            <x-input-label for="specialization" :value="__('Specialization')" />
-            <select id="specialization" name="specialization" class="mt-1 block w-full" autocomplete="specialization">
-                <option value="">Select Specialization</option>
-                <option value="Clinical Psychology">Clinical Psychology</option>
-                <option value="Counseling Psychology">Counseling Psychology</option>
-                <option value="School Psychology">School Psychology</option>
-                <option value="Forensic Psychology">Forensic Psychology</option>
-                <option value="Industrial-Organizational Psychology">Industrial-Organizational Psychology</option>
-                <option value="Health Psychology">Health Psychology</option>
-                <option value="Neuropsychology">Neuropsychology</option>
-                <option value="Developmental Psychology">Developmental Psychology</option>
-                <option value="Social Psychology">Social Psychology</option>
-                <option value="Experimental Psychology">Experimental Psychology</option>
-                <option value="Cognitive Psychology">Cognitive Psychology</option>
-                <option value="Environmental Psychology">Environmental Psychology</option>
-            </select>
-            <x-input-error :messages="$errors->get('specialization')" class="mt-2" />
+          <select id="specialization" name="specialization" class="mt-1 block w-full" autocomplete="specialization">
+            <option value="">Select Specialization</option>
+            <option value="Clinical Psychology" {{ $oldSpecialization == 'Clinical Psychology' ? 'selected' : '' }}>Clinical Psychology</option>
+            <option value="Counseling Psychology" {{ $oldSpecialization == 'Counseling Psychology' ? 'selected' : '' }}>Counseling Psychology</option>
+            <option value="School Psychology" {{ $oldSpecialization == 'School Psychology' ? 'selected' : '' }}>School Psychology</option>
+            <option value="Forensic Psychology" {{ $oldSpecialization == 'Forensic Psychology' ? 'selected' : '' }}>Forensic Psychology</option>
+            <option value="Industrial-Organizational Psychology" {{ $oldSpecialization == 'Industrial-Organizational Psychology' ? 'selected' : '' }}>Industrial-Organizational Psychology</option>
+            <option value="Health Psychology" {{ $oldSpecialization == 'Health Psychology' ? 'selected' : '' }}>Health Psychology</option>
+            <option value="Neuropsychology" {{ $oldSpecialization == 'Neuropsychology' ? 'selected' : '' }}>Neuropsychology</option>
+            <option value="Developmental Psychology" {{ $oldSpecialization == 'Developmental Psychology' ? 'selected' : '' }}>Developmental Psychology</option>
+            <option value="Social Psychology" {{ $oldSpecialization == 'Social Psychology' ? 'selected' : '' }}>Social Psychology</option>
+            <option value="Experimental Psychology" {{ $oldSpecialization == 'Experimental Psychology' ? 'selected' : '' }}>Experimental Psychology</option>
+            <option value="Cognitive Psychology" {{ $oldSpecialization == 'Cognitive Psychology' ? 'selected' : '' }}>Cognitive Psychology</option>
+            <option value="Environmental Psychology" {{ $oldSpecialization == 'Environmental Psychology' ? 'selected' : '' }}>Environmental Psychology</option>
+          </select>
+          <x-input-error :messages="$errors->get('specialization')" class="mt-2" />
         </div>
+
+
 
 
         <div>
             <x-input-label for="affialation" :value="__('Affilated Hospital')" />
-            <x-text-input id="affialation" name="hospital_affiliation" type="text" class="mt-1 block w-full" autocomplete="affilation" />
+            <x-text-input id="affialation" name="hospital_affiliation" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->hospital_affiliation)"  autocomplete="affilation" />
             <x-input-error :messages="$errors->get('hospital_affiliation')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="Phone number" :value="__('Contact Number')" />
             <x-text-input id="contact_name" type="text" class="mt-1 inline w-16" :value=" +251" disabled autocomplete="emergency" />
-            <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 inline-block w-80" autocomplete="phone number" />
+            <x-text-input id="phone_number" name="phone_number" type="text" class="mt-1 inline-block w-80" :value="old('name', $user->healthProfessionalProfile->phone_number)"  autocomplete="phone number" />
             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="location" :value="__('Location (City)')" />
-            <input id="location" name="location" type="text" class="mt-1 block w-full" list="cityList" autocomplete="city">
+            <input id="location" name="location" type="text" class="mt-1 block w-full" list="cityList" :value="old('name', $user->healthProfessionalProfile->location)"  autocomplete="city">
             <datalist id="cityList">
                 <option value="Addis Ababa">
                 <option value="Adama">
@@ -131,72 +150,84 @@
 
         <div>
             <x-input-label for="linkedin link" :value="__('Your Linkedin link')" />
-            <x-text-input id="linkedin" name="linkedin" type="text" class="mt-1 block w-full" autocomplete="linkedin" />
+            <x-text-input id="linkedin" name="linkedin" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->linkedin)"  autocomplete="linkedin" />
             <x-input-error :messages="$errors->get('linkedin')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="facebook" :value="__('Your facebook link (optional)')" />
-            <x-text-input id="facebook" name="facebook" type="text" class="mt-1 block w-full" autocomplete="facebook" />
+            <x-text-input id="facebook" name="facebook" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->facebook)"  autocomplete="facebook" />
             <x-input-error :messages="$errors->get('facebook')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="instagram" :value="__('Your instagram link (optional)')" />
-            <x-text-input id="instagram" name="facebook" type="text" class="mt-1 block w-full" autocomplete="instagram" />
+            <x-text-input id="instagram" name="instagram" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->instagram)"  autocomplete="instagram" />
             <x-input-error :messages="$errors->get('instagram')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="twitter" :value="__('Your twitter link (optional)')" />
-            <x-text-input id="twitter" name="twitter" type="text" class="mt-1 block w-full" autocomplete="twitter" />
+            <x-text-input id="twitter" name="twitter" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->twitter)"  autocomplete="twitter" />
             <x-input-error :messages="$errors->get('twitter')" class="mt-2" />
         </div>
 
         <div>
-            <x-input-label for="price" :value="__('Service')" />
-            <select name="price" id="price" class="mt-1 block w-full">
-              <option value="free">Free (Volenteerism)</option>
-              <option value="paid">Paid(coming soon)</option>
-            </select>
-            <x-input-error :messages="$errors->get('price')" class="mt-2" />
-        </div>
+          <x-input-label for="price" :value="__('Service')" />
+          <select name="price" id="price" class="mt-1 block w-full">
+              <option value="free" {{ $oldPrice === 'free' ? 'selected' : '' }}>Free (Volunteerism)</option>
+              <option value="paid" {{ $oldPrice === 'paid' ? 'selected' : '' }}>Paid (coming soon)</option>
+          </select>
+          <x-input-error :messages="$errors->get('price')" class="mt-2" />
+      </div>
 
-        <div>
-            <x-input-label for="years_of_experience" :value="__('Years of Experience')" />
-            <select name="years_of_experience" id="years_of_experience" class="mt-1 block w-full">
-              <option value="0-1">0-1 years</option>
-              <option value="2-5">2-5 years</option>
-              <option value="5-7">5-7 years</option>
-              <option value="7-10">7-10 years</option>
-              <option value="10+">10+ years</option>
-            </select>
-            <x-input-error :messages="$errors->get('price')" class="mt-2" />
-        </div>
 
-        <!-- <div>
-            <x-input-label for="issues" :value="__('Psychological issues you\'ve consulted before')" />
-            <input type="checkbox" id="issue_depression" name="issues[]" value="Depression"><br>
-            <label for="issue_depression">Depression</label><br>
-            <input type="checkbox" id="issue_anxiety" name="issues[]" value="Anxiety Disorders">
-            <label for="issue_anxiety">Anxiety Disorders</label><br>
-            <input type="checkbox" id="issue_substance" name="issues[]" value="Substance Abuse and Addiction">
-            <label for="issue_substance">Substance Abuse and Addiction</label><br>
-            <input type="checkbox" id="issue_ptsd" name="issues[]" value="Post-Traumatic Stress Disorder (PTSD)">
-            <label for="issue_ptsd">Post-Traumatic Stress Disorder (PTSD)</label><br>
-            <input type="checkbox" id="issue_eating" name="issues[]" value="Eating Disorders">
-            <label for="issue_eating">Eating Disorders</label><br>
-            <input type="checkbox" id="issue_personality" name="issues[]" value="Personality Disorders">
-            <label for="issue_personality">Personality Disorders</label><br>
-            <input type="checkbox" id="issue_relationship" name="issues[]" value="Relationship Issues">
-            <label for="issue_relationship">Relationship Issues</label><br>
-            <input type="checkbox" id="issue_stress" name="issues[]" value="Stress Management">
-            <label for="issue_stress">Stress Management</label><br>
-            <input type="checkbox" id="issue_grief" name="issues[]" value="Grief and Loss">
-            <label for="issue_grief">Grief and Loss</label><br>
-            <input type="checkbox" id="issue_self_esteem" name="issues[]" value="Self-Esteem and Identity Issues">
-            <label for="issue_self_esteem">Self-Esteem and Identity Issues</label><br>
-        </div> -->
+      <div>
+        <x-input-label for="years_of_experience" :value="__('Years of Experience')" />
+        <select name="years_of_experience" id="years_of_experience" class="mt-1 block w-full">
+            <option value="0-1" {{ $oldExperience === '0-1' ? 'selected' : '' }}>0-1 years</option>
+            <option value="2-5" {{ $oldExperience === '2-5' ? 'selected' : '' }}>2-5 years</option
+            <option value="5-7" {{ $oldExperience === '5-7' ? 'selected' : '' }}>5-7 years</option>
+            <option value="7-10" {{ $oldExperience === '7-10' ? 'selected' : '' }}>7-10 years</option>
+            <option value="10+" {{ $oldExperience === '10+' ? 'selected' : '' }}>10+ years</option>
+        </select>
+        <x-input-error :messages="$errors->get('years_of_experience')" class="mt-2" />
+    </div>
+
+
+    <div>
+      <x-input-label for="issues" :value="__('Psychological issues you\'ve consulted before')" />
+      <input type="checkbox" id="issue_depression" name="issues[]" value="Depression" {{ in_array('Depression', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_depression">Depression</label><br>
+      
+      <input type="checkbox" id="issue_anxiety" name="issues[]" value="Anxiety Disorders" {{ in_array('Anxiety Disorders', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_anxiety">Anxiety Disorders</label><br>
+      
+      <input type="checkbox" id="issue_substance" name="issues[]" value="Substance Abuse and Addiction" {{ in_array('Substance Abuse and Addiction', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_substance">Substance Abuse and Addiction</label><br>
+      
+      <input type="checkbox" id="issue_ptsd" name="issues[]" value="Post-Traumatic Stress Disorder (PTSD)" {{ in_array('Post-Traumatic Stress Disorder (PTSD)', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_ptsd">Post-Traumatic Stress Disorder (PTSD)</label><br>
+      
+      <input type="checkbox" id="issue_eating" name="issues[]" value="Eating Disorders" {{ in_array('Eating Disorders', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_eating">Eating Disorders</label><br>
+      
+      <input type="checkbox" id="issue_personality" name="issues[]" value="Personality Disorders" {{ in_array('Personality Disorders', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_personality">Personality Disorders</label><br>
+      
+      <input type="checkbox" id="issue_relationship" name="issues[]" value="Relationship Issues" {{ in_array('Relationship Issues', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_relationship">Relationship Issues</label><br>
+      
+      <input type="checkbox" id="issue_stress" name="issues[]" value="Stress Management" {{ in_array('Stress Management', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_stress">Stress Management</label><br>
+      
+      <input type="checkbox" id="issue_grief" name="issues[]" value="Grief and Loss" {{ in_array('Grief and Loss', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_grief">Grief and Loss</label><br>
+      
+      <input type="checkbox" id="issue_self_esteem" name="issues[]" value="Self-Esteem and Identity Issues" {{ in_array('Self-Esteem and Identity Issues', $oldIssues) ? 'checked' : '' }}>
+      <label for="issue_self_esteem">Self-Esteem and Identity Issues</label><br>
+    </div>
+
 
         <div class="flex items-center gap-4 py-4">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">update</button>

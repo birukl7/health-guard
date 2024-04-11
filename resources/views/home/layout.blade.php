@@ -103,7 +103,7 @@
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
                 {{ Request::is('depressions*') ? $bg : '' }}
                 {{ Request::is('alcohols*') ? $bg : '' }}
-                {{ Request::is('professionals/create') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
+                {{ Request::is('professionals*') ? $bg : '' }}"><div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div></li>
               </a>
               @else
               <a href="{{route('professionals.create')}}">

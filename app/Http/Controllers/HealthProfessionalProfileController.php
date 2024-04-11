@@ -77,10 +77,16 @@ class HealthProfessionalProfileController extends Controller
             'issues' => 'nullable|array',
             'issues.*' => 'string',
         ]);
+        $issuesJson = json_encode($request->input('issues', []));
+
         $validated['user_id'] = $userId;
+        $validated['issues'] = $issuesJson;
         $health = new HealthProfessionalProfile();
         $health->fill($validated);
         $health->save();
+            // $profile = new ProfessionalProfile();
+    // $profile->issues = $issuesJson;
+    // $profile->save();
         return redirect()->route('professionals.create')->with('success', 'Health professional profile created successfully.');
     }
 
@@ -106,6 +112,7 @@ class HealthProfessionalProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $health = HealthProfessionalProfile::where('user_id', Auth::user()->id)->firstOrFail();
+        
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
             'last_name' => 'required|string|min:2|max:255',

@@ -123,11 +123,11 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <div>
+        <!-- <div>
             <x-input-label for="license" :value="__('Upload a license (PDF, JPG, JPEG, PNG and less than 4Mb)')" />
             <input id="license" type="file" name="license" class="mt-1 inline w-full" />
             <x-input-error :messages="$errors->get('license')" class="mt-2" />
-        </div>
+        </div> -->
 
         <div>
             <x-input-label for="linkedin link" :value="__('Your Linkedin link')" />
@@ -174,7 +174,7 @@
             <x-input-error :messages="$errors->get('price')" class="mt-2" />
         </div>
 
-        <!-- <div>
+        <div>
             <x-input-label for="issues" :value="__('Psychological issues you\'ve consulted before')" />
             <input type="checkbox" id="issue_depression" name="issues[]" value="Depression"><br>
             <label for="issue_depression">Depression</label><br>
@@ -196,7 +196,7 @@
             <label for="issue_grief">Grief and Loss</label><br>
             <input type="checkbox" id="issue_self_esteem" name="issues[]" value="Self-Esteem and Identity Issues">
             <label for="issue_self_esteem">Self-Esteem and Identity Issues</label><br>
-        </div> -->
+        </div>
 
         <div class="flex items-center gap-4 py-4">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
