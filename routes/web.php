@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
-    })->get();
+    })->whereHas('healthProfessionalProfile')->get();
     return view('home.index', ['doctors' => $doctors]);
 });
 
@@ -138,6 +138,7 @@ Route::resource('/alcohols', AlcoholUseTrackerController::class);
 });
 
 Route::controller(GoogleController::class)->group(function () {
+    Route::post('googleFinishUp', [GoogleController::class, 'finishUp'])->name('googleFinishUp');
     Route::get('social/google', 'redirect')->name('auth.google');
     Route::get('social/google/callback', 'googleCallback');
 });

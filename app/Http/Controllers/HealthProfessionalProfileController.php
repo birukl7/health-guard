@@ -76,8 +76,17 @@ class HealthProfessionalProfileController extends Controller
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
             'issues' => 'nullable|array',
             'issues.*' => 'string',
+
         ]);
+
+        $dob = Carbon::createFromFormat('Y-m-d', $validated['date_of_birth']);
+        $currentDate = Carbon::now();
+        $age = $dob->diffInYears($currentDate);
+
+        $validated['age'] = $age;
         $validated['user_id'] = $userId;
+
+        
         $health = new HealthProfessionalProfile();
         $health->fill($validated);
         $health->save();
