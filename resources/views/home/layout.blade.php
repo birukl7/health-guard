@@ -17,7 +17,7 @@
   </style>
   <title>Health Guard</title>
 </head>
-<body class="font font-GTpro bg-custom-vvlgary">
+<body class="font-GTpro bg-custom-vvlgary">
   @php
     $user = Auth::user();
   @endphp

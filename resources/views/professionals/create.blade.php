@@ -13,7 +13,7 @@
       <a class="bg-custom-blue text-white hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-300 ease-in-out px-6 py-2 rounded-full flex justify-start  items-center gap-x-4 w-40" href="/dashboard">&lt;<span>Go Back</span></a> -->
       <h2 class="flex items-center ml-5"><span class="font-bold text-3xl">Profile</span></h2>
     </div>
-    <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
+    <div class="flex flex-col justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
 
     @if(!$user->healthProfessionalProfile)
       <div class="flex items-center">
@@ -21,10 +21,37 @@
         <p class=" font-bold px-5 ">Finish up your account by creating necessary health professional account informations.</p>
         </div>
 
-        <a href="/students/create#form-add" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >
+        <a href="/professionals/create#form-add" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >
         Finish Up
         </a>
       </div>
+    @else
+      <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
+        <div class="flex items-center">
+          <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+          <p class=" font-bold px-5 ">Update health professional account you have filed.</p>
+        </div>
+
+        <button class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md js-show-update-3" >
+        Edit 
+        </button>
+      </div>
+
+
+
+      <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out my-10 mx-10" id="form-add-3">
+        @include('professionals.partials.update-health-profession')
+      </div>
+
+      <script>
+          const cont3 = document.querySelector('#form-add-3');
+          const topCont3 = document.querySelector('.js-show-update-3');
+          topCont3.addEventListener('click', ()=>{
+              cont3.classList.toggle('h-0')
+              cont3.classList.toggle('overflow-hidden')
+              console.log('working...')
+          })
+      </script>
     @endif
 
     <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start items-center">
@@ -61,6 +88,17 @@
             </li>
           </ul>
       </div>
-  </section>
+    </section>
+
+    @if(!$user->healthProfessionalProfile)
+      <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 w-full" id="form-add">
+        <div class="max-w-xl" id="form-add">
+            @include('professionals.partials.add-health-profession')
+        </div>
+      </div>
+      @endif
+
+
+    
 </section>
 @endsection

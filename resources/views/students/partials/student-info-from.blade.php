@@ -94,6 +94,7 @@
             <x-text-input id="emergency_contact_number" name="emergency_contact_number" type="text" class="mt-1 inline-block w-80" autocomplete="emergency" />
             <x-input-error :messages="$errors->get('emergency_contact_number')" class="mt-2" />
         </div>
+        
         <div class="flex items-center gap-4 py-4">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
         </div>

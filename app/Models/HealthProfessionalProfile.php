@@ -12,18 +12,32 @@ class HealthProfessionalProfile extends Model
     use HasFactory;
     
     protected $fillable=[
+
         'user_id',
         'first_name',
         'last_name',
+        'date_of_birth',
+        'about',
+        'description',
         'age',
         'specialization',
         'hospital_affiliation',
+        'phone_number',
         'location',
         'license',
+        'linkedin',
+        'youtube',
+        'facebook',
+        'instagram',
+        'twitter',
         'specialities',
         'price',
         'years_of_experience',
-        'contribution_tags',
+        'issues',
+    ];
+
+    protected $cast = [
+        'issues' => 'array'
     ];
 
     public function user(): BelongsTo {

@@ -53,7 +53,6 @@ Route::middleware('auth')->group(
         Route::resource('/chats', ChatMessageController::class);
         Route::resource('/students', StudentProfileController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
-
         Route::patch(
             '/profile/picture',
             function (Request $request) {
@@ -78,7 +77,6 @@ Route::middleware('auth')->group(
         )->name('profile.picture');
     }
 );
-=======
 // Route::put('/students/{student}', [StudentProfileController::class, 'update'])->name('students.update');
 
 Route::middleware('auth')->group(
