@@ -1,21 +1,24 @@
 <?php
 
 use App\Models\User;
-use App\Http\Controllers\AlcoholUseTrackerController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ChatMessageController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DepressionTrackerController;
-use App\Http\Controllers\DrugUseTrackerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\HealthProfessionalProfileController;
-use App\Http\Controllers\StudentProfileController;
-use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ChatMessageController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\DrugUseTrackerController;
+use App\Http\Controllers\StudentProfileController;
+use App\Http\Controllers\Admin\HealthProController;
+use App\Http\Controllers\AlcoholUseTrackerController;
+use App\Http\Controllers\DepressionTrackerController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\HealthProfessionalProfileController;
 
 Route::get('/', function () {
     $doctors = User::whereHas('roles', function ($query) {
@@ -92,6 +95,13 @@ Route::middleware('auth')->group(
 
     Route::resource('/professionals', HealthProfessionalProfileController::class);
 
+
+
+
+
+
+
+    
 // Index Route
 
 // Create Routes
@@ -136,6 +146,26 @@ Route::resource('/alcohols', AlcoholUseTrackerController::class);
         return redirect()->back()->with('error', 'Failed to upload avatar.');
     } )->name('profile.picture');
 });
+
+// Admin Controller
+Route::post('admin/login', [AdminController::class, 'submit_login']);
+Route::get('admin/login', [AdminController::class, 'login']);
+Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin/logout', [AdminController::class, 'logout']);
+
+//student
+Route::get('stu/{id}/delete', [ StudentController::class, 'destroy']);
+Route::resource('stu', StudentController::class);
+
+//health-pro
+Route::get('health/{id}/delete', [HealthProController::class, 'destroy']);
+Route::resource('health', HealthProController::class);
+
+//blog
+Route::get('blog/{id}/delete', [BlogController::class, 'destroy']);
+Route::resource('blog', BlogController::class);
+
+
 
 Route::controller(GoogleController::class)->group(function () {
     Route::get('social/google', 'redirect')->name('auth.google');
