@@ -12,7 +12,7 @@
         </p>
     </header>
 
-    <form method="POST" action="/professionals" class="mt-6 space-y-6">
+    <form method="POST" action="/professionals" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
 
          <div>
