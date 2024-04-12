@@ -9,8 +9,9 @@
         </p>
     </header>
 
-    <form method="POST" action="/submit-depression-assessment" class="">
+    <form method="POST" action="{{route('depressions.store')}}" class="">
     @csrf
+    @method('POST')
 
       <div class="my-8">
           <x-input-label for="question_1" :value="__('1. In the past two weeks, have you experienced a persistent feeling of sadness or emptiness?')" />
@@ -22,6 +23,7 @@
               <input type="radio" name="question_1" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_1')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -34,6 +36,7 @@
               <input type="radio" name="question_2" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_2')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -44,6 +47,7 @@
               <option value="often">Often</option>
               <option value="always">Always</option>
           </select>
+          <x-input-error :messages="$errors->get('question_3')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -56,6 +60,7 @@
               <input type="radio" name="question_4" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_4')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -65,6 +70,7 @@
               <option value="decreased_appetite_weight_loss">Decreased appetite/weight loss</option>
               <option value="no_change">No change</option>
           </select>
+          <x-input-error :messages="$errors->get('question_5')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -75,6 +81,7 @@
               <option value="often">Often</option>
               <option value="always">Always</option>
           </select>
+          <x-input-error :messages="$errors->get('question_6')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -87,6 +94,7 @@
               <input type="radio" name="question_7" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_7')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -99,6 +107,7 @@
               <input type="radio" name="question_8" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_8')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -109,6 +118,7 @@
               <option value="often">Often</option>
               <option value="always">Always</option>
           </select>
+          <x-input-error :messages="$errors->get('question_9')" class="mt-2" />
       </div>
 
       <div class="my-8">
@@ -121,11 +131,12 @@
               <input type="radio" name="question_10" value="no" class="mr-1">
               No
           </label>
+          <x-input-error :messages="$errors->get('question_10')" class="mt-2" />
       </div>
 
       <div class="mt-4">
           <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
       </div>
-</form>
+    </form>
 
 </section>

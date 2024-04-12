@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class DepressionTracker extends Model
 {
     use HasFactory;
-    protected $fillabe = [
+    protected $table = 'depression_trackers';
+    protected $fillable = [
         'user_id',
         'question_1',
         'question_2',

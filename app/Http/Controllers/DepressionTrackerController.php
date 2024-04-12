@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DepressionTracker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class DepressionTrackerController extends Controller
@@ -28,7 +30,26 @@ class DepressionTrackerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+        $validated = $request->validate([
+            'question_1' => 'required|in:yes,no',
+            'question_2' => 'required|in:yes,no',
+            'question_3' => 'required|in:rarely,sometimes,often,always',
+            'question_4' => 'required|in:yes,no',
+            'question_5' => 'required|in:increased_appetite_weight_gain,decreased_appetite_weight_loss,no_change',
+            'question_6' => 'required|in:rarely,sometimes,often,always',
+            'question_7' => 'required|in:yes,no',
+            'question_8' => 'required|in:yes,no',
+            'question_9' => 'required|in:rarely,sometimes,often,always',
+            'question_10' => 'required|in:yes,no',
+        ]);
+
+        $validated['user_id'] = $userId;
+        $depression = new DepressionTracker();
+        $depression->fill($validated);
+        $depression->save();
+        return redirect()->route('students.create')->with('success', 'Depression assesment informations created successfully.');
+        
     }
 
     /**
@@ -52,7 +73,28 @@ class DepressionTrackerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $userId = Auth::id();
+        $validated = $request->validate([
+            'question_1' => 'required|in:yes,no',
+            'question_2' => 'required|in:yes,no',
+            'question_3' => 'required|in:rarely,sometimes,often,always',
+            'question_4' => 'required|in:yes,no',
+            'question_5' => 'required|in:increased_appetite_weight_gain,decreased_appetite_weight_loss,no_change',
+            'question_6' => 'required|in:rarely,sometimes,often,always',
+            'question_7' => 'required|in:yes,no',
+            'question_8' => 'required|in:yes,no',
+            'question_9' => 'required|in:rarely,sometimes,often,always',
+            'question_10' => 'required|in:yes,no',
+        ]);
+
+        $depression = DepressionTracker::where('user_id', Auth::user()->id)->firstOrFail();
+
+        $depression->update($validated);
+    
+        // Redirect or return a response
+        return redirect()->route('students.create')->with('success', 'Depression assesment questions updated successfully.');
+
+
     }
 
     /**

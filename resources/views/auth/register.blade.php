@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <x-guest-layout>
     <form method="POST" action="{{ route('registerPost') }}">
         @csrf
@@ -7,41 +8,63 @@
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                 autofocus autocomplete="name" />
+
+            @error('name')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required
                 autocomplete="username" />
+
+            @error('email')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="new-password" />
+        <div class="mt-4" x-data="{ show: true }">
+            <span class="px-1 text-sm text-gray-600">Password</span>
+            <div class="relative">
+
+
+                <x-password-input name="password" required autocomplete="new-password" placeholder=""
+                    x-bind:show="show" />
+
+            @error('password')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
+            </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
+        <div class="mt-4" x-data="{ show: true }">
+            <span class="px-1 text-sm text-gray-600">Confirm Password</span>
+            <div class="relative">
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+                <x-password-input id="password_confiramtion" name="password_confirmation" required
+                    autocomplete="new-password" x-bind:show="show" />
+
+            @error('password_confirmation')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
+            </div>
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+
+
         <!-- user-role -->
         <div class="mt-4">
             <x-input-label for="role_id" :value="__('User Role')" />
-            
+
             <select id="role_id" name="role_id"
                 class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="student" selected>Student</option>

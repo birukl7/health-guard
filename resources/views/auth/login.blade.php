@@ -13,15 +13,28 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+         <div class="mt-4" x-data="{ show: true }">
+            <span class="px-1 text-sm text-gray-600">Password</span>
+            <div class="relative">
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+
+                <x-password-input name="password" required autocomplete="new-password" placeholder=""
+                    x-bind:show="show" />
+
+            @error('password')
+            <div class="text-red-500"> {{ $message }} </div>
+            @enderror
+            </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+         <!-- Google Sign-In Button -->
+        <div class="mt-4">
+            <a href="{{ route('auth.google') }}">
+                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
+                    style="margin-left: 3em; height: 40px; border-radius: 12px">
+            </a>
         </div>
 
         <!-- Remember Me -->
