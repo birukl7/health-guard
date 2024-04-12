@@ -83,15 +83,14 @@ class AlcoholUseTrackerController extends Controller
             } else {
                 $mapNum = ['yes' => 1, 'no' => 0,];
                 $score += $mapNum[$answer];
-                $numss[] = $mapNum[$answer];
             }
         }
 
-        //$score = 100.0 * ($score / 23.5);
+        $score = 100.0 * ($score / 22.5);
 
         $validated['user_id'] = $userId;
         $alcohol = new AlcoholUseTracker();
-        $alcohol->score = $score;
+        $alcohol->score = number_format($score, 1);
         $alcohol->fill($validated);
         $alcohol->save();
         return redirect()->route('students.create')->with('success', 'Alcohol usage assesment informations created successfully.');
