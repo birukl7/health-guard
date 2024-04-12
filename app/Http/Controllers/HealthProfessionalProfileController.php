@@ -76,11 +76,27 @@ class HealthProfessionalProfileController extends Controller
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
             'issues' => 'nullable|array',
             'issues.*' => 'string',
+
         ]);
+        $issuesJson = json_encode($request->input('issues', []));
+
         $validated['user_id'] = $userId;
+        $validated['issues'] = $issuesJson;
+
+        $dob = Carbon::createFromFormat('Y-m-d', $validated['date_of_birth']);
+        $currentDate = Carbon::now();
+        $age = $dob->diffInYears($currentDate);
+
+        $validated['age'] = $age;
+        $validated['user_id'] = $userId;
+
+        
         $health = new HealthProfessionalProfile();
         $health->fill($validated);
         $health->save();
+            // $profile = new ProfessionalProfile();
+    // $profile->issues = $issuesJson;
+    // $profile->save();
         return redirect()->route('professionals.create')->with('success', 'Health professional profile created successfully.');
     }
 
@@ -106,6 +122,7 @@ class HealthProfessionalProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $health = HealthProfessionalProfile::where('user_id', Auth::user()->id)->firstOrFail();
+        
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
             'last_name' => 'required|string|min:2|max:255',

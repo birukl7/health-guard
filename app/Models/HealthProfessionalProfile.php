@@ -30,7 +30,6 @@ class HealthProfessionalProfile extends Model
         'facebook',
         'instagram',
         'twitter',
-        'specialities',
         'price',
         'years_of_experience',
         'issues',

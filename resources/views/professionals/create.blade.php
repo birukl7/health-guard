@@ -1,16 +1,14 @@
 @extends('home.layout')
 @section('content')
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
+
   @php
-      $user = Auth::user();
-      $text_color = 'text-custom-blue';
+    $user = Auth::user();
+    $text_color = 'text-custom-blue';
   @endphp
 
     <div class="flex justify-between items-center  px-8">
-      <!-- <p><a href="/dashboard" class="hover:text-custom-blue underline {{ Request::is('dashboard*') ? $text_color : '' }}">Dashboard</a>
-      <span class="px-3">&gt;</span>
-      <a href="/students/create" class="hover:text-custom-blue underline {{ Request::is('students*') ? $text_color : '' }}">Student</a></p>
-      <a class="bg-custom-blue text-white hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-300 ease-in-out px-6 py-2 rounded-full flex justify-start  items-center gap-x-4 w-40" href="/dashboard">&lt;<span>Go Back</span></a> -->
+
       <h2 class="flex items-center ml-5"><span class="font-bold text-3xl">Profile</span></h2>
     </div>
     <div class="flex flex-col justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">

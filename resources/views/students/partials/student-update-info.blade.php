@@ -24,7 +24,7 @@
 
         <div>
             <x-input-label for="last_name" :value="__('Last name')" />
-            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('email', $user->studentProfile->last_name)" required autocomplete="username" />
+            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->studentProfile->last_name)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
         </div>
 

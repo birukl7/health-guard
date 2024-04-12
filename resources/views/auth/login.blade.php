@@ -29,6 +29,14 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+         <!-- Google Sign-In Button -->
+        <div class="mt-4">
+            <a href="{{ route('auth.google') }}">
+                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"
+                    style="margin-left: 3em; height: 40px; border-radius: 12px">
+            </a>
+        </div>
+
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">

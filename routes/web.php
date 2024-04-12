@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
@@ -23,12 +24,13 @@ use App\Http\Controllers\HealthProfessionalProfileController;
 Route::get('/', function () {
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
-    })->get();
+    })->whereHas('healthProfessionalProfile')->get();
     return view('home.index', ['doctors' => $doctors]);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 });
 
 Route::middleware(['auth', 'verified'])->get('health_professional/{id}', [UserController::class, 'showPsychologist'])->name('health_professional');
@@ -168,11 +170,18 @@ Route::resource('blog', BlogController::class);
 
 
 Route::controller(GoogleController::class)->group(function () {
+    Route::post('googleFinishUp', [GoogleController::class, 'finishUp'])->name('googleFinishUp');
     Route::get('social/google', 'redirect')->name('auth.google');
     Route::get('social/google/callback', 'googleCallback');
 });
 
 
-Route::resource('/blogs', BlogController::class);
+
+
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+;
 
 require __DIR__ . '/auth.php';
