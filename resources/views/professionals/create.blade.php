@@ -11,7 +11,7 @@
 
       <h2 class="flex items-center ml-5"><span class="font-bold text-3xl">Profile</span></h2>
     </div>
-    <div class="flex flex-col justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
+    <div class="flex flex-col justify-between items px-5 pr-10 pt-16 shadow-xl pb-10">
 
     @if(!$user->healthProfessionalProfile)
       <div class="flex items-center">
@@ -51,6 +51,19 @@
           })
       </script>
     @endif
+
+    <div class="flex justify-between items-center px-5 pr-10 pt-6 shadow-xl pb-10 mx-8">
+        <div class="flex items-center">
+          <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+          <p class=" font-bold px-5 ">Manage expericnces </p>
+        </div>
+
+        <button class="px-3 py-2 bg-black text-white font-bold rounded-md js-show-update-3" >
+        Manage Expericences 
+        </button>
+      </div>
+
+
 
     <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start items-center">
       <div class="w-full  rounded-xl h-full overflow-hidden">
@@ -95,7 +108,6 @@
         </div>
       </div>
       @endif
-
 
     
 </section>

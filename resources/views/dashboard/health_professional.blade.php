@@ -31,7 +31,6 @@
     <p class="px-8">Here the information about your activity.</p>
 
     @if ($user->healthProfessionalProfile)
-       <p> {{$user->healthProfessionalProfile->first_name}}</p> 
     @else
     <div class="flex justify-between items-center px-5 pr-10 pt-16">
 
@@ -51,10 +50,14 @@
             <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
         </div>
         <div class="flex flex-col py-20 px-28">
-            <p class="font-semibold">Learn university life psychology now and teach your friend always to be happy!</p>
-            <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Learn More</span> &gt;</button>
+            <p class="font-semibold">Do you know blogging is a feature allowed for only health professionals?</p>
+            <a href="{{route('blogs.create')}}">
+                <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Blog</span> &gt;</button>
+            </a>
         </div>
     </section>
+
+    
 
     <script src="{{asset('script/navBar.js')}}"></script>
 </section>

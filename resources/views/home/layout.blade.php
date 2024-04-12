@@ -98,7 +98,7 @@
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 "><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
               </a>
 
-              @if(!$user->role_id === 'health_professional')
+              @if(!$user->hasRole('health_professional'))
               <a href="{{route('students.create')}}">
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
                 {{ Request::is('depressions*') ? $bg : '' }}

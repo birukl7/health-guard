@@ -17,11 +17,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
     })->whereHas('healthProfessionalProfile')->get();
     return view('home.index', ['doctors' => $doctors]);
+        // return view('welcome');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

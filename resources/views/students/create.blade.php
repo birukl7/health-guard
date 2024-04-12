@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    {{-- @if(!$user->alcoholUseTracker || !$user->drugUseTracker || !$user->depressionTracker)
+     @if(!$user->alcoholUseTracker || !$user->drugUseTracker || !$user->depressionTracker)
     <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start ">
         <div class="w-custom-4  rounded-xl h-full overflow-hidden">
             <img src="{{asset('images/helena-lopes.jpg')}}" alt="">
@@ -252,6 +252,6 @@
     </section>
     </div>
     </div>
-    --}}
+ 
 </section>
 @endsection
