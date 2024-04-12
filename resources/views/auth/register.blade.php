@@ -20,10 +20,7 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required
                 autocomplete="username" />
-
-            @error('email')
-            <div class="text-red-500"> {{ $message }} </div>
-            @enderror
+            
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -35,10 +32,6 @@
 
                 <x-password-input name="password" required autocomplete="new-password" placeholder=""
                     x-bind:show="show" />
-
-            @error('password')
-            <div class="text-red-500"> {{ $message }} </div>
-            @enderror
             </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -50,10 +43,6 @@
 
                 <x-password-input id="password_confiramtion" name="password_confirmation" required
                     autocomplete="new-password" x-bind:show="show" />
-
-            @error('password_confirmation')
-            <div class="text-red-500"> {{ $message }} </div>
-            @enderror
             </div>
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
