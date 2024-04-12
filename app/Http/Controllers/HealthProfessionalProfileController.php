@@ -90,7 +90,11 @@ class HealthProfessionalProfileController extends Controller
         $validated['age'] = $age;
         $validated['user_id'] = $userId;
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 5529b1b3a107b87feb7b122ef1bebb120ab85319
         $health = new HealthProfessionalProfile();
         $health->fill($validated);
         $health->save();

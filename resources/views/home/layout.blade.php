@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- 
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/ee4b6626a1.js" crossorigin="anonymous"></script>
 
@@ -39,8 +39,8 @@
     <header class="pr-3 w-full flex md:inline-block gap-x-4 md:gap-x-0 justify-start items-center md:w-80 pt-10 pl-1 md:pl-0 bg-custom-graish header-js transition-all  duration-200 ease-in-out fixed top-0 bottom-0  z-50">
 
         <div class="flex items-center gap-x-4 fixed md:static right-0 left-0 top-0 px-3 pt-3 pb-3 bg-white  md:bg-inherit z-20 md:z-0 md:block md:p-0 shadow-lg md:shadow-none">
-          <div class='w-7 h-1 mr-1  bg-slate-100 dark:bg-slate-900 rounded-full relative after:bg-slate-100 after:dark:bg-slate-900 after:block after:w-full after:absolute after:top-2 after:h-1 after:rounded-full 
-                before:bg-slate-100 before:dark:bg-slate-900 before:block before:w-full before:absolute before:bottom-2 before:h-1 before:rounded-full cursor-pointer before:transition-all  before:ease-in-out before:duration-200 after:transition-all after:ease-in-out after:duration-200 
+          <div class='w-7 h-1 mr-1  bg-slate-100 dark:bg-slate-900 rounded-full relative after:bg-slate-100 after:dark:bg-slate-900 after:block after:w-full after:absolute after:top-2 after:h-1 after:rounded-full
+                before:bg-slate-100 before:dark:bg-slate-900 before:block before:w-full before:absolute before:bottom-2 before:h-1 before:rounded-full cursor-pointer before:transition-all  before:ease-in-out before:duration-200 after:transition-all after:ease-in-out after:duration-200
                 md:hidden' onClick="toggleMobileNav
                 ()" id='hamburger'></div>
 
@@ -70,26 +70,25 @@
             </a>
 
             <a href="/dashboard">
-              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }} 
-              {{ Request::is('register*') ? $bg : '' }}
-              "><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
+              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }}
+              {{ Request::is('depressions*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div></li>
             </a>
-            
+
 
             <a href="">
               <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 "><div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div></li>
             </a>
 
-            <a href="{{route('blogs.index')}}">
+            <a href="{{route('posts.index')}}">
               <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('blogs.*') ? $bg : '' }}"><div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div></li>
             </a>
           </ul>
 
-        
+
           <div class="mt-10">
             <span class="text-custom-lgray text-sm capitalize mx-4">Tools</span>
             @auth
-            <ul>          
+            <ul>
               <a href="/chatify/{{Auth::user()->id}}">
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
               </a>
@@ -113,7 +112,7 @@
               </a>
               @endif
 
-        
+
               <a href="{{route('profile.edit')}}">
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('profile.edit') ? $bg : '' }}"><div><i class="fa-solid fa-gear mr-4"></i><span>Settings</span></div></li>
               </a>

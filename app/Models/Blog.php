@@ -19,6 +19,7 @@ class Blog extends Model
         'title',
         'image',
         'content',
+        'status',
         'posted_date',
         'like_count'
     ];

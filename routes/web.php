@@ -1,21 +1,25 @@
 <?php
 
 use App\Models\User;
-use App\Http\Controllers\AlcoholUseTrackerController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ChatMessageController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DepressionTrackerController;
-use App\Http\Controllers\DrugUseTrackerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\HealthProfessionalProfileController;
-use App\Http\Controllers\StudentProfileController;
-use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ChatMessageController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\DrugUseTrackerController;
+use App\Http\Controllers\StudentProfileController;
+use App\Http\Controllers\Admin\HealthProController;
+use App\Http\Controllers\AlcoholUseTrackerController;
+use App\Http\Controllers\DepressionTrackerController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\HealthProfessionalProfileController;
 
 
 Route::get('/', function () {
@@ -27,7 +31,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 });
 
 Route::middleware(['auth', 'verified'])->get('health_professional/{id}', [UserController::class, 'showPsychologist'])->name('health_professional');
@@ -94,6 +99,13 @@ Route::middleware('auth')->group(
 
     Route::resource('/professionals', HealthProfessionalProfileController::class);
 
+
+
+
+
+
+
+    
 // Index Route
 
 // Create Routes
@@ -139,6 +151,26 @@ Route::resource('/alcohols', AlcoholUseTrackerController::class);
     } )->name('profile.picture');
 });
 
+// Admin Controller
+Route::post('admin/login', [AdminController::class, 'submit_login']);
+Route::get('admin/login', [AdminController::class, 'login']);
+Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin/logout', [AdminController::class, 'logout']);
+
+//student
+Route::get('stu/{id}/delete', [ StudentController::class, 'destroy']);
+Route::resource('stu', StudentController::class);
+
+//health-pro
+Route::get('health/{id}/delete', [HealthProController::class, 'destroy']);
+Route::resource('health', HealthProController::class);
+
+//blog
+Route::get('blog/{id}/delete', [BlogController::class, 'destroy']);
+Route::resource('blog', BlogController::class);
+
+
+
 Route::controller(GoogleController::class)->group(function () {
     Route::post('googleFinishUp', [GoogleController::class, 'finishUp'])->name('googleFinishUp');
     Route::get('social/google', 'redirect')->name('auth.google');
@@ -146,6 +178,12 @@ Route::controller(GoogleController::class)->group(function () {
 });
 
 
-Route::resource('/blogs', BlogController::class);
+
+
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+;
 
 require __DIR__ . '/auth.php';
