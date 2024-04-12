@@ -7,7 +7,7 @@
 
     <div class="flex gap-x-3">
 
-    
+
       <div class=" py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
       <i class="fa-solid fa-magnifying-glass"></i>
       </div>
@@ -120,7 +120,7 @@
       </h3>
 
       <p class="text-custom-lgray">
-      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum, 
+      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
       </p>
 
       <div class="flex items-center gap-x-4 p-4 ">
@@ -149,7 +149,7 @@
       </h3>
 
       <p class="text-custom-lgray">
-      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum, 
+      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
       </p>
 
       <div class="flex items-center gap-x-4 p-4">
@@ -207,7 +207,7 @@
       </h3>
 
       <p class="text-custom-lgray">
-      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum, 
+      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
       </p>
 
       <div class="flex items-center gap-x-4 p-4 ">
@@ -236,7 +236,7 @@
       </h3>
 
       <p class="text-custom-lgray">
-      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum, 
+      Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
       </p>
 
       <div class="flex items-center gap-x-4 p-4">
