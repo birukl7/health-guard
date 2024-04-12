@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('hospital_affiliation')->nullable();
             $table->string('phone_number');
             $table->string('location');
-            $table->string('license')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();
@@ -34,6 +33,7 @@ return new class extends Migration
             $table->string('years_of_experience');
             $table->json('issues')->nullable();
             $table->timestamps();
+        
         });
     }
 
