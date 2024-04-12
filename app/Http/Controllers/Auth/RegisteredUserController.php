@@ -51,11 +51,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if($user->hasRole('student') ){
-            return view('dashboard.student');
-        } elseif ($user->hasRole('health_professional')) {
-            return view('dashboard.health_professional');
-        }
+        // if($user->hasRole('student') ){
+        //     return view('dashboard.student');
+        // } elseif ($user->hasRole('health_professional')) {
+        //     return view('dashboard.health_professional');
+        // }
+        return redirect(route('verification.notice'));
         // return redirect(route('dashboard', absolute: false));
     }
 }
