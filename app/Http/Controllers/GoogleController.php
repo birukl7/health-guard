@@ -25,7 +25,7 @@ class GoogleController extends Controller
             $current_user = User::where('google_id', $user->id)->first();
 
             if ($current_user) {
-                //var_dump('current user', $current_user);
+                var_dump('current user', $current_user);
                 Auth::login($current_user);
                 return redirect()->intended(route('dashboard'));
             } else {
@@ -34,7 +34,19 @@ class GoogleController extends Controller
                     'google_id' => $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
-                var_dump('new user', $newUser);
+                //$newUser->name = $user->name;
+                $newUser->google_id = $user->id;
+                $newUser->save();
+
+
+                //var_dump('new user', $newUser);
+                $vars = [
+                    'name' => $newUser->name,
+                    'google id' => $newUser->google_id,
+                    'password' => $user->password,
+                ];
+                //var_dump($vars);
+
                 Auth::login($newUser);
 
                 return view('auth.google-quick-login', ['user' => $newUser]);
@@ -46,6 +58,9 @@ class GoogleController extends Controller
 
     public function finishUp(Request $request)
     {
+
+        $authType = $request->authType;
+
         $user = auth()->user();
 
         $data = $request->validate([
