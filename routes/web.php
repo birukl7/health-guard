@@ -9,6 +9,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\StudentProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(
@@ -56,6 +57,12 @@ Route::controller(GoogleController::class)->group(function(){
 });
 
 
-Route::resource('/blogs', BlogController::class);
+
+
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+;
 
 require __DIR__.'/auth.php';
