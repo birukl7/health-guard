@@ -86,7 +86,7 @@ class AlcoholUseTrackerController extends Controller
             }
         }
 
-        $score = 100.0 * ($score / 22.5);
+        $score = 100.0 * ($score / 22);
 
         $validated['user_id'] = $userId;
         $alcohol = new AlcoholUseTracker();
@@ -179,7 +179,7 @@ class AlcoholUseTrackerController extends Controller
                 }
             }
 
-            $score = 100.0 * ($score / 22.5); 
+            $score = 100.0 * ($score / 22); 
             // Update the alcohol record with the validated data
             $alcohol->score = $score;
             $alcohol->update($validated);

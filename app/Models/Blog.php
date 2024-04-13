@@ -15,11 +15,10 @@ class Blog extends Model
     protected $fillable = [
         'user_id',
         'tag',
-        'read-minutes',
+        'read_minutes',
         'title',
         'image',
         'content',
-        'status',
         'posted_date',
         'like_count'
     ];
