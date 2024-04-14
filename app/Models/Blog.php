@@ -17,10 +17,7 @@ class Blog extends Model
         'tag',
         'read_minutes',
         'title',
-        'image',
         'content',
-        'posted_date',
-        'like_count'
     ];
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);

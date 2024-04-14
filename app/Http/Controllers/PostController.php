@@ -26,47 +26,51 @@ class PostController extends Controller
     }
 
 
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'tag' => 'required|string|max:255',
+    //         'read_minutes' => 'required|numeric',
+    //         'content' => 'required|string',
+    //         'posted_date' => 'required|date',
+    //         'image' => 'required|string|max:255', // Assuming the image field is required but not validating its format or size here
+    //     ]);
+
+    //     $blog = new Blog();
+    //     $blog->fill($validatedData);
+
+    //     $blog->status = 'Approved';
+    //     $blog->user_id = Auth::user()->id;
+    //     $blog->like_count = 0;
+    //     if ($blog->save()) {
+
+    //         return redirect()->route('posts.index')->with('success', 'Post created successfully');
+    //     } else {
+
+    //         return back()->withInput()->with('error', 'Post creation failed');
+    //     }
+    // }
     public function store(Request $request)
     {
-        // Validate the incoming request
-        // $validatedData = $request->validate([
-        //     'title' => 'required|string|max:255',
-        //     'tag' => 'required|string|max:255',
-        //     'read_minutes' => 'required',
-        //     'content' => 'required|text',
-        //     'image' => 'required|image|max:2048', // Max 2MB file size
-        // ]);
-
-        //dd($request->all());
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'tag' => 'required|string|max:255',
-            'read_minutes' => 'required',
+            'read_minutes' => 'required|numeric',
             'content' => 'required|string',
-            'posted_date' => 'required|date',
-            'image' => 'required',
         ]);
 
-       //dd($validatedData); 
-
-        // Store the uploaded image
-        //$imagePath = $request->file('image')->store('blogs', 'public');
-
-        // Create the blog record
         $blog = new Blog();
         $blog->fill($validatedData);
 
-        //$blog->image = '';
         $blog->status = 'Approved';
         $blog->user_id = Auth::user()->id;
-        $blog->like_count = 0;
-        if ($blog->save()){
+        $blog->like_count = 0; // No need to set it as it has a default value in the database
 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully');
+        if ($blog->save()) {
+            return redirect()->route('posts.index')->with('success', 'Post created successfully');
         } else {
-
-        return back()->withInput()->with('error', 'Post creation failed');
+            return back()->withInput()->with('error', 'Post creation failed');
         }
-       
     }
 }
