@@ -145,97 +145,13 @@
         @foreach ($doctors as $doctor) 
           @include('home.partials.doctor-card', ['doctor' => $doctor])
         @endforeach
-
-        {{-- @php 
-          for($x = 0; $x < 6; $x++ ){
-            echo '
-            <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
-                  <div class="flex items-start gap-x-6">
-
-                    <div>
-                      <div class="w-10 h-10 rounded-full overflow-hidden">
-                        <img src="'.asset('images/michael-dam.jpg').'" alt="">
-                      </div>
-                      <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
-                        <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
-                        <span style="font-size: 12px;">5.0</span>
-                      </div>
-                    </div>
-
-                    <div class="flex flex-col">
-                      <strong class="text-xl">Dr. Sam Wallfolk</strong>
-                      <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-                      <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela, Oromia</span></span>
-                      <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
-                      <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-                      </span>
-                    </div>
-
-
-                  </div>
-
-                  <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-                    <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
-                    <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-                    <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
-                  </div>
-
-                  <div class="flex justify-between mb-5">
-                    <div class="flex flex-col">
-                      <span class="font-bold">Free</span>
-                      <span class="text-sm  text-custom-lgray">Online/Offline</span>
-                    </div>
-                    <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-                      Book Consultation
-                    </div>
-                  </div>
-                </div>
-            ';
-          }
-          @endphp        --}}
         </div>
+
+        <div>{{$doctors->links()}}</div>
         
       </section>
 
-      <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start flex-col md:flex-row h-auto items-center">
-        <div class=" w-full  rounded-xl overflow-hidden">
-          <img src="{{asset('images/zachary-nelson.jpg')}}" class="mx-auto md:my-auto w-full" alt="">
-        </div>
-        <div class="flex flex-col py-20 px-28">
-          <p class="font-semibold">Learn university life psychology now and teach your friend always to be happy!</p>
-          <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Learn More</span> &gt;</button>
-        </div>
-      </section>
 
-      <section class="p-3 rounded-xl bg-custom-graish mt-10 ">
-        <div class="flex flex-col items-center">
-          <p class="font-bold text-xl  align-middle my-7">Stay calm! Our meditation lessons will help you to relax. Try them now!</p>
-          <button class="bg-black text-white w-40 p-3 text-sm rounded-full mb-8"><span>View Meditations</span> &gt;</button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-4">
-
-            <div class="flex flex-col">
-              <div class="overflow-hidden rounded-xl  w-full h-60 ">
-                <img src="{{asset('images/daniel-mingook-kim.jpg')}}" alt="">
-              </div>
-              <div class="p-3">
-                <h3 class="font-bold my-3">Mindfulness meditation</h3>
-                <p class="text-sm pl-1.5">Mindfulness meditation originates from Buddhist teachings and is the most popylar meditation technique in the West. </p>
-              </div>
-            </div>
-
-            <div class="flex flex-col">
-              <div class="overflow-hidden rounded-xl  w-full h-60 ">
-                <img src="{{asset('images/colton-sturgeon.jpg')}}" alt="">
-              </div>
-              <div class="p-3">
-                <h3 class="font-bold my-3">Spritual meditation</h3>
-                <p class="text-sm pl-1.5">Mindfulness meditation originates from Buddhist teachings and is the most popylar meditation technique in the West. </p>
-              </div>
-            </div>
-        </div>
-      </section>
       <script src="{{asset('script/homeCards.js')}}"></script>
     </main>
 @endsection

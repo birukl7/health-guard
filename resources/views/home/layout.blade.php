@@ -74,12 +74,12 @@
         <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
         <ul id="general-nav">
 
-            <a href="#" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1"><div><i class="fa-solid fa-house mr-4"></i><span class="">Home</span></div></li>
+            <a href="/" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6 {{ Request::path() === '/' ? $bg : '' }}  my-1"><div><i class="fa-solid fa-house mr-4"></i><span class="">Home</span></div></li>
             </a>
 
-            <a href="/" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1 {{ Request::path() === '/' ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
+            <a href="/pychologists" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('pychologists*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
             </a>
 
           <a href="/dashboard">
@@ -90,11 +90,11 @@
           </a>
 
 
-          <a href="">
+          <!-- <a href="">
             <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 ">
               <div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div>
             </li>
-          </a>
+          </a> -->
 
           <a href="{{route('posts.index')}}">
             <li

@@ -91,7 +91,7 @@
       margin-left: 14px;
       color: black;
       position: absolute;
-      z-index: 100;
+      z-index: 40;
       font-weight: 700;
       font-size: 1.5em;
     }
@@ -107,7 +107,7 @@
       margin-left: 14px;
       color: black;
       position: absolute;
-      z-index: 100;
+      z-index: 40;
       font-weight: 700;
       font-size: 1.5em;
     }
@@ -123,7 +123,7 @@
       margin-left: 14px;
       color: black;
       position: absolute;
-      z-index: 100;
+      z-index: 40;
       font-weight: 700;
       font-size: 1.5em;
     }
@@ -193,6 +193,31 @@
 
 
 </style>
+
+    <form action="" method="">
+      <div class="fixed backdrop-blur-3xl right-60 top-0 bottom-0  left-60 z-50 hidden">
+        <div class=" h-full flex items-center justify-center w-3/4 mx-auto my-auto">
+          <button class="border border-1 p-2 border-black rounded-full px-3 text-xl hover:bg-custom-blue hover:text-white hover:border-white transition-all duration-150 ease-in-out"><i class="fa-solid fa-arrow-left fa-beat"></i></button>
+          <div class="w-custom-8 h-custom-9 items-center justify-center flex flex-row  ">
+            <div class="my-8 w-custom-8 h-custom-9">
+              <x-input-label for="question_1" :value="__('1. Do you feel that chewing chat or smoking cigarettes has contributed to persistent feelings of sadness or emptiness?')" />
+              <label class="block mt-2">
+                  <input type="radio" name="question_1" value="yes" class="mr-1" style="outline: none;">
+                  Yes
+              </label>
+              <label class="block mt-2">
+                  <input type="radio" name="question_1" value="no" class="mr-1" style="outline: none;">
+                  No
+              </label>
+              <x-input-error :messages="$errors->get('question_1')" class="mt-2" />
+            </div>
+          </div>
+          <button class="border border-1 p-2 border-black rounded-full px-3 text-xl hover:bg-custom-blue hover:text-white hover:border-white transition-all duration-150 ease-in-out"><i class="fa-solid fa-arrow-right fa-beat"></i></button>
+        </div>
+      </div>
+    </form>
+
+
   <div class="flex justify-between items-center">
 
     <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Dashboard For Student</span></h2>

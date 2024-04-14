@@ -11,21 +11,21 @@
             <h1 class="text-6xl font-bold w-11/12 ">Break Free from Depression </h1>
             <p class="my-6 w-10/12 font-robotoCondensed">Take a step towards brighter days with Health-Guard by your side. Together, let's embark on a journey of self-discovery and resilience.
             </p>
-            <form action="" class=" ">
+           
                 <span class="">
-                <a href="/login">
+                <a href="{{ route('login') }}">
                         <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                         text-white rounded-full hover:shadow-lg 
                         hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Log In</button>
                     </a>
-                    <a href="/register">
+                    <a href="{{ route('register') }}">
                         <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
                         text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">sign up</button>
                     </a>
                 </span>
 
                 <p class="pt-5 ml-4 font-robotoCondensed "> &#183; Opportunities await here</p>
-            </form>
+           
         </div>
         </div>
         <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
@@ -52,9 +52,9 @@
             <h1 class="text-6xl font-bold w-11/12 ">We're here to lift you up </h1>
             <p class="my-6 w-10/12 font-robotoCondensed">With its roots firmly grounded in psychology, Health-Guard seamlessly blends technology and human understanding to provide holistic support for mental well-being
             </p>
-            <form action="" class=" ">
+
                 <span class="">
-                <a href="/login">
+                <a href="/pychologists">
                         <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                         text-white rounded-full hover:shadow-lg 
                         hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">See our Pyschologists</button>
@@ -66,7 +66,7 @@
                 </span>
 
                 <p class="pt-5 ml-4 font-robotoCondensed "> &#183; Meet our pychologists</p>
-            </form>
+       
         </div>
         </div>
     </div>

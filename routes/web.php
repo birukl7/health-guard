@@ -21,6 +21,7 @@ use App\Http\Controllers\DepressionTrackerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\HealthProfessionalProfileController;
 use App\Http\Controllers\NotificationController;
+use Illuminate\Pagination\Paginator;
 use App\Models\Notification;
 use Illuminate\View\View;
 
@@ -29,15 +30,12 @@ Route::get('/', function(){
 });
 
 Route::get('/pychologists', function () {
+    $perPage = 6;
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
-    })->whereHas('healthProfessionalProfile')->get();
-<<<<<<< HEAD
-    return view('home.index', ['doctors' => $doctors]);      
-=======
+    })->whereHas('healthProfessionalProfile')->paginate(5);
+
     return view('home.index', ['doctors' => $doctors]);
-    // return view('welcome');
->>>>>>> 5b87ae195328fba66eea78f9a4714de4db1e5bee
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

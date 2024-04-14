@@ -17,7 +17,6 @@
         <div class="flex flex-col">
             <a href="{{route('health_professional', ['id' => $doctor->id])}}"><strong class="text-xl">{{ $doctor->name }}</strong></a>
             <span class="text-custom-lgray my-1 mb-4">{{ $doctor->email }}</span>
-            <span class="text-custom-lgray my-1 mb-4">{{}}</span>
             <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>{{$profile->location}}</span></span>
             <span class="text-sm text-custom-lgray"><span>{{$profile->years_of_experience}}</span>yrs of exp.</span>
             <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
@@ -26,14 +25,15 @@
 
 
     </div>
+    @php 
+        $issues = json_decode($profile->issues, true);
+    @endphp
 
     <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-        @foreach ($profile->issues as $issue)
+        @foreach ($issues as $issue)
             
-        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">$issue</button>
+        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">{{$issue}}</button>
         @endforeach
-        <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
-        <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
     </div>
 
     <div class="flex justify-between mb-5">
@@ -41,8 +41,10 @@
             <span class="font-bold">Free</span>
             <span class="text-sm  text-custom-lgray">Online/Offline</span>
         </div>
-        <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
-            Book Consultation
-        </div>
+        <a href="{{route('health_professional', ['id' => $doctor->id])}}">
+            <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">
+                Book Consultation
+            </div>
+        </a>
     </div>
 </div>
