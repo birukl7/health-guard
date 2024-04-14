@@ -75,14 +75,15 @@ class DepressionTrackerController extends Controller
         
         $validated['user_id'] = $userId;
 
-        echo($validated);
+        //echo($validated);
         $depression = new DepressionTracker();
         $depression->fill($validated);
         $depression->score = number_format($score, 1);
         $depression->save();
-        //return redirect()->route('students.create')->with('success', 'Depression assesment informations created successfully.');
-        $jscode = "<script>console.log(" . json_encode($validated) . ");</scrpt>";
-        return response()->make($jscode);
+
+        return redirect()->route('students.create')->with('success', 'Depression assesment informations created successfully.');
+        //$jscode = "<script>console.log(" . json_encode($validated) . ");</scrpt>";
+        //return response()->make($jscode);
     }
 
     /**
