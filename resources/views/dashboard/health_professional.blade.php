@@ -51,13 +51,11 @@
         </div>
         <div class="flex flex-col py-20 px-28">
             <p class="font-semibold">Do you know blogging is a feature allowed for only health professionals?</p>
-            <a href="{{route('blogs.create')}}">
-                <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Blog</span> &gt;</button>
-            </a>
+
         </div>
     </section>
 
-    
+
 
     <script src="{{asset('script/navBar.js')}}"></script>
 </section>

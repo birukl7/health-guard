@@ -42,6 +42,8 @@ class MessagesController extends Controller
      */
     public function index( $id = null)
     {
+      
+
         $messenger_color = Auth::user()->messenger_color;
         return view('Chatify::pages.app', [
             'id' => $id ?? 0,
@@ -59,6 +61,7 @@ class MessagesController extends Controller
      */
     public function idFetchData(Request $request)
     {
+        
         $favorite = Chatify::inFavorite($request['id']);
         $fetch = User::where('id', $request['id'])->first();
         if($fetch){
@@ -95,6 +98,7 @@ class MessagesController extends Controller
      */
     public function send(Request $request)
     {
+
         // default variables
         $error = (object)[
             'status' => 0,

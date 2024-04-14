@@ -34,12 +34,12 @@
     </div>
 
             <!-- numbers -->
-            <ul id="data" class="flex md:flex-row flex-col justify-around p-3 py-10 mt-5 sm:-mt-10 rounded-lg bg-slate-200 dark:bg-transparent ">
-                <li class=" p-3 px-10 border-r-2 border-slate-700 text-black"> <div><strong class="text-3xl text-black "><span id="js-finish">4500</span>+</strong ><p class="text-black font-robotoCondensed">Finish Candidates</p></div></li>
-                <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-year">9</span>+</strong><p class="font-robotoCondensed">Years of Experience</p></div></li>
-                <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-excellence">350</span>+</strong><p class="font-robotoCondensed" >Excellence Awards</p></div></li>
-                <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-brand">40</span>+</strong><p class="font-robotoCondensed">Brand Partners</p></div></li>
-            </ul>
+        <ul id="data" class="flex md:flex-row flex-col justify-around p-3 py-10 mt-5 sm:-mt-10 rounded-lg bg-slate-200 dark:bg-transparent ">
+            <li class=" p-3 px-10 border-r-2 border-slate-700 text-black"> <div><strong class="text-3xl text-black "><span id="js-finish">4500</span>+</strong ><p class="text-black font-robotoCondensed">Finish Candidates</p></div></li>
+            <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-year">9</span>+</strong><p class="font-robotoCondensed">Years of Experience</p></div></li>
+            <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-excellence">350</span>+</strong><p class="font-robotoCondensed" >Excellence Awards</p></div></li>
+            <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-brand">40</span>+</strong><p class="font-robotoCondensed">Brand Partners</p></div></li>
+        </ul>
     </div>
 
     <div class="flex md:flex-row flex-col justify-start items-center h-screen" id="hero-section">
@@ -72,42 +72,42 @@
     </div>
 
     <footer class="flex mb-10 mt-10 gap-x-16">
-            <div class="w-60">
-                <a href="/">
-                    <h1 class="font-bold text-2xl text-custom-blue mb-2">Health-Guard</h1>
-                </a>
-                <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
-                <address>
-                    <div class="font-semibold">
-                        <a href="#">+251(34356856)</a>
-                        <a href="#">mobile@number.com</a>
-                    </div>
-                </address>
-            </div>
+        <div class="w-60">
+            <a href="/">
+                <h1 class="font-bold text-2xl text-custom-blue mb-2">Health-Guard</h1>
+            </a>
+            <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
+            <address>
+                <div class="font-semibold">
+                    <a href="#">+251(34356856)</a>
+                    <a href="#">mobile@number.com</a>
+                </div>
+            </address>
+        </div>
 
-            <ul class="mx-16">
-                <li class="text-xl font-semibold mb-2">Quick Links</li>
-                <li>Dashboard</li>
-                <li>Profile</li>
-                <li>Blog</li>
-                <li>Setting</li>
-            </ul>
+        <ul class="mx-16">
+            <li class="text-xl font-semibold mb-2">Quick Links</li>
+            <li>Dashboard</li>
+            <li>Profile</li>
+            <li>Blog</li>
+            <li>Setting</li>
+        </ul>
 
-            <ul class="mr-16">
-                <li class="text-xl font-semibold mb-2">Resources</li>
-                <li>Meditations</li>
-                <li>Blogs</li>
-                <li>Chats</li>
-                <li>FAQs</li>
-            </ul>
+        <ul class="mr-16">
+            <li class="text-xl font-semibold mb-2">Resources</li>
+            <li>Meditations</li>
+            <li>Blogs</li>
+            <li>Chats</li>
+            <li>FAQs</li>
+        </ul>
 
-            <ul>
-                <li class="text-xl font-semibold mb-2">Support</li>
-                <li>Forums</li>
-                <li>Documentation</li>
-                <li>Terms</li>
-                <li>Community</li>
-            </ul>
-        </footer>
+        <ul>
+            <li class="text-xl font-semibold mb-2">Support</li>
+            <li>Forums</li>
+            <li>Documentation</li>
+            <li>Terms</li>
+            <li>Community</li>
+        </ul>
+    </footer>
 </section>
 @endsection

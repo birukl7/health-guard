@@ -20,14 +20,19 @@ use App\Http\Controllers\AlcoholUseTrackerController;
 use App\Http\Controllers\DepressionTrackerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\HealthProfessionalProfileController;
+use App\Http\Controllers\NotificationController;
+use App\Models\Notification;
+use Illuminate\View\View;
 
+Route::get('/', function(){
+    return view('welcome');
+});
 
-Route::get('/', function () {
+Route::get('/pychologists', function () {
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
     })->whereHas('healthProfessionalProfile')->get();
-    return view('home.index', ['doctors' => $doctors]);
-        // return view('welcome');
+    return view('home.index', ['doctors' => $doctors]);      
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -60,6 +65,12 @@ Route::middleware('auth')->group(
         Route::resource('/chats', ChatMessageController::class);
         Route::resource('/students', StudentProfileController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
+        Route::resource('/notifications', NotificationController::class);
+
+        Route::post('/book', [NotificationController::class, 'update']);
+        Route::put('/book', [NotificationController::class, 'update'])->name('accept.offer');
+        Route::get('/student/{id}', [UserController::class, 'showStudent']);
+        
         Route::patch(
             '/profile/picture',
             function (Request $request) {

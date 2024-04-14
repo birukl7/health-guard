@@ -28,6 +28,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    public function experiences(): HasOne{
+        return $this->hasOne(Experience::class);
+    }
+
+    public function notifications_1(): HasMany{
+        return $this->hasMany(Notification::class, 'sender_id');
+    }
+
+    public function notifications_2(): HasMany{
+        return $this->hasMany(Notification::class, 'reciever_id');
+    }
 
     public function adminProfiles(): HasMany {
         return $this->hasMany(AdminProfile::class);

@@ -19,10 +19,14 @@
         
         @if(Route::has('login'))
           @auth
-          <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
-            <i class="fa-regular fa-bell"></i>
-            <div class="w-2 h-2 absolute bg-red-700 rounded-full top-0 right-0"></div>
-          </div>
+          <a href="{{route('notifications.index')}}">
+            <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
+              <i class="fa-regular fa-bell"></i>
+              
+              <div class="w-2 h-2 absolute bg-red-700 rounded-full top-0 right-0"></div>
+            </div>
+          </a>
+
 
           <div class="w-10 h-10 rounded-full overflow-hidden">
             <a href="{{route('profile.edit')}}">

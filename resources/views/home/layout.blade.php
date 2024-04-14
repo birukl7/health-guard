@@ -22,6 +22,7 @@
     $user = Auth::user();
   @endphp
   <div class="flex flex-col md:flex-row max-w-screen-2xl mx-auto my-0">
+    
     @if(session()->has('success'))
       <div class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-500 text-white px-4 py-2 rounded-lg flex items-center">
           <div class="mr-2">
@@ -33,7 +34,7 @@
               </svg>
           </button>
       </div>
-  @endif
+    @endif
 
 
     <header class="pr-3 w-full flex md:inline-block gap-x-4 md:gap-x-0 justify-start items-center md:w-80 pt-10 pl-1 md:pl-0 bg-custom-graish header-js transition-all  duration-200 ease-in-out fixed top-0 bottom-0  z-50">
@@ -61,12 +62,12 @@
           <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
           <ul id="general-nav">
 
-            <a href="#" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1"><div><i class="fa-solid fa-house mr-4"></i><span class="">Home</span></div></li>
+            <a href="/" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6 {{ Request::is('/') ? $bg : '' }}  my-1"><div><i class="fa-solid fa-house mr-4"></i><span class="">Home</span></div></li>
             </a>
 
-            <a href="/" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1 {{ Request::path() === '/' ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
+            <a href="/pychologists" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer  py-5 pl-6   my-1 {{ Request::is('pychologists*') ? $bg : '' }}"><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
             </a>
 
             <a href="/dashboard">
@@ -93,8 +94,8 @@
                 <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}"><div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div></li>
               </a>
 
-              <a href="#">
-                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 "><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
+              <a href="/notifications">
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('notifications*') ? $bg : '' }}"><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
               </a>
 
               @if(!$user->hasRole('health_professional'))

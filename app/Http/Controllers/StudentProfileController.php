@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateStudentProfileRequest;
 use App\Models\StudentProfile;
+use App\Models\User;
 use App\Rules\AgeRange;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -101,7 +102,10 @@ class StudentProfileController extends Controller
     
         // Add the authenticated user's ID to the validated data
         $validated['user_id'] = $userId;
-    
+        $user = Auth::user();
+        $user->name = $validated['first_name'].' '.$validated['last_name'];
+        $user->save();
+
         // If validation passes, create the student record
         $student = new StudentProfile(); // Assuming you have a StudentProfile model
         $student->fill($validated);
@@ -157,8 +161,10 @@ class StudentProfileController extends Controller
         $student = StudentProfile::whereHas('user', function ($query) {
             $query->where('id', Auth::id());
         })->firstOrFail();
+
+        $user = Auth::user();
+        $user->name = $validated['first_name'].' '.$validated['last_name'];
         
-      
         // Update the student record with the validated data
         $student->update($validated);
         $student->save();

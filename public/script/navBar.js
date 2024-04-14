@@ -40,13 +40,17 @@ const guardText = document.querySelector('.guard-js')
    })
    headerJs.classList.toggle('w-full')
    headerJs.classList.toggle('md:w-80')
+   bodyMain.classList.toggle('pl-custom-5')
+   bodyMain.classList.toggle('pl-custom-6')
    if(!isToggled){
-      bodyMain.classList.remove('pl-custom-5');
-      bodyMain.classList.add('pl-custom-6');
+      bodyMain.style.paddingLeft = '114px';
+      // bodyMain.classList.remove('pl-custom-5');
+      // bodyMain.classList.add('pl-custom-6');
       isToggled = !isToggled;
    } else{
-      bodyMain.classList.remove('pl-custom-6');
-      bodyMain.classList.add('pl-custom-5');
+      bodyMain.style.paddingLeft = '310px';
+      // bodyMain.classList.remove('pl-custom-6');
+      // bodyMain.classList.add('pl-custom-5');
       isToggled = !isToggled;
    }
   //  headerJs.classList.toggle('w-auto')

@@ -6,23 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class StudentProfile extends Model
+class Experience extends Model
 {
     use HasFactory;
-    protected $table = 'student_profiles';
     protected $fillable = [
         'user_id',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'address',
-        'allergies',
-        'emergency_contact_name',
-        'emergency_contact_number'
+        'title',
+        'description',
+        'company',
+        'start_date',
+        'end_date',
     ];
 
-
-    public function user(): BelongsTo {
+    public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
 }
