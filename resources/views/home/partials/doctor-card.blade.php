@@ -1,3 +1,6 @@
+@php
+    $profile = $doctor->healthProfessionalProfile;
+@endphp
 <div class="shadow- shadow-xl  rounded-xl p-2 px-5">
     <div class="flex items-start gap-x-6">
 
@@ -14,10 +17,9 @@
         <div class="flex flex-col">
             <a href="{{route('health_professional', ['id' => $doctor->id])}}"><strong class="text-xl">{{ $doctor->name }}</strong></a>
             <span class="text-custom-lgray my-1 mb-4">{{ $doctor->email }}</span>
-            <span class="text-custom-lgray my-1 mb-4">Clinical phychologist</span>
-            <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>Asela,
-                    Oromia</span></span>
-            <span class="text-sm text-custom-lgray"><span>10</span>yrs of exp.</span>
+            <span class="text-custom-lgray my-1 mb-4">{{}}</span>
+            <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>{{$profile->location}}</span></span>
+            <span class="text-sm text-custom-lgray"><span>{{$profile->years_of_experience}}</span>yrs of exp.</span>
             <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
             </span>
         </div>
@@ -26,7 +28,10 @@
     </div>
 
     <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
-        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">Abuse</button>
+        @foreach ($profile->issues as $issue)
+            
+        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">$issue</button>
+        @endforeach
         <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">Depression</button>
         <button class=" text-sm bg- bg-custom-graish py-1 px-4 rounded-full">PTSD</button>
     </div>

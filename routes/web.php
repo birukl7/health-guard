@@ -32,15 +32,21 @@ Route::get('/pychologists', function () {
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
     })->whereHas('healthProfessionalProfile')->get();
+<<<<<<< HEAD
     return view('home.index', ['doctors' => $doctors]);      
+=======
+    return view('home.index', ['doctors' => $doctors]);
+    // return view('welcome');
+>>>>>>> 5b87ae195328fba66eea78f9a4714de4db1e5bee
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('health_professional/{id}', [UserController::class, 'showPsychologist'])->name('health_professional');
+    Route::get('/student/status', [StudentController::class, 'showSetStatus']);
+    Route::get('/student/questions', [StudentController::class, 'showStatusQuestions']);
 });
 
-Route::middleware(['auth', 'verified'])->get('health_professional/{id}', [UserController::class, 'showPsychologist'])->name('health_professional');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -99,68 +105,71 @@ Route::middleware('auth')->group(
 
 Route::middleware('auth')->group(
     function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Route::resource('/chats', ChatMessageController::class);
-
-  
-    Route::resource('/students', StudentProfileController::class);
-
-    Route::resource('/professionals', HealthProfessionalProfileController::class);
+        // Route::resource('/chats', ChatMessageController::class);
 
 
+        Route::resource('/students', StudentProfileController::class);
+
+        Route::resource('/professionals', HealthProfessionalProfileController::class);
 
 
 
 
 
-    
-// Index Route
-
-// Create Routes
-// Route::get('/students/create', [StudentProfileController::class, 'create'])->name('students.create');
-// Route::post('/students', [StudentProfileController::class, 'store'])->name('students.store');
-
-// Read Routes
-// Route::get('/students/{student}', [StudentProfileController::class, 'show'])->name('students.show');
 
 
-// Route::patch('/students/{student}', [StudentProfileController::class, 'update']);
 
-// Update Routes
-// Route::get('/students/{student}/edit', [StudentProfileController::class, 'edit'])->name('students.edit');
+        // Index Route
+
+        // Create Routes
+        // Route::get('/students/create', [StudentProfileController::class, 'create'])->name('students.create');
+        // Route::post('/students', [StudentProfileController::class, 'store'])->name('students.store');
+
+        // Read Routes
+        // Route::get('/students/{student}', [StudentProfileController::class, 'show'])->name('students.show');
 
 
-// Delete Route
-// Route::delete('/students/{student}', [StudentProfileController::class, 'destroy'])->name('students.destroy');
-Route::resource('/alcohols', AlcoholUseTrackerController::class);
-    Route::resource('/depressions', DepressionTrackerController::class);
-   
-    Route::resource('/drugs', DrugUseTrackerController::class);
+        // Route::patch('/students/{student}', [StudentProfileController::class, 'update']);
 
-    Route::patch('/profile/picture',
-     function(Request $request){
-        $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the uploaded file
-        ]);
+        // Update Routes
+        // Route::get('/students/{student}/edit', [StudentProfileController::class, 'edit'])->name('students.edit');
 
-        if ($request->hasFile('avatar')) {
-            $avatarFileName = time() . '.' . $request->avatar->getClientOriginalExtension();
-            $request->avatar->storeAs('public/users-avatar', $avatarFileName); // Store the uploaded image in storage
 
-            // Update user's avatar column
-            $user = Auth::user();
-            $user->avatar = $avatarFileName;
-            $user->save();
+        // Delete Route
+        // Route::delete('/students/{student}', [StudentProfileController::class, 'destroy'])->name('students.destroy');
+        Route::resource('/alcohols', AlcoholUseTrackerController::class);
+        Route::resource('/depressions', DepressionTrackerController::class);
 
-            return redirect()->back()->with('success', 'Avatar uploaded successfully.');
-        }
+        Route::resource('/drugs', DrugUseTrackerController::class);
 
-        return redirect()->back()->with('error', 'Failed to upload avatar.');
-    } )->name('profile.picture');
-});
+        Route::patch(
+            '/profile/picture',
+            function (Request $request) {
+                $request->validate([
+                    'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the uploaded file
+                ]);
+
+                if ($request->hasFile('avatar')) {
+                    $avatarFileName = time() . '.' . $request->avatar->getClientOriginalExtension();
+                    $request->avatar->storeAs('public/users-avatar', $avatarFileName); // Store the uploaded image in storage
+
+                    // Update user's avatar column
+                    $user = Auth::user();
+                    $user->avatar = $avatarFileName;
+                    $user->save();
+
+                    return redirect()->back()->with('success', 'Avatar uploaded successfully.');
+                }
+
+                return redirect()->back()->with('error', 'Failed to upload avatar.');
+            }
+        )->name('profile.picture');
+    }
+);
 
 // Admin Controller
 Route::post('admin/login', [AdminController::class, 'submit_login']);
@@ -169,7 +178,7 @@ Route::get('admin', [AdminController::class, 'index']);
 Route::get('admin/logout', [AdminController::class, 'logout']);
 
 //student
-Route::get('stu/{id}/delete', [ StudentController::class, 'destroy']);
+Route::get('stu/{id}/delete', [StudentController::class, 'destroy']);
 Route::resource('stu', StudentController::class);
 
 //health-pro
@@ -193,8 +202,8 @@ Route::controller(GoogleController::class)->group(function () {
 
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/show/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-;
+Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 
 require __DIR__ . '/auth.php';

@@ -68,4 +68,20 @@ class StudentController extends Controller
         $student = StudentProfile::findOrFail($id);
         $student->delete();
     }
+
+    public function showSetStatus()
+    {
+        return view('student.status');
+    }
+
+    public function showStatusQuestion(Request $request)
+    {
+        $title = $request->title;
+        $questions = $request->questions; 
+    }
+
+    public function setStatus(Request $request)
+    {
+
+    }
 }

@@ -231,10 +231,13 @@
                                             Pending
                                         </button> 
                                     @elseif($notification->approval == 'accepted')
-                                        <p>Congrats, Your invitation is pproved.</p>
-                                        <button class="bg-custom-blue text-white text-sm hover:outline hover:outline-1 hover:bg-transparent hover:text-black rounded-full px-3 py-3 text-center w-full transition-all duration-200 ease-in-out cursor-not-allowed">
+                                        <p class="my-5">Congrats, Your invitation is approved.</p>
+                                        @php
+                                        Session::put('chatName', $userm->name);
+                                        @endphp
+                                        <a href="/chatify/{{Auth::user()->id}}" class="bg-custom-blue text-white text-sm hover:outline hover:outline-1 hover:bg-transparent hover:text-black rounded-full px-3 py-3 text-center w-full transition-all duration-200 ease-in-out pt-4">
                                             Have a chat
-                                        </button>       
+                                        </a>       
                                     @endif
                                 @endif
                             </div>

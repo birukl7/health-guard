@@ -44,9 +44,53 @@ class AlcoholUseTrackerController extends Controller
             'question_9' => 'required|in:yes,no',
             'question_10' => 'required|in:yes,no',
         ]);
+        $score = 0.0;
+        $numss = [];
+        foreach ($validated as $questionKey => $answer) {
+            $nums = explode('_', $questionKey);
+            $num = $nums[1];
+
+            //$numss[] = $num;
+
+            if ($num == '2') {
+                $mapNum = [
+                    '0_days' => 0,
+                    '1-2_days' => 1.5,
+                    '3-4_days' => 3.5,
+                    '5_or_more_days' => 5.5,
+                ];
+
+                $score += $mapNum[$answer];
+                $numss[] = $mapNum[$answer];
+            } elseif ($num == '3') {
+                $mapNum = [
+                    '1-2_drinks' => 1.5,
+                    '3-4_drinks' => 3.5,
+                    '5_or_more_drinks' => 5.5,
+                    'always' => 7.0,
+                ];
+                $score += $mapNum[$answer];
+                $numss[] = $mapNum[$answer];
+            } elseif ($num == '7') {
+                $mapNum = [
+                    'rarely' => 1,
+                    'sometimes' => 2,
+                    'often' => 3,
+                    'always' => 4,
+                ];
+                $score += $mapNum[$answer];
+                $numss[] = $mapNum[$answer];
+            } else {
+                $mapNum = ['yes' => 1, 'no' => 0,];
+                $score += $mapNum[$answer];
+            }
+        }
+
+        $score = 100.0 * ($score / 22);
 
         $validated['user_id'] = $userId;
         $alcohol = new AlcoholUseTracker();
+        $alcohol->score = number_format($score, 1);
         $alcohol->fill($validated);
         $alcohol->save();
         return redirect()->route('students.create')->with('success', 'Alcohol usage assesment informations created successfully.');
@@ -73,11 +117,11 @@ class AlcoholUseTrackerController extends Controller
      */
     public function update(Request $request, string $id)
     {
- 
+
         try {
             // Fetch the alcohol record associated with the authenticated user
             $alcohol = AlcoholUseTracker::where('user_id', Auth::user()->id)->firstOrFail();
-    
+
             // Validate the incoming data
             $validated = $request->validate([
                 'question_1' => 'required|in:yes,no',
@@ -91,11 +135,55 @@ class AlcoholUseTrackerController extends Controller
                 'question_9' => 'required|in:yes,no',
                 'question_10' => 'required|in:yes,no',
             ]);
-            
-    
+
+            $score = 0.0;
+            $numss = [];
+            foreach ($validated as $questionKey => $answer) {
+                $nums = explode('_', $questionKey);
+                $num = $nums[1];
+
+                //$numss[] = $num;
+
+                if ($num == '2') {
+                    $mapNum = [
+                        '0_days' => 0,
+                        '1-2_days' => 1.5,
+                        '3-4_days' => 3.5,
+                        '5_or_more_days' => 5.5,
+                    ];
+
+                    $score += $mapNum[$answer];
+                    $numss[] = $mapNum[$answer];
+                } elseif ($num == '3') {
+                    $mapNum = [
+                        '1-2_drinks' => 1.5,
+                        '3-4_drinks' => 3.5,
+                        '5_or_more_drinks' => 5.5,
+                        'always' => 7.0,
+                    ];
+                    $score += $mapNum[$answer];
+                    $numss[] = $mapNum[$answer];
+                } elseif ($num == '7') {
+                    $mapNum = [
+                        'rarely' => 1,
+                        'sometimes' => 2,
+                        'often' => 3,
+                        'always' => 4,
+                    ];
+                    $score += $mapNum[$answer];
+                    $numss[] = $mapNum[$answer];
+                } else {
+                    $mapNum = ['yes' => 1, 'no' => 0,];
+                    $score += $mapNum[$answer];
+                    $numss[] = $mapNum[$answer];
+                }
+            }
+
+            $score = 100.0 * ($score / 22); 
             // Update the alcohol record with the validated data
+            $alcohol->score = $score;
             $alcohol->update($validated);
-    
+
             // Redirect or return a response
             return redirect()->route('students.create')->with('success', 'Alcohol assessment questions updated successfully.');
         } catch (ModelNotFoundException $e) {
@@ -105,7 +193,6 @@ class AlcoholUseTrackerController extends Controller
             // Handle other types of exceptions
             return redirect()->back()->with('error', 'An error occurred while updating the alcohol assessment questions.');
         }
-
     }
 
     /**

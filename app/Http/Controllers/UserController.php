@@ -42,9 +42,12 @@ class UserController extends Controller
             ->where('receiver_id', $psychologist->id)
             ->get()->first();
             
+            /* Session::put('chatName', $notification->reciever->name); */
+            $user = User::findOrFail($notifications->receiver_id);
+      
             // dd($psychologist);
             if($notifications){
-                return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> $notifications]);
+                return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> $notifications, 'userm' => $user]);
             }else {
                 return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> null]); 
             }

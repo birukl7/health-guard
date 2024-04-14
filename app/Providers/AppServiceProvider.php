@@ -12,6 +12,20 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->singleton('depression_questions', function ($app) {
+            $jsonPath = base_path('data/depression_questions.json');
+            return json_decode(file_get_contents($jsonPath), true);
+        });
+
+        $this->app->singleton('drug_questions', function ($app) {
+            $jsonPath = base_path('data/drug_questions.json');
+            return json_decode(file_get_contents($jsonPath), true);
+        });
+
+        $this->app->singleton('alcohol_questions', function ($app) {
+            $jsonPath = base_path('data/alcohol_questions.json');
+            return json_decode(file_get_contents($jsonPath), true);
+        });
     }
 
     /**
