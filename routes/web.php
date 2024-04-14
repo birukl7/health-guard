@@ -36,7 +36,7 @@ Route::get('/pychologists', function () {
     })->whereHas('healthProfessionalProfile')->paginate(5);
 
     return view('home.index', ['doctors' => $doctors]);
-});
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
