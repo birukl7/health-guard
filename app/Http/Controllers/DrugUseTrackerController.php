@@ -21,7 +21,7 @@ class DrugUseTrackerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() :View
+    public function create(): View
     {
         return view('drugs.create');
     }
@@ -45,9 +45,18 @@ class DrugUseTrackerController extends Controller
             'question_10' => 'required|in:yes,no',
         ]);
 
+        $score = 0.0;
+        foreach ($validated as $questionKey => $answer) {
+            $mapNum = ['yes' => 1, 'no' => 0,];
+            $score += $mapNum[$answer];
+        }
+        $score = 100.0 * ($score / 10.0);
+
         $validated['user_id'] = $userId;
+
         $drug = new DrugUseTracker();
         $drug->fill($validated);
+        $drug->score = number_format($score, 1);
         $drug->save();
         return redirect()->route('students.create')->with('success', 'Drugs usage assesment informations created successfully.');
     }
@@ -76,7 +85,7 @@ class DrugUseTrackerController extends Controller
         try {
             // Fetch the alcohol record associated with the authenticated user
             $drug = DrugUseTracker::where('user_id', Auth::user()->id)->firstOrFail();
-    
+
             // Validate the incoming data
             $validated = $request->validate([
                 'question_1' => 'required|in:yes,no',
@@ -90,11 +99,19 @@ class DrugUseTrackerController extends Controller
                 'question_9' => 'required|in:yes,no',
                 'question_10' => 'required|in:yes,no',
             ]);
-            
-    
+
+            $score = 0.0;
+            foreach ($validated as $questionKey => $answer) {
+                $mapNum = ['yes' => 1, 'no' => 0,];
+                $score += $mapNum[$answer];
+            }
+            $score = 100.0 * ($score / 10.0);
+            $drug = DrugUseTracker::where('user_id', Auth::user()->id)->firstOrFail();
+
+            $drug->score = number_format($score, 1);
             // Update the alcohol record with the validated data
             $drug->update($validated);
-    
+
             // Redirect or return a response
             return redirect()->route('students.create')->with('success', 'Drug usage assessment questions updated successfully.');
         } catch (ModelNotFoundException $e) {

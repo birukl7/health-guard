@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('drug_use_trackers', function (Blueprint $table) {
             //
-            $table->date('date_of_birth');
+            $table->double('score');
         });
     }
 
@@ -22,9 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('drug_use_trackers', function (Blueprint $table) {
             //
-            $table->integer('age')->default(0)->change();
         });
     }
 };

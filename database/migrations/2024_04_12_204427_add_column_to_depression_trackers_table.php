@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
-            //
-            $table->integer('age')->default(0)->change();
+        Schema::table('depression_trackers', function (Blueprint $table) {
+            $table->double('score');
         });
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('depression_trackers', function (Blueprint $table) {
             //
         });
     }

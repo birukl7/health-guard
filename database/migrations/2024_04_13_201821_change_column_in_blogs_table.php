@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('blogs', function (Blueprint $table) {
             //
-            $table->dropColumn('specialities');
+            $table->renameColumn('read-minutes', 'read_minutes');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('blogs', function (Blueprint $table) {
             //
         });
     }

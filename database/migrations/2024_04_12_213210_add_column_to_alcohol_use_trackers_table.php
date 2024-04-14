@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('alcohol_use_trackers', function (Blueprint $table) {
             //
-                        $table->longText('description');
+            $table->double('score');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('health_professional_profiles', function (Blueprint $table) {
+        Schema::table('alcohol_use_trackers', function (Blueprint $table) {
             //
         });
     }
