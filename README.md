@@ -1,5 +1,5 @@
 # HealthGuard: Mental Health Platform for University Students
-
+![Health Guard](https://github.com/Dechie/health-guard/blob/main/demo%20pics/home%20page.png)
 HealthGuard is a dedicated mental health platform tailored to support university students. Our aim is to facilitate connections between students and qualified health professionals through chats and provide insightful blogs on mental wellness.
 
 ## Key Features:
@@ -25,3 +25,6 @@ Join us in our mission to promote mental health awareness and support for univer
 - Frontend: Blade, Tailwind CSS
 
 ## Demo Pictures:
+![Student Dashboard](https://github.com/Dechie/health-guard/blob/main/demo%20pics/student%20dashboard.png)
+
+![Blogs Listing](https://github.com/Dechie/health-guard/blob/main/demo%20pics/blogs.png)
