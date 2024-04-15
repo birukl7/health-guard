@@ -18,15 +18,15 @@
 
         <div class="py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                @if($user->healthProfessionalProfile)
+                <!-- @if($user->healthProfessionalProfile)
                 <p> $user->healthProfessionalProfile->age</p>
                 <p> $user->healthProfessionalProfile->date_of_birth</p>
                 <p> $user->healthProfessionalProfile->description </p>
                 <p> $user->healthProfessionalProfile->about</p>
                 @else
-                @endif
+                @endif -->
 
-                @if(!$user->hasRole('student'))
+                @if(!$user->studentProfile)
                 <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
 
                     <div class="flex items-center">
@@ -62,11 +62,6 @@
                             &gt;</button>
                     </a>
                     @endif
-                    <!-- <a href="{{route('depressions.update', ['depression' => Auth::user()->id])}}">
-                                    <button class="bg-custom-blue hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-56 p-3 text-sm rounded-full mt-5"><span>Edit Depression questions</span> &gt;</button>
-                                </a> -->
-
-
                     @if(!$user->alcoholUseTracker)
                     <a href="{{route('alcohols.create')}}">
                         <button
@@ -100,12 +95,12 @@
                             class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Meditations</span>
                             &gt;</button>
                     </a>
-                    <a href="{{route('depressions.create')}}">
+                    <a href="{{route('posts.create')}}">
                         <button
                             class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Read
                                 Blogs</span> &gt;</button>
                     </a>
-                    <a href="{{route('depressions.create')}}">
+                    <a href="{{ url()->previous() }}">
                         <button
                             class="bg-black hover:bg-transparent hover:text-black hover:outline hover:outline-1 transition-all duration-200 ease-in-out text-white w-40 p-3 text-sm rounded-xl mt-5"><span>Pycholigist</span>
                             &gt;</button>

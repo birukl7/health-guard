@@ -3,17 +3,30 @@
 
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
 @php
-  $basicPercent = 99.3;
-  $basicDeg = (string) $basicPercent*(9/5);
-  $basicDegValue = (string)$basicDeg.'deg';
+  $basicPercent = 1;
+  $relaxPercent = 1;
+  $reliefPercent = 1;
 
-  $relaxPercent = 76.45;
-  $relaxaDeg = (string) $relaxPercent*(9/5);
-  $relaxDegValue = (string)$relaxaDeg.'deg';
+  if(isset($depression)){
+    $basicPercent = $depression->score;
+  }
 
-  $reliefPercent = 80;
-  $reliefDeg = (string) $reliefPercent*(9/5);
-  $reliefDegValue = (string)$reliefDeg.'deg';
+  if(isset($alcohol)){
+    $relaxPercent = $alcohol->score;
+  }
+
+  if(isset($drug)){
+    $reliefPercent = $drug->score; // changed to $drug
+  }
+
+  $basicDeg = (string) $basicPercent * (9/5);
+  $basicDegValue = (string) $basicDeg . 'deg';
+
+  $relaxDeg = (string) $relaxPercent * (9/5);
+  $relaxDegValue = (string) $relaxDeg . 'deg';
+
+  $reliefDeg = (string) $reliefPercent * (9/5);
+  $reliefDegValue = (string) $reliefDeg . 'deg';
 @endphp
   @php
     $user = Auth::user();
@@ -258,6 +271,8 @@
     </a>
   </div>
   @endif
+
+  
   <div class="flex space-x-4 py-10">
     <!-- Card 1 -->
     <div class="bg-white rounded-lg p-4 shadow-lg flex items-center space-x-8 w-full relative">
@@ -294,6 +309,7 @@
     <!-- Add more cards as needed -->
   </div>
 
+  <h1 class="font-bold p-3 text-2xl">Today's Status</h1>
   <div class=" flex justify-around gap-x-20 py-8">
     <!-- cards -->
     <div class="flex flex-col items-center gap-y-8 shadow-xl p-3 px-10 rounded-md">
@@ -369,19 +385,26 @@
           <p class="my-6 w-10/12 font-robotoCondensed">
               Incorporating this practice into your weekly routine enables you to effectively monitor your progress and recognize any changes or improvements.
           </p>
-          <form action="" class=" ">
+
               <span class="">
-              <a href="/login">
+              @if(Auth::user()->studentProfile)
+              <a href="{{route('depressions.create')}}">
                       <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                       text-white rounded-full hover:shadow-lg 
                       hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Take Quizzes</button>
                   </a>
-                  <a href="/register">
+              @else 
+                <a href="{{route('students.create')}}">
+                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                      text-white rounded-full hover:shadow-lg 
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Take Quizzes</button>
+                  </a>
+              @endif
+                  <a href="#">
                       <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
                       text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">More about Quizzes</button>
                   </a>
               </span>
-          </form>
       </div>
       </div>
       <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
@@ -395,38 +418,123 @@
       </div>
 
       <div id="hero-text" class=" flex items-center pt-36 md:pt-0 ml-10">
-      <div>
-          <h1 class="text-6xl font-bold w-11/12 ">Read Articles</h1>
-          <p class="my-6 w-10/12 font-robotoCondensed">Regularly reading articles is key to enhancing comprehension and retention. Over time, this practice sharpens your cognitive skills and expands your knowledge base.
-          </p>
-          <form action="" class=" ">
-              <span class="">
-              <a href="/login">
-                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
-                      text-white rounded-full hover:shadow-lg 
-                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Read Articles</button>
-                  </a>
-                  <a href="/register">
-                      <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
-                      text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">More about Artcles</button>
-                  </a>
-              </span>
-          </form>
-      </div>
+        <div>
+            <h1 class="text-6xl font-bold w-11/12 ">Read Articles</h1>
+            <p class="my-6 w-10/12 font-robotoCondensed">Regularly reading articles is key to enhancing comprehension and retention. Over time, this practice sharpens your cognitive skills and expands your knowledge base.
+            </p>
+            
+                <span class="">
+                <a href="{{route('posts.index')}}">
+                        <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                        text-white rounded-full hover:shadow-lg 
+                        hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Read Articles</button>
+                    </a>
+                    <a href="">
+                        <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
+                        text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">More about Artcles</button>
+                    </a>
+                </span>
+          
+        </div>
 
       </div>
   </div>
+
+  <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
+      <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+      <div>
+          <h1 class="text-6xl font-bold w-11/12 ">Is Addiction Your Big Concern? </h1>
+          <p class="my-6 w-10/12 font-robotoCondensed">
+              We have deep assesmental questions that may help you out coping addiction. weather it be a drug, alcholol or any depressional addicitions, we are here for you.
+          </p>
+
+              <span class="  justify-around items-start">
+                <div class=" flex flex-col gap-y-3 gap-x-2 flex-wrap mb-5">
+                  
+                  <a href="{{route('students.create')}}">
+                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                      text-white rounded-full hover:shadow-lg 
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Addictions</button>
+                  </a>
+                  <a href="{{route('alcohols.create')}}">
+                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                      text-white rounded-full hover:shadow-lg 
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Alcoholism</button>
+                  </a>
+                  <a href="{{route('drugs.create')}}">
+                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                      text-white rounded-full hover:shadow-lg 
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Drug</button>
+                  </a>
+                  <a href="{{route('depressions.create')}}">
+                      <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                      text-white rounded-full hover:shadow-lg 
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Depression</button>
+                  </a>
+                </div>
+
+                <a href="#" class="">
+                    <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
+                    text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out  md:mt-0 sm:mt-20  mt-10">More about Addiction
+                </a>
+                
+              </span>
+      </div>
+      </div>
+      <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
+          <img src="{{ asset('images/Credit assesment-amico.png')}}" alt="" class="w-full " id="hero-image" >
+      </div>
+  </div>
+
   
-  <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start h-auto">
+  <section class="p-3 rounded-xl my-12 bg-custom-graish mt-10 flex justify-start h-auto">
     <div class="w-custom-4  rounded-xl overflow-hidden">
       <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
     </div>
     <div class="flex flex-col py-20 px-28">
-      <p class="font-semibold"></p>
+      <p class="font-semibold">sometimes school will be tough to live. what's the matter</p>
       <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Learn More</span> &gt;</button>
     </div>
   </section>
 
+  <footer class="flex mb-10 mt-10 gap-x-16">
+        <div class="w-60">
+            <a href="/">
+                <h1 class="font-bold text-2xl text-custom-blue mb-2">Health-Guard</h1>
+            </a>
+            <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
+            <address>
+                <div class="font-semibold">
+                    <a href="#">+251(34356856)</a>
+                    <a href="#">mobile@number.com</a>
+                </div>
+            </address>
+        </div>
+
+        <ul class="mx-16">
+            <li class="text-xl font-semibold mb-2">Quick Links</li>
+            <li>Dashboard</li>
+            <li>Profile</li>
+            <li>Blog</li>
+            <li>Setting</li>
+        </ul>
+
+        <ul class="mr-16">
+            <li class="text-xl font-semibold mb-2">Resources</li>
+            <li>Meditations</li>
+            <li>Blogs</li>
+            <li>Chats</li>
+            <li>FAQs</li>
+        </ul>
+
+        <ul>
+            <li class="text-xl font-semibold mb-2">Support</li>
+            <li>Forums</li>
+            <li>Documentation</li>
+            <li>Terms</li>
+            <li>Community</li>
+        </ul>
+    </footer>
   <script src="{{asset('script/navBar.js')}}"></script>
 </section>
 @endsection

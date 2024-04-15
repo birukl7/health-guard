@@ -8,7 +8,7 @@
     <div class="flex md:flex-row flex-col justify-start items-center h-screen" id="hero-section">
         <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
         <div>
-            <h1 class="text-6xl font-bold w-11/12 ">Break Free from Depression </h1>
+            <h1 class="text-6xl font-bold w-11/12 ">Break Free <span class=" text-blue-700">from</span>  Depression </h1>
             <p class="my-6 w-10/12 font-robotoCondensed">Take a step towards brighter days with Health-Guard by your side. Together, let's embark on a journey of self-discovery and resilience.
             </p>
            
@@ -29,7 +29,7 @@
         </div>
         </div>
         <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
-            <img src="{{ asset('images/Depression.gif')}}" alt="" class="w-full " id="hero-image" >
+            <img src="{{ asset('images/file.png')}}" alt="" class="w-full " id="hero-image" >
         </div>
     </div>
 
@@ -42,7 +42,7 @@
         </ul>
     </div>
 
-    <div class="flex md:flex-row flex-col justify-start items-center h-screen" id="hero-section">
+    <div class="flex md:flex-row flex-col justify-start items-center" id="hero-section">
         <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
             <img src="{{ asset('images/Helping a partner.gif')}}" alt="" class="w-full " id="hero-image" >
         </div>
@@ -59,15 +59,58 @@
                         text-white rounded-full hover:shadow-lg 
                         hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">See our Pyschologists</button>
                     </a>
-                    <a href="/register">
+                    @auth
+                    <a href="/chatify/{{Auth::user()->id}}">
                         <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
                         text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">Chat with friend</button>
                     </a>
+                    @else
+                        <a href="{{route('register')}}">
+                            <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
+                            text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">Chat with friend</button>
+                        </a>
+                    @endauth
                 </span>
 
                 <p class="pt-5 ml-4 font-robotoCondensed "> &#183; Meet our pychologists</p>
        
         </div>
+        </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
+        <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
+            <img src="{{ asset('images/Doctors-pana.png')}}" alt="" class="w-full " id="hero-image" >
+        </div>
+
+        <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+            <div>
+                <h1 class="text-6xl font-bold w-11/12 ">Are you a health professional? </h1>
+                <p class="my-6 w-10/12 font-robotoCondensed">With its roots firmly grounded in psychology, Health-Guard seamlessly blends technology and human understanding to provide holistic support for mental well-being
+                </p>
+
+                    <span class="">
+                        <a href="{{route('dashboard')}}">
+                            <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
+                            text-white rounded-full hover:shadow-lg 
+                            hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Create professional account </button>
+                        </a>
+                        @auth
+                        <a href="/chatify/{{Auth::user()->id}}">
+                            <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
+                            text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">Chat with another professionals</button>
+                        </a>
+                        @else
+                        <a href="{{route('register')}}">
+                            <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
+                            text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">Chat with another professionals</button>
+                        </a>
+                        @endauth
+                    </span>
+
+                    <p class="pt-5 ml-4 font-robotoCondensed "> &#183; Meet our pychologists</p>
+        
+            </div>
         </div>
     </div>
 

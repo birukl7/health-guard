@@ -36,7 +36,7 @@
 
         <div class="flex items-center">
           <i class="fa-regular fa-bell fa-shake text-3xl"></i>
-          <p class=" font-bold px-5 ">Finish up your account by creating necessary student account informations.</p>
+          <p class=" font-bold px-5 ">Finish up your account by creating necessary healthProfessional account informations.</p>
         </div>
     
         <a href="{{ route('professionals.create') }}" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >

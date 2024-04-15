@@ -14,10 +14,9 @@
     <div class="flex flex-col justify-between items px-5 pr-10 pt-16 shadow-xl pb-10">
 
     @if(!$user->healthProfessionalProfile)
-      <div class="flex items-center">
+      <div class="flex items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8 justify-between">
         <i class="fa-regular fa-bell fa-shake text-3xl"></i>
         <p class=" font-bold px-5 ">Finish up your account by creating necessary health professional account informations.</p>
-        </div>
 
         <a href="/professionals/create#form-add" class="px-3 py-2 bg-custom-blue text-white font-bold rounded-md" >
         Finish Up
@@ -25,8 +24,8 @@
       </div>
     @else
       <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
-        <div class="flex items-center">
-          <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+        <div class="flex items-center ">
+        <i class="fa-regular fa-folder text-3xl iconic-js"></i>
           <p class=" font-bold px-5 ">Update health professional account you have filed.</p>
         </div>
 
@@ -42,16 +41,26 @@
       </div>
 
       <script>
+        let isOpened = false;
+          const Icon = document.querySelector('.iconic-js')
           const cont3 = document.querySelector('#form-add-3');
           const topCont3 = document.querySelector('.js-show-update-3');
           topCont3.addEventListener('click', ()=>{
               cont3.classList.toggle('h-0')
               cont3.classList.toggle('overflow-hidden')
-              console.log('working...')
+              if(!isOpened){
+                Icon.classList.remove('fa-folder')
+                Icon.classList.add('fa-folder-open')
+                isOpened = !isOpened
+              }else {
+                Icon.classList.remove('fa-folder-open')
+                Icon.classList.add('fa-folder')
+                isOpened = !isOpened
+              }
           })
       </script>
     @endif
-
+<!-- 
     <div class="flex justify-between items-center px-5 pr-10 pt-6 shadow-xl pb-10 mx-8">
         <div class="flex items-center">
           <i class="fa-regular fa-bell fa-shake text-3xl"></i>
@@ -61,7 +70,7 @@
         <button class="px-3 py-2 bg-black text-white font-bold rounded-md js-show-update-3" >
         Manage Expericences 
         </button>
-      </div>
+      </div> -->
 
 
 

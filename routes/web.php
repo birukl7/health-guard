@@ -33,7 +33,8 @@ Route::get('/pychologists', function () {
     $perPage = 6;
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
-    })->whereHas('healthProfessionalProfile')->paginate(5);
+    })->whereHas('healthProfessionalProfile')->paginate(4);
+
 
     return view('home.index', ['doctors' => $doctors]);
 });
@@ -71,7 +72,7 @@ Route::middleware('auth')->group(
         Route::resource('/depressions', DepressionTrackerController::class);
         Route::resource('/notifications', NotificationController::class);
 
-        Route::post('/book', [NotificationController::class, 'update']);
+        Route::post('/book', [NotificationController::class, 'store']);
         Route::put('/book', [NotificationController::class, 'update'])->name('accept.offer');
         Route::get('/student/{id}', [UserController::class, 'showStudent']);
         

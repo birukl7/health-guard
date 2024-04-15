@@ -90,15 +90,11 @@
           </a>
 
 
-          <!-- <a href="">
-            <li class="hover:bg-custom-vlgray cursor-pointer  py-5 pl-6 rounded-xl my-1 ">
-              <div><i class="mr-4 fa-solid fa-building-columns"></i><span>Education</span></div>
-            </li>
-          </a> -->
+
 
           <a href="{{route('posts.index')}}">
             <li
-              class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('blogs.*') ? $bg : '' }}">
+              class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('blogs.*') ? $bg : '' }} {{ Request::routeIs('posts.*') ? $bg : '' }}">
               <div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div>
             </li>
           </a>
@@ -116,8 +112,8 @@
               </li>
             </a>
 
-              <a href="#">
-                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 "><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
+              <a href="{{route('notifications.index')}}">
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('notifications*') ? $bg : '' }}"><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
               </a>
 
             @if(!$user->hasRole('health_professional'))
@@ -133,7 +129,7 @@
             <a href="{{route('professionals.create')}}">
               <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
                 {{ Request::is('depressions*') ? $bg : '' }}
-                {{ Request::is('alcohols*') ? $bg : '' }}">
+                {{ Request::is('alcohols*') ? $bg : '' }} {{ Request::is('professionals*') ? $bg : '' }}">
                 <div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div>
               </li>
             </a>

@@ -6,7 +6,7 @@
 
         <div>
             <div class="w-10 h-10 rounded-full overflow-hidden">
-                <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+                <img src="{{asset('storage/users-avatar/'.$doctor->avatar)}}" alt="">
             </div>
             <div class="bg-green-600 text-white text-sm px-2 mt-4 rounded-full">
                 <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>

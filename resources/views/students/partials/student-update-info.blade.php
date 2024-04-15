@@ -12,48 +12,62 @@
         </p>
     </header>
 
-
-    <form method="post" action="{{route('students.update', ['student' => Auth::user()->id])}}" class="mt-6 space-y-6">
+    @php
+        echo ($user->studentProfile->first_name);
+    @endphp
+    <form method="post" action="{{ route('students.update', ['student' => Auth::user()->id]) }}" class="mt-6 space-y-6">
         @csrf
         @method('PUT')
         <div>
             <x-input-label for="first_name" :value="__('First name')" />
-            <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('name', $user->studentProfile->first_name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+            <input id="first_name" name="first_name" type="text" class="mt-1 block w-full" value="{{ old('first_name', $user->studentProfile->first_name) }}" required autofocus autocomplete="name" />
+            @error('first_name')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
             <x-input-label for="last_name" :value="__('Last name')" />
-            <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->studentProfile->last_name)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+            <input id="last_name" name="last_name" type="text" class="mt-1 block w-full" value="{{ old('last_name', $user->studentProfile->last_name) }}" required autocomplete="username" />
+            @error('last_name')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
             <x-input-label for="date_of_birth" :value="__('Date of Birth')" />
-            <x-text-input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full" :value="old('email', $user->studentProfile->date_of_birth)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('date_of_birth')" />
+            <input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 block w-full" value="{{ old('date_of_birth', $user->studentProfile->date_of_birth) }}" required autocomplete="username" />
+            @error('date_of_birth')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
             <x-input-label for="address" :value="__('Address')" />
-            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->studentProfile->address)" required autocomplete="address" />
-            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+            <input id="address" name="address" type="text" class="mt-1 block w-full" value="{{ old('address', $user->studentProfile->address) }}" required autocomplete="address" />
+            @error('address')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
             <x-input-label for="emergency_contact_name" :value="__('Emergency contact name')" />
-            <x-text-input id="emergency_contact_name" name="emergency_contact_name" type="text" class="mt-1 block w-full" :value="old('address', $user->studentProfile->emergency_contact_name)" required autocomplete="address" />
-            <x-input-error class="mt-2" :messages="$errors->get('emergency_contact_name')" />
+            <input id="emergency_contact_name" name="emergency_contact_name" type="text" class="mt-1 block w-full" value="{{ old('emergency_contact_name', $user->studentProfile->emergency_contact_name) }}" required autocomplete="address" />
+            @error('emergency_contact_name')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div>
             <x-input-label for="emergency_contact_number" :value="__('Emergency contact number')" />
-            <x-text-input id="emergency_contact_number" name="emergency_contact_number" type="text" class="mt-1 block w-full" :value="old('address', $user->studentProfile->emergency_contact_number)" required autocomplete="address" />
-            <x-input-error class="mt-2" :messages="$errors->get('emergency_contact_number')" />
+            <input id="emergency_contact_number" name="emergency_contact_number" type="text" class="mt-1 block w-full" value="{{ old('emergency_contact_number', $user->studentProfile->emergency_contact_number) }}" required autocomplete="address" />
+            @error('emergency_contact_number')
+                <span class="text-red-600">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="flex items-center gap-4 py-4">
-            <x-primary-button>{{ __('Update') }}</x-primary-button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">{{ __('Update') }}</button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -66,4 +80,5 @@
             @endif
         </div>
     </form>
+
 </section>
