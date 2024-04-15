@@ -132,8 +132,6 @@
                 </button>
             </div>
 
-
-
             <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out " id="form-add">
                 @include('students.partials.student-update-info')
             </div>
@@ -170,7 +168,8 @@
             @if($user->depressionTracker)
             <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 ">
 
-                <div class="flex items-center">
+                <div class="flex items-center js-icon-1">
+                    <i class="fa-regular fa-folder text-3xl"></i>
                     <p class=" font-bold px-5 ">Edit depression assesment questions you have filed.</p>
                 </div>
 
@@ -179,18 +178,31 @@
                 </button>
             </div>
 
-
-
-            <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out my-10 mx-10" id="form-add-1">
+            <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out" id="form-add-1">
                 @include('depressions.partials.update-depression')
             </div>
             <script>
+                let isTogglede1 = false;
+                const jsIcon1 = document.querySelector('.js-icon-1 i');
                 const cont1 = document.querySelector('#form-add-1');
                         const topCont1 = document.querySelector('.js-show-update-1');
                         topCont1.addEventListener('click', ()=>{
                             cont1.classList.toggle('h-0')
                             cont1.classList.toggle('overflow-hidden')
-                            console.log('working...')
+                            
+                            cont1.classList.toggle('pt-10')
+                            cont1.classList.toggle('pl-10')
+                   
+                            if(!isTogglede1){
+                                jsIcon1.classList.remove('fa-folder')
+                                jsIcon1.classList.add('fa-folder-open')
+                                isTogglede1 = !isTogglede1;
+                            }else {
+                                
+                                jsIcon1.classList.remove('fa-folder-open')
+                                jsIcon1.classList.add('fa-folder')
+                                isTogglede1 = !isTogglede1;
+                            }
                         })
             </script>
             @endif
@@ -200,8 +212,8 @@
         @if($user->alcoholUseTracker)
         <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
 
-            <div class="flex items-center">
-                <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+            <div class="flex items-center js-icon-2">
+                <i class="fa-regular fa-folder text-3xl"></i>
                 <p class=" font-bold px-5 ">Edit alcoholism assesment questions you have filed.</p>
             </div>
 
@@ -212,16 +224,30 @@
 
 
 
-        <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out my-10 mx-10" id="form-add-2">
+        <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out" id="form-add-2">
             @include('alcohols.partials.update-alcholism')
         </div>
         <script>
+            let isTogglede2 = false;
+            const jsIcon2 = document.querySelector('.js-icon-2 i');
             const cont2 = document.querySelector('#form-add-2');
             const topCont2 = document.querySelector('.js-show-update-2');
             topCont2.addEventListener('click', ()=>{
                 cont2.classList.toggle('h-0')
                 cont2.classList.toggle('overflow-hidden')
-                console.log('working...')
+                
+                cont2.classList.toggle('pt-10')
+                cont2.classList.toggle('pl-10')
+                    
+                if(!isTogglede2){
+                    jsIcon2.classList.remove('fa-folder')
+                    jsIcon2.classList.add('fa-folder-open')
+                    isTogglede2 = !isTogglede2;
+                }else {
+                    jsIcon2.classList.add('fa-folder')
+                    jsIcon2.classList.remove('fa-folder-open')
+                    isTogglede2 = !isTogglede2;
+                }
             })
         </script>
 
@@ -230,8 +256,8 @@
         @if($user->drugUseTracker)
         <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
 
-            <div class="flex items-center">
-                <i class="fa-regular fa-bell fa-shake text-3xl"></i>
+            <div class="flex items-center js-icon-3">
+                <i class="fa-regular fa-folder text-3xl"></i>
                 <p class=" font-bold px-5 ">Edit drug use assesment questions you have filed.</p>
             </div>
 
@@ -242,16 +268,31 @@
 
 
 
-        <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out my-10 mx-10" id="form-add-3">
+        <div class="max-w-xl h-0 overflow-hidden transition-all duration-200 ease-in-out" id="form-add-3">
             @include('drugs.partials.update-drug-info')
         </div>
         <script>
+            let isTogglede3 = false;
+            const jsIcon3 = document.querySelector('.js-icon-3 i');
             const cont3 = document.querySelector('#form-add-3');
             const topCont3 = document.querySelector('.js-show-update-3');
             topCont3.addEventListener('click', ()=>{
                 cont3.classList.toggle('h-0')
                 cont3.classList.toggle('overflow-hidden')
-                console.log('working...')
+                
+                    cont3.classList.toggle('pt-10')
+                    cont3.classList.toggle('pl-10')
+                   
+                if(!isTogglede3){
+                    jsIcon3.classList.remove('fa-folder')
+                    jsIcon3.classList.add('fa-folder-open')
+                    isTogglede3 = !isTogglede3;
+                }else {
+                    jsIcon3.classList.add('fa-folder')
+                    jsIcon3.classList.remove('fa-folder-open')
+                    isTogglede3 = !isTogglede3;
+                }
+                
             })
         </script>
 

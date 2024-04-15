@@ -40,6 +40,65 @@
             <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-excellence">350</span>+</strong><p class="font-robotoCondensed" >Excellence Awards</p></div></li>
             <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-brand">40</span>+</strong><p class="font-robotoCondensed">Brand Partners</p></div></li>
         </ul>
+        
+        <script>
+            const numFinish = document.querySelector('#js-finish');
+            const numYear = document.querySelector('#js-year');
+            const numExcellence = document.querySelector('#js-excellence');
+            const numBrand = document.querySelector('#js-brand');
+
+            // Function to update numeric values gradually
+            function changeNums() {
+                let number1 = 1;
+                let number2 = 1;
+                let number3 = 1;
+                let number4 = 1;
+                let finishNum = 500;
+                let yearsNum = 9;
+                let excellenceNum = 350;
+                let brandNum = 40;
+
+                // Interval functions to update each numeric value
+                let id1 = setInterval(() => {
+                    numFinish.innerHTML = `${number1}`;
+                    if (number1 >= finishNum) {
+                        clearInterval(id1);
+                    } else {
+                        number1++;
+                    }
+                }, -2);
+
+                let id2 = setInterval(() => {
+                    numYear.innerHTML = `${number2}`;
+                    if (number2 >= yearsNum) {
+                        clearInterval(id2);
+                    } else {
+                        number2++;
+                    }
+                }, 200);
+
+                let id3 = setInterval(() => {
+                    numExcellence.innerHTML = `${number3}`;
+                    if (number3 >= excellenceNum) {
+                        clearInterval(id3);
+                    } else {
+                        number3++;
+                    }
+                }, 3);
+
+                let id4 = setInterval(() => {
+                    numBrand.innerHTML = `${number4}`;
+                    if (number4 >= brandNum) {
+                        clearInterval(id4);
+                    } else {
+                        number4++;
+                    }
+                }, 50);
+            }
+
+            // Call the function to start updating numeric values
+            changeNums();
+        </script>
     </div>
 
     <div class="flex md:flex-row flex-col justify-start items-center" id="hero-section">

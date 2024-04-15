@@ -54,7 +54,7 @@ use Carbon\Carbon;
   <div class="grid grid-cols-3 gap-x-8">
     <div class="flex items-center gap-x-5 p-4 shadow-xl rounded-xl py-6">
       <div class="w-16 h-16 rounded-full overflow-hidden border border-white  shadow-xl ">
-        <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+        <img src="{{asset('images/Depression.jpg')}}" alt="">
       </div>
       <div class="flex flex-col">
         <strong class="font-bold text-xl">Depression</strong>
@@ -68,7 +68,7 @@ use Carbon\Carbon;
 
     <div class="flex items-center gap-x-5 p-4 shadow-xl rounded-xl py-6">
       <div class="w-16 h-16 rounded-full overflow-hidden border border-white  shadow-xl ">
-        <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+        <img src="{{asset('images/Credit assesment-amico.png')}}" alt="">
       </div>
        <div class="flex flex-col">
         <strong class="font-bold text-xl">Drugs</strong>
@@ -82,7 +82,7 @@ use Carbon\Carbon;
 
     <div class="flex items-center gap-x-5 p-4 shadow-xl rounded-xl py-6">
       <div class="w-16 h-16 rounded-full overflow-hidden border border-white  shadow-xl ">
-        <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+        <img src="{{asset('images/Helping a partner.gif')}}" alt="">
       </div>
       <div class="flex flex-col">
         <strong class="font-bold text-xl">Alcoholism</strong>
@@ -130,7 +130,7 @@ use Carbon\Carbon;
 
       <div class="flex items-center gap-x-4 p-4 ">
         <div class="w-10 h-10 rounded-full overflow-hidden">
-          <img src="{{asset('images/michael-dam.jpg')}}" alt="">
+          <img src="{{asset('storage/users-avatar/'.$blog->user->avatar)}}" alt="">
         </div>
         <div class="flex flex-col">
           <strong>{{$blog->user->name}}</strong>
