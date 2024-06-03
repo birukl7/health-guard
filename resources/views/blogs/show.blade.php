@@ -10,7 +10,7 @@
 
     <div class="p-6">
         <div class="rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat mb-4"
-            style="background-image: url('{{asset('images/daniel-mingook-kim.jpg')}}'); height: 300px;"></div>
+            style="background-image: url('{{asset('storage/users-avatar/'.$blog->user->avatar)}}'); height: 300px;"></div>
 
         <div class="text-custom-lgray mb-4">
             <i class="fa-regular fa-clock mx-2"></i>

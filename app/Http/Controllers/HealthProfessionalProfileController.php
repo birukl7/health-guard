@@ -176,4 +176,5 @@ class HealthProfessionalProfileController extends Controller
     {
         //
     }
+
 }

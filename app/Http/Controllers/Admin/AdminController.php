@@ -57,6 +57,7 @@ class AdminController extends Controller
         }
                             //'studentCount'=>$studentCount, 'healthProfessionalCount'=>$healthProfessionalCount
         return view('admin.dashboard', ['data' => $data, 'months'=>$months, 'monthCount'=> $monthCount, 'results'=> $results, 'studentCount' => $studentCount, 'blogCount'=>$blogCount,'Smonths'=>$Smonths, 'SmonthCount'=> $SmonthCount]);
+        
     }
 
      public function login()

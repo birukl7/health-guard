@@ -481,10 +481,16 @@
               </span>
       </div>
       </div>
+
+
+
+
+
       <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
           <img src="{{ asset('images/Credit assesment-amico.png')}}" alt="" class="w-full " id="hero-image" >
       </div>
   </div>
+
 
   
   <section class="p-3 rounded-xl my-12 bg-custom-graish mt-10 flex justify-start h-auto">
@@ -496,6 +502,20 @@
       <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Learn More</span> &gt;</button>
     </div>
   </section>
+
+
+  <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Current Consultations</span></h2>
+  <div class="p-7 grid grid-cols-3 gap-3">
+      @if(isset($doctors))
+
+        @foreach ($doctors as $doctor)
+        @include('home.partials.doctor-card', [
+                        'doctor' => $doctor,
+
+                    ])
+        @endforeach
+      @endif
+    </div>
 
   <footer class="flex mb-10 mt-10 gap-x-16">
         <div class="w-60">

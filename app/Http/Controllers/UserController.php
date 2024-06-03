@@ -44,10 +44,6 @@ class UserController extends Controller
             ->where('receiver_id', $psychologist->id)
             ->get()->first();
             
-            /* Session::put('chatName', $notification->reciever->name); */
-           
-      
-            // dd($psychologist);
             if($notifications){
                 $user = User::findOrFail($notifications->receiver_id);
                 return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> $notifications, 'userm' => $user]);

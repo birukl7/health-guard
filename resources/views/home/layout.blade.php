@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/ee4b6626a1.js" crossorigin="anonymous"></script>
+  <script defer src="https://kit.fontawesome.com/ee4b6626a1.js" crossorigin="anonymous"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,15 @@
   <style>
     html {
       scroll-behavior: smooth;
+    }
+
+    #search-contain:hover{
+      transform: rotateY(360deg);
+      transition: transform 700ms ease-in-out;
+    }
+    #search-bar:focus{
+      outline: none;
+      border:none;
     }
   </style>
   <title>Health Guard</title>
@@ -79,7 +88,7 @@
             </a>
 
             <a href="/pychologists" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('pychologists*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('pychologists*') ? $bg : '' }}  {{ Request::is('health_professional*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
             </a>
 
           <a href="/dashboard">
@@ -113,7 +122,7 @@
             </a>
 
               <a href="{{route('notifications.index')}}">
-                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('notifications*') ? $bg : '' }}"><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
+                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('notifications*') ? $bg : '' }} flex"><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
               </a>
 
             @if(!$user->hasRole('health_professional'))

@@ -21,6 +21,7 @@ use App\Http\Controllers\DepressionTrackerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\HealthProfessionalProfileController;
 use App\Http\Controllers\NotificationController;
+use App\Models\HealthProfessionalProfile;
 use Illuminate\Pagination\Paginator;
 use App\Models\Notification;
 use Illuminate\View\View;
@@ -33,10 +34,87 @@ Route::get('/pychologists', function () {
     $perPage = 6;
     $doctors = User::whereHas('roles', function ($query) {
         $query->where('name', 'health_professional');
-    })->whereHas('healthProfessionalProfile')->paginate(4);
-
+    })->whereHas('healthProfessionalProfile')->paginate(6);
 
     return view('home.index', ['doctors' => $doctors]);
+});
+
+Route::get('/pychologists/all', function(){
+    $doctors = User::whereHas('roles', function ($query) {
+        $query->where('name', 'health_professional');
+    })->whereHas('healthProfessionalProfile')->paginate(12);
+    return view('home.index', ['doctors' => $doctors]);
+});
+
+Route::post('/search', function(Request $request){
+
+        $keyword = $request->input('search');
+        // return $keyword;
+        $doctors = User::whereHas('roles', function ($query) {
+            $query->where('name', 'health_professional');
+        })
+        ->where(function ($query) use ($keyword) {
+            $query->where('email', 'like', "%$keyword%")
+                ->orWhereHas('healthProfessionalProfile', function ($query) use ($keyword) {
+                    $query->where('first_name', 'like', "%$keyword%")
+                        ->orWhere('last_name', 'like', "%$keyword%")
+                        ->orWhere('about', 'like', "%$keyword%")
+                        ->orWhere('description', 'like', "%$keyword%")
+                        ->orWhere('specialization', 'like', "%$keyword%")
+                        ->orWhere('hospital_affiliation', 'like', "%$keyword%")
+                        ->orWhere('phone_number', 'like', "%$keyword%")
+                        ->orWhere('location', 'like', "%$keyword%")
+                        ->orWhere('license', 'like', "%$keyword%")
+                        ->orWhere('years_of_experience', 'like', "%$keyword%")
+                        ->orWhereJsonContains('issues', $keyword);
+                });
+        })
+        ->paginate(6);
+
+       
+
+    return view('home.index', ['doctors' => $doctors]);
+        // $results = HealthProfessionalProfile::search($keyword);
+       
+        // return view('home.index', ['results' => $results]);
+});
+
+Route::post('/filter', function(Request $request){
+    
+    $request->validate([
+        'city' => 'nullable|string|max:25', // Adjust max length as needed
+    ]);
+    $counseling = $request->input('counseling');
+    $city = $request->input('city');
+    $age = $request->input('age');
+    $gender = $request->input('gender');
+
+    $doctors = User::whereHas('roles', function ($query) {
+            $query->where('name', 'health_professional');
+        })
+        ->whereHas('healthProfessionalProfile', function ($query) use ($city) {
+            $query->where('location', 'like', "%$city%");
+        });
+
+    if ($counseling && $counseling != 'all') {
+        $doctors->whereHas('healthProfessionalProfile', function ($query) use ($counseling) {
+            $query->whereJsonContains('issues', $counseling);
+        });
+    }
+
+    if ($age && $age != 'all') {
+        $doctors->whereHas('healthProfessionalProfile', function ($query) use ($age) {
+            $query->where('age', '>=', $age);
+        });
+    }
+
+    if ($gender && $gender != 'All') {
+        $doctors->where('gender', $gender);
+    }
+
+    // dd($doctors);
+    $results = $doctors->paginate(3);
+    return view('home.index', ['doctors' => $results]);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -49,7 +127,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+})->middleware('auth')->name('verification.k');
 
 
 Route::get('email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -66,7 +144,7 @@ Route::middleware('auth')->group(
     function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');    
         Route::resource('/chats', ChatMessageController::class);
         Route::resource('/students', StudentProfileController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
@@ -143,6 +221,8 @@ Route::middleware('auth')->group(
         Route::resource('/alcohols', AlcoholUseTrackerController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
 
+        Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
         Route::resource('/drugs', DrugUseTrackerController::class);
 
         Route::patch(
@@ -202,7 +282,7 @@ Route::controller(GoogleController::class)->group(function () {
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/show/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 
 require __DIR__ . '/auth.php';

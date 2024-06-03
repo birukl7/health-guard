@@ -5,7 +5,8 @@ use Carbon\Carbon;
 @extends('home.layout')
 @section('content')
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
-  <div class="flex justify-between items-center">
+
+  <div class="flex justify-between items-center sticky top-0 z-10 bg-white py-7">
     <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-3xl my-4 mb-6">Blog</span></h2>
 
     <div class="flex gap-x-3">
@@ -109,7 +110,7 @@ use Carbon\Carbon;
     @endphp
     <div class="bg-white p-6 rounded-xl shadow-xl my-5">
       <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"
-        style="background-image: url('{{asset('images/daniel-mingook-kim.jpg')}}');">
+        style="background-image: url('{{asset('storage/users-avatar/'.$blog->user->avatar)}}');">
         <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">{{$blog->tag}}</span>
       </div>
 
@@ -125,7 +126,7 @@ use Carbon\Carbon;
       </a>
 
       <p class="text-custom-lgray">
-        Consistency in your daily life can be difficult to achieve. There are so many demands on Lorem ipsum,
+        {{$blog->content}}
       </p>
 
       <div class="flex items-center gap-x-4 p-4 ">
