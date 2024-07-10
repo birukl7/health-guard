@@ -1,6 +1,5 @@
-@extends('home.layout')
+<x-layout>
 
-@section('content')
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
   <h2 class="font-bold text-3xl my-4 mb-6">Create Article</h2>
 
@@ -42,4 +41,4 @@
     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
   </form>
 </section>
-@endsection
+</x-layout>

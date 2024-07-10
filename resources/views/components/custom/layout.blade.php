@@ -13,20 +13,6 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Truculenta:opsz,wght@12..72,100..900&display=swap"
     rel="stylesheet">
   @vite('resources/css/app.css')
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    #search-contain:hover{
-      transform: rotateY(360deg);
-      transition: transform 700ms ease-in-out;
-    }
-    #search-bar:focus{
-      outline: none;
-      border:none;
-    }
-  </style>
   <title>Health Guard</title>
 </head>
 
@@ -74,7 +60,8 @@
         </div>
       </div>
       @php
-        $bg = 'bg-custom-vlgray border-r-2 border-custom-blue';
+      $bg = 'bg-custom-vlgray border-r-2 border-custom-blue';
+
       @endphp
       <nav
         class=" md:block  fixed bottom-0 top-20 shadow-xl md:shadow-none bg-white md:bg-inherit right-40 p-5 pt-8  md:p-0 left-full z-10 md:static  transition-all duration-200"
@@ -82,28 +69,34 @@
         <span class="text-custom-lgray text-sm capitalize mx-4">General</span>
         <ul id="general-nav">
 
+            <x-custom.nav-link href="/" :active="request()->is('/')">
+              <x-slot:headings>
+                <i class="fa-solid fa-house mr-4"></i>
+              </x-slot:headings>
+                Home
+            </x-custom.nav-link>
 
+            <x-custom.nav-link href="/pychologists" :active="request()->is('pychologists') || request()->is('health_professional')">
+              <x-slot:headings>
+                <i class="mr-4 fa-solid fa-user-doctor " ></i>
+              </x-slot:headings>
+               Pyschologists
+            </x-custom.nav-link>
 
-            <a href="/pychologists" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('pychologists*') ? $bg : '' }}  {{ Request::is('health_professional*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
-            </a>
+          <x-custom.nav-link href="/dashboard" :active="request()->is('dashboard') || Request::is('depressions*')">
+            <x-slot:headings>
+              <i class="mr-4 fa-solid fa-table-cells-large"></i>
+            </x-slot:headings>
+             Dashboard
+          </x-custom.nav-link>
 
-          <a href="/dashboard">
-            <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('dashboard*') ? $bg : '' }}
-              {{ Request::is('depressions*') ? $bg : '' }}">
-              <div><i class="mr-4 fa-solid fa-table-cells-large"></i><span>Dashboard</span></div>
-            </li>
-          </a>
+          <x-custom.nav-link :href="route('posts.index')" :active="Request::routeIs('blogs.*') || Request::routeIs('posts.*') ">
+            <x-slot:headings>
+              <i class="mr-4 fa-regular fa-pen-to-square"></i>
+            </x-slot:headings>
+             Blog
+          </x-custom.nav-link>
 
-
-
-
-          <a href="{{route('posts.index')}}">
-            <li
-              class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::routeIs('blogs.*') ? $bg : '' }} {{ Request::routeIs('posts.*') ? $bg : '' }}">
-              <div><i class="mr-4 fa-regular fa-pen-to-square"></i><span>Blog</span></div>
-            </li>
-          </a>
         </ul>
 
 
@@ -111,34 +104,50 @@
           <span class="text-custom-lgray text-sm capitalize mx-4">Tools</span>
           @auth
           <ul>
-            <a href="/chatify/{{Auth::user()->id}}">
-              <li
-                class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('chatify/' . Auth::user()->id) ? $bg : '' }}">
-                <div><i class="fa-regular fa-comments mr-4"></i><span>Chat</span></div>
-              </li>
-            </a>
 
-              <a href="{{route('notifications.index')}}">
-                <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1 {{ Request::is('notifications*') ? $bg : '' }} flex"><div><i class="fa-regular fa-bell mr-4"></i><span>Notification</span></div></li>
-              </a>
+            <x-custom.nav-link :href="'/chatify/'.Auth::user()->id" :active="Request::is('chatify/' . Auth::user()->id) ">
+              <x-slot:headings>
+                <i class="fa-regular fa-comments mr-4"></i>
+              </x-slot:headings>
+               Chat
+            </x-custom.nav-link>
+
+
+              <x-custom.nav-link :href="route('notifications.index')" :active="Request::is('notifications*')">
+                <x-slot:headings>
+                  <i class="fa-regular fa-bell mr-4"></i>
+                </x-slot:headings>
+                Notification
+              </x-custom.nav-link>
 
             @if(!$user->hasRole('health_professional'))
-            <a href="{{route('students.create')}}">
-              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
-                {{ Request::is('depressions*') ? $bg : '' }}
-                {{ Request::is('alcohols*') ? $bg : '' }}
-                {{ Request::is('professionals*') ? $bg : '' }}">
-                <div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div>
-              </li>
-            </a>
+
+            <x-custom.nav-link 
+              :href="route('students.create')" 
+              :active="
+                Request::is('depressions*') ||
+                Request::is('alcohols*') ||
+                Request::is('professionals*')">
+              <x-slot:headings>
+                <i class="fa-regular fa-user mr-4"></i>
+              </x-slot:headings>
+              Profile
+            </x-custom.nav-link>
+
             @else
-            <a href="{{route('professionals.create')}}">
-              <li class="hover:bg-custom-vlgray cursor-pointer rounded-xl rounded-tr-none rounded-br-none  py-5 pl-6  my-1  {{ Request::is('students*') ? $bg : '' }}
-                {{ Request::is('depressions*') ? $bg : '' }}
-                {{ Request::is('alcohols*') ? $bg : '' }} {{ Request::is('professionals*') ? $bg : '' }}">
-                <div><i class="fa-regular fa-user mr-4"></i><span>Profile</span></div>
-              </li>
-            </a>
+
+            <x-custom.nav-link 
+            :href="route('professionals.create')" 
+            :active="
+              Request::is('students*') ||
+              Request::is('depressions*') ||
+              Request::is('alcohols*') ||
+              Request::is('professionals*')">
+            <x-slot:headings>
+              <i class="fa-regular fa-user mr-4"></i>
+            </x-slot:headings>
+            Profile
+          </x-custom.nav-link>
             @endif
 
 
@@ -168,10 +177,11 @@
           <div class="text-xs text-custom-lgray mb-5 text-center">
             Sign Up to acces tools
           </div>
-          {{-- <a href="{{ route('register') }}"
-            class="rounded-md px-3 py-2  bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out">
+
+          <x-custom.button :href="route('register')">
             Sign Up
-          </a> --}}
+          </x-custom.button>
+
         </ul>
         @endauth
 
@@ -180,7 +190,7 @@
     </header>
 
     <div class="pt-8 pl-custom-5 md:pt-0 md:w-full js-main-container ">
-      @yield('content')
+      {{$slot}}
     </div>
   </div>
   <script src="{{asset('script/navBar.js')}}"></script>

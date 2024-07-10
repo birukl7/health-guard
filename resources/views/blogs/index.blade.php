@@ -2,8 +2,7 @@
 use Carbon\Carbon;
 @endphp
 
-@extends('home.layout')
-@section('content')
+<x-custom.layout>
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
 
   <div class="flex justify-between items-center sticky top-0 z-10 bg-white py-7">
@@ -142,4 +141,4 @@ use Carbon\Carbon;
     @endforeach
   </div>
 </section>
-@endsection
+</x-custom.layout>
