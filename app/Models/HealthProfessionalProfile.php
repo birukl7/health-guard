@@ -11,33 +11,31 @@ class HealthProfessionalProfile extends Model
 {
     use HasFactory;
     
-    protected $fillable=[
+    // protected $fillable=[
 
-        'user_id',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'about',
-        'description',
-        'age',
-        'specialization',
-        'hospital_affiliation',
-        'phone_number',
-        'location',
-        'license',
-        'linkedin',
-        'youtube',
-        'facebook',
-        'instagram',
-        'twitter',
-        'price',
-        'years_of_experience',
-        'issues',
-    ];
+    //     'user_id',
+    //     'first_name',
+    //     'last_name',
+    //     'date_of_birth',
+    //     'about',
+    //     'description',
+    //     'age',
+    //     'specialization',
+    //     'hospital_affiliation',
+    //     'phone_number',
+    //     'location',
+    //     'license',
+    //     'linkedin',
+    //     'youtube',
+    //     'facebook',
+    //     'instagram',
+    //     'twitter',
+    //     'price',
+    //     'years_of_experience',
+    //     'issues',
+    // ];
 
-    protected $cast = [
-        'issues' => 'array'
-    ];
+    public $guarded = [];
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
@@ -45,6 +43,10 @@ class HealthProfessionalProfile extends Model
 
     public function healthRatings(): HasMany {
         return $this->hasMany(HealthRating::class);
+    }
+
+    public function tags(){
+        return $this->hasMany(Tag::class);
     }
 
     // public static function search($keyword)

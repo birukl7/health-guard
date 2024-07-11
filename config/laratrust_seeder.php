@@ -14,15 +14,15 @@ return [
     'roles_structure' => [
         'admin' => [
             'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
-            'profile' => 'r,u',
+            'profile' => 'r,u,d',
         ],
         'health_professional' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u',
+            'blog' => 'c,r,u,d',
+            'profile' => 'r,u,d',
         ],
         'student' => [
-            'profile' => 'r,u',
+            'blog' => 'r',
+            'profile' => 'r,u,d',
         ],
     ],
 

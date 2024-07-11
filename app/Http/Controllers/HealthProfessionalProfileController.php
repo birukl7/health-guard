@@ -120,6 +120,8 @@ class HealthProfessionalProfileController extends Controller
     public function update(Request $request, string $id)
     {
         $health = HealthProfessionalProfile::where('user_id', Auth::user()->id)->firstOrFail();
+
+        dd($request->issues);
         
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',

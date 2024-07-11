@@ -18,7 +18,7 @@
         // If it's null, you can default it to an empty array
         $oldIssues = $issuesArray ?? [];
 
-
+       // dd($user->healthProfessionalProfile->hospital_affiliation);
     @endphp
     <header>
         <h2 class="text-lg font-medium text-gray-900 ">
@@ -53,20 +53,24 @@
 
         <div>
             <x-input-label for="about" :value="__('About you')" />
-            <textarea id="age" name="about" type="text" class="mt-1 block w-full" :value="old('about', $user->healthProfessionalProfile->about)"  autocomplete="about"></textarea>
+            <textarea id="age" name="about" type="text" class="mt-1 block w-full"  autocomplete="about">
+                {{ trim(old('about', $user->healthProfessionalProfile->about)) }}
+            </textarea>
             <x-input-error :messages="$errors->get('about')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="description" :value="__('Description (3000 characters )*')" />
             <x-input-label for="description" :value="__('Tip: Rezise the text box to write more')" />
-            <textarea id="description" name="description" type="text" class="mt-1 block w-full" autocomplete="about" :value="old('name', $user->healthProfessionalProfile->descripiton)"></textarea>
+            <textarea id="description" name="description" type="text" class="mt-1 block w-full" autocomplete="about" >
+               {{ old('name', $user->healthProfessionalProfile->description) }}
+            </textarea>
             <x-input-error :messages="$errors->get('description')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="age" :value="__('Date of Birth')" />
-            <input id="age" name="date_of_birth" type="date" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->date_of_birth)"autocomplete="Date of birth" />
+            <input id="age" name="date_of_birth" type="date" class="mt-1 block w-full" value="{{ old('name', $user->healthProfessionalProfile->date_of_birth) }}"autocomplete="Date of birth" />
             <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
         </div> 
 
@@ -89,12 +93,9 @@
           <x-input-error :messages="$errors->get('specialization')" class="mt-2" />
         </div>
 
-
-
-
         <div>
             <x-input-label for="affialation" :value="__('Affilated Hospital')" />
-            <x-text-input id="affialation" name="hospital_affiliation" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->hospital_affiliation)"  autocomplete="affilation" />
+            <x-text-input id="affiliation" name="hospital_affiliation" type="text" class="mt-1 block w-full" :value="old('hospital_affiliation', $user->healthProfessionalProfile->hospital_affiliation)" autocomplete="affiliation" />
             <x-input-error :messages="$errors->get('hospital_affiliation')" class="mt-2" />
         </div>
 
@@ -106,8 +107,11 @@
         </div>
 
         <div>
+            @php
+               // dd($user->healthProfessionalProfile->location);
+            @endphp
             <x-input-label for="location" :value="__('Location (City)')" />
-            <input id="location" name="location" type="text" class="mt-1 block w-full" list="cityList" :value="old('name', $user->healthProfessionalProfile->location)"  autocomplete="city">
+            <input id="location" name="location" type="text" class="mt-1 block w-full" list="cityList" value="{{old('location', $user->healthProfessionalProfile->location) }}"  autocomplete="city">
             <datalist id="cityList">
                 <option value="Addis Ababa">
                 <option value="Adama">
@@ -186,7 +190,7 @@
         <x-input-label for="years_of_experience" :value="__('Years of Experience')" />
         <select name="years_of_experience" id="years_of_experience" class="mt-1 block w-full">
             <option value="0-1" {{ $oldExperience === '0-1' ? 'selected' : '' }}>0-1 years</option>
-            <option value="2-5" {{ $oldExperience === '2-5' ? 'selected' : '' }}>2-5 years</option
+            <option value="2-5" {{ $oldExperience === '2-5' ? 'selected' : '' }}>2-5 years</option>
             <option value="5-7" {{ $oldExperience === '5-7' ? 'selected' : '' }}>5-7 years</option>
             <option value="7-10" {{ $oldExperience === '7-10' ? 'selected' : '' }}>7-10 years</option>
             <option value="10+" {{ $oldExperience === '10+' ? 'selected' : '' }}>10+ years</option>

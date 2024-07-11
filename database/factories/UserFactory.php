@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'avatar' => 'http://picsum.photos/seed/'.rand(1, 100000).'/100/100',
         ];
     }
 

@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
 
-        if (Auth::user()->hasRole('student') || (Auth::user()->role_id === 'student')) {
+        if (Auth::user()->hasRole('student')) {
             $userId = Auth::user()->id;
 
             $depression = DepressionTracker::where('user_id', $userId)->first();
@@ -47,7 +47,7 @@ class DashboardController extends Controller
             }
             // 0704512247
             
-        } elseif (Auth::user()->hasRole('health_professional') || (Auth::user()->role_id === 'health_professional')) {
+        } elseif (Auth::user()->hasRole('health_professional')) {
 
             return view('dashboard.health_professional');
         } else {

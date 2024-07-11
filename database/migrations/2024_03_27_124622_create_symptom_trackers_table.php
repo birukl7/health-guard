@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\StudentProfile;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('symptom_trackers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_profile_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(StudentProfile::class)->constrained()->cascadeOnDelete();
             $table->date('date');
             $table->json('symptom');
             $table->string('severity');

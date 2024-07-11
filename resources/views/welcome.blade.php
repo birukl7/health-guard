@@ -13,23 +13,13 @@
                     <span class="">
                     @auth
                     @if( Auth::user()->hasRole('student'))
-                        <a href="{{ route('login') }}">
-                            <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-custom-blue 
-                            text-white rounded-full hover:shadow-lg 
-                            hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Go To Dashboard</button>
-                        </a>
+                        <x-custom.quaternary-button :href="route('login') ">
+                            Go To Dashboard
+                        </x-custom.quaternary-button>
                     @elseif(Auth::user()->hasRole('health_professional'))
-                        <div class="flex items-center ">
-                            <p class="text-xs ml-4 font-robotoCondensed font-bold  w-40">You need to log out and create a student account.</p>
-                            <form action="{{route('logout')}}" method="post">
-                                @method('post')
-                                @csrf
-                                <a href="{{ route('logout') }}">
-                                    <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
-                                    text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3">Log out</button>
-                                </a>
-                            </form>
-                        </div>
+                        <x-custom.quaternary-button :href="route('login') ">
+                            Go To Dashboard
+                        </x-custom.quaternary-button>
                     @elseif(!Auth::user()->hasRole('health_professional'))
                     @endauth
                     @else
@@ -165,11 +155,9 @@
                         <span class="">
                         @auth
                         @if(Auth::user()->hasRole('health_professional'))
-                            <a href="{{ route('login') }}">
-                                <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-custom-blue 
-                                text-white rounded-full hover:shadow-lg 
-                                hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Go To Dashboard</button>
-                            </a>
+                        <x-custom.quaternary-button :href="route('login') ">
+                            Go To Dashboard
+                        </x-custom.quaternary-button>
                         @elseif(Auth::user()->hasRole('student'))
                             <div class="flex items-center ">
                                 <p class="text-xs ml-4 font-robotoCondensed font-bold  w-40">You need to log out and create a student health.</p>

@@ -1,4 +1,4 @@
-<x-layout>
+<x-custom.layout>
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
     @php
         $user = Auth::user();
@@ -55,4 +55,4 @@
     </section>
     <script src="{{asset('script/navBar.js')}}"></script>
 </section>
-</x-layout>
+</x-custom.layout>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function healthProfessionalProfiles(){
+        return $this->hasMany(HealthProfessionalProfile::class);
+    }
 }

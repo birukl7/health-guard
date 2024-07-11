@@ -24,6 +24,8 @@ class AlcoholUseTracker extends Model
         'question_10',
     ];
 
+    protected $guraded = [];
+
     public function user(): BelongsTo {
         return $this->user(User::class);
     }
