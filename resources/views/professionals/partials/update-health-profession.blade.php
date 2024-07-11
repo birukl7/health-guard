@@ -8,17 +8,8 @@
 
         $oldExperience = old('years_of_experience', $user->healthProfessionalProfile->years_of_experience ?? '');
 
+        $oldIssues = $issues->pluck('name')->toArray() ?? [];
 
-        $issuesJson = $user->healthProfessionalProfile->issues;
-
-        // Decode the JSON string into an array
-        $issuesArray = json_decode($issuesJson, true);
-
-        // Now $issuesArray should contain the array of issues
-        // If it's null, you can default it to an empty array
-        $oldIssues = $issuesArray ?? [];
-
-       // dd($user->healthProfessionalProfile->hospital_affiliation);
     @endphp
     <header>
         <h2 class="text-lg font-medium text-gray-900 ">
@@ -75,6 +66,7 @@
         </div> 
 
         <div>
+        <x-input-label for="specialization" :value="__('Specialiazation')" />
           <select id="specialization" name="specialization" class="mt-1 block w-full" autocomplete="specialization">
             <option value="">Select Specialization</option>
             <option value="Clinical Psychology" {{ $oldSpecialization == 'Clinical Psychology' ? 'selected' : '' }}>Clinical Psychology</option>
@@ -146,11 +138,11 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <div>
+        {{-- <div>
             <x-input-label for="license" :value="__('Upload a license (PDF, JPG, JPEG, PNG and less than 4Mb)')" />
             <input id="license" type="file" name="license" class="mt-1 inline w-full" />
             <x-input-error :messages="$errors->get('license')" class="mt-2" />
-        </div>
+        </div> --}}
 
         <div>
             <x-input-label for="linkedin link" :value="__('Your Linkedin link')" />

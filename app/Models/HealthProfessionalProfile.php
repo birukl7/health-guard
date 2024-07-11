@@ -5,35 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class HealthProfessionalProfile extends Model
 {
     use HasFactory;
-    
-    // protected $fillable=[
-
-    //     'user_id',
-    //     'first_name',
-    //     'last_name',
-    //     'date_of_birth',
-    //     'about',
-    //     'description',
-    //     'age',
-    //     'specialization',
-    //     'hospital_affiliation',
-    //     'phone_number',
-    //     'location',
-    //     'license',
-    //     'linkedin',
-    //     'youtube',
-    //     'facebook',
-    //     'instagram',
-    //     'twitter',
-    //     'price',
-    //     'years_of_experience',
-    //     'issues',
-    // ];
 
     public $guarded = [];
 
@@ -45,8 +22,8 @@ class HealthProfessionalProfile extends Model
         return $this->hasMany(HealthRating::class);
     }
 
-    public function tags(){
-        return $this->hasMany(Tag::class);
+    public function tags(): BelongsToMany {
+        return $this->belongsToMany(Tag::class);
     }
 
     // public static function search($keyword)
@@ -75,6 +52,14 @@ class HealthProfessionalProfile extends Model
     //                 ->get();
     // }
     
+    public function tag(string $name): void
+    {
+        $tag = Tag::firstOrCreate([
+            'name' => $name
+        ]);
+
+        $this->tags()->attach($tag);
+    }
     
 
 }

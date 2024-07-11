@@ -37,20 +37,20 @@
             <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>{{$profile->location}}</span></span>
             <span class="text-sm text-custom-lgray"><span>{{$profile->years_of_experience}}</span>yrs of exp.</span>
             
-            <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
-            </span>
+            {{-- <span class="text-sm text-custom-lgray">1000<span>+</span> Contributions
+            </span> --}}
         </div>
 
 
     </div>
     @php 
-        $issues = json_decode($profile->issues, true);
+        $issues = $profile->tags;
     @endphp
 
     <div class="my-6 flex gap-x-3 flex-wrap gap-y-3">
         @foreach ($issues as $issue)
             
-        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">{{$issue}}</button>
+        <button class=" text-sm  bg-custom-graish py-1 px-4 rounded-full">{{$issue->name}}</button>
         @endforeach
     </div>
   

@@ -25,7 +25,8 @@ class HealthProfessionalProfileController extends Controller
      */
     public function create(): View
     {
-        return view('professionals.create');
+        $tags = Auth::user()->healthProfessionalProfile->tags;
+        return view('professionals.create',['issues'=> $tags]);
     }
 
     /**
@@ -119,9 +120,7 @@ class HealthProfessionalProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $health = HealthProfessionalProfile::where('user_id', Auth::user()->id)->firstOrFail();
-
-        dd($request->issues);
+        $health = Auth::user()->healthProfessionalProfile;
         
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
@@ -156,16 +155,18 @@ class HealthProfessionalProfileController extends Controller
                 },
             ],
             'location' => 'required|string|max:255',
-            'license' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            // 'license' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
             'linkedin' => 'nullable|string|max:255',
             'facebook' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
             'twitter' => 'nullable|string|max:255',
             'price' => 'required|string|in:free,paid',
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
-            'issues' => 'nullable|array',
-            'issues.*' => 'string',
         ]);
+
+        foreach($request->issues as $issue){
+            $health->tag($issue);
+        }
         
         $health->update($validated);
         return redirect()->route('professionals.create')->with('success', 'Health professional profile updated successfully.');
