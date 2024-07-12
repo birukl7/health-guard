@@ -164,6 +164,10 @@ class HealthProfessionalProfileController extends Controller
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
         ]);
 
+        foreach($health->tags->pluck('name')->toArray() as $issue){
+            $health->removeTag($issue);
+        }
+
         foreach($request->issues as $issue){
             $health->tag($issue);
         }

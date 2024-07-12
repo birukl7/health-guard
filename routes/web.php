@@ -18,6 +18,7 @@ use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\Admin\HealthProController;
 use App\Http\Controllers\AlcoholUseTrackerController;
 use App\Http\Controllers\DepressionTrackerController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FilterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\HealthProfessionalProfileController;
@@ -161,7 +162,14 @@ Route::controller(GoogleController::class)->group(function () {
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/show/{id}', [PostController::class, 'show'])->name('posts.show');
-
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+
+
+Route::get('/experiences/create',[ExperienceController::class, 'create'])->middleware('auth');
+Route::post('/experiences',[ExperienceController::class, 'store'])->middleware('auth');
+Route::patch('/experiences/{experience}',[ExperienceController::class, 'update'])->middleware('auth');
+Route::get('/experiences/{experience}/edit',[ExperienceController::class, 'edit'])->middleware('auth');
+Route::delete('/experiences/{experience}',[ExperienceController::class, 'destroy'])->middleware('auth');
+
 
 require __DIR__ . '/auth.php';

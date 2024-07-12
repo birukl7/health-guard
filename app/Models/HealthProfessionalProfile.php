@@ -60,6 +60,19 @@ class HealthProfessionalProfile extends Model
 
         $this->tags()->attach($tag);
     }
+
+    public function removeTag(string $name): void
+    {
+        $tag = Tag::firstOrCreate([
+            'name' => $name
+        ]);
+
+        $this->tags()->detach($tag);
+    }
+
+    public function posts(): HasMany {
+        return $this->hasMany(Post::class);
+    }
     
 
 }

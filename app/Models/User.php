@@ -28,8 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
-    public function experiences(): HasOne{
-        return $this->hasOne(Experience::class);
+    public function experiences(): hasMany{
+        return $this->hasMany(Experience::class);
     }
 
     public function notifications_1(): HasMany{

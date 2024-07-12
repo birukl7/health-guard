@@ -1,6 +1,5 @@
-@extends('home.layout')
-@section('content')
-<section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full overflow-hidden">
+<x-custom.layout>
+<x-custom.section>
     <div class="pt-8 md:pt-0 md:w-full js-main-container bg-white ">
         <div class="bg-gray-100">
             <div class="container mx-auto py-8">
@@ -27,13 +26,13 @@
                                 </span>
 
                                 <span class="text-sm text-custom-lgray"><span>{{$psychologist->healthProfessionalProfile->years_of_experience}} &nbsp;</span>yrs of exp.</span>
-                                <span class="text-sm text-custom-lgray">1<span>+</span> Contributions
-                                </span>
+                                {{-- <span class="text-sm text-custom-lgray">1<span>+</span> Contributions
+                                </span> --}}
                                 <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                    <a href="mailto:{{$psychologist->email}}"
+                                    <a href="mailto:{{$psychologist->email}}" target="_blank"
                                         class="bg-custom-blue hover:bg-blue-400 text-white  py-2 px-4 rounded"><span><i class="fa-regular fa-envelope mr-2"></i></span>{{
                                         $psychologist->email}}</a>
-                                    <a href="#"
+                                    <a href="tel:{{$psychologist->healthProfessionalProfile->phone_number}}"
                                         class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded"><span><i class="fa-solid fa-phone mr-2"></i></span>+251-{{$psychologist->healthProfessionalProfile->phone_number}}
                                     </a>
                                 </div>
@@ -81,7 +80,7 @@
                     </div>
 
                     @php 
-                        $issues = json_decode($psychologist->healthProfessionalProfile->issues, true);
+                        $issues = $psychologist->healthProfessionalProfile->tags;
                     @endphp
 
                     <div class="col-span-4 sm:col-span-8">
@@ -95,7 +94,7 @@
                                     @if($issues)
                                         @foreach($issues as $issue)
                                         <button class="bg-custom-vlgray p-2 rounded-full text-custom-mgray px-4 cursor-not-allowed">
-                                            {{$issue}}
+                                            {{$issue->name}}
                                         </button>
                                         @endforeach
                                     @else
@@ -167,10 +166,13 @@
                                 @else
                                     <p>This health Professional hasn't add a Description.</p>
                                 @endif
+
+
                             </div>
 
-
-                            <h2 class="text-xl font-bold mt-6 mb-4">Experience</h2>
+                            <x-custom.h2-heading>
+                                Experience
+                            </x-custom.h2-heading>
                             <div>
                                 @if($psychologist->experiences)
                                     @foreach($psychologist->experiences as $experience)
@@ -190,7 +192,14 @@
                                     @endforeach
                                 @else
                                     <p>This health Professional hasn't posted any experiences.</p>
+
                                 @endif
+
+                                @can('edit-experience', $psychologist->healthProfessionalProfile)
+
+                                    <a href="mailto:{{$psychologist->email}}" target="_blank"
+                                        class="bg-custom-blue hover:bg-blue-400 text-white  py-2 px-4 rounded"><span><i class="fa-regular fa-envelope mr-2"></i></span>Add Experience</a>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -199,5 +208,5 @@
             </div>
         </div>
     </div>
-</section>
-@endsection
+</x-custom.section>
+</x-custom.layout>

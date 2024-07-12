@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\HealthProfessionalProfile;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
+        Gate::define('edit-experience', function(User $user, HealthProfessionalProfile $hProff){
+            return $hProff->user->is($user);
+        });
     }
 }
