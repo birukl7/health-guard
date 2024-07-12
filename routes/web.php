@@ -107,8 +107,6 @@ Route::middleware('auth')->group(
         Route::resource('/alcohols', AlcoholUseTrackerController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
 
-        Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-
         Route::resource('/drugs', DrugUseTrackerController::class);
 
         Route::patch(
@@ -161,8 +159,10 @@ Route::controller(GoogleController::class)->group(function () {
 });
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/show/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::patch('/posts/{post}/edit', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 
 Route::get('/experiences/create',[ExperienceController::class, 'create'])->middleware('auth');

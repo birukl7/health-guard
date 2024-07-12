@@ -12,4 +12,8 @@ class Post extends Model
     public function healthProfessionalProfile(){
         return $this->belongsTo(HealthProfessionalProfile::class);
     }
+
+    public function postTags(){
+        return $this->hasMany(PostTag::class);
+    }
 }

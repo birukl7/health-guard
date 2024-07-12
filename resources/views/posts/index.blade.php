@@ -3,15 +3,11 @@ use Carbon\Carbon;
 @endphp
 
 <x-custom.layout>
-<section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
-
+<x-custom.section>
   <div class="flex justify-between items-center sticky top-0 z-10 bg-white py-7">
     <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-3xl my-4 mb-6">Blog</span></h2>
 
     <div class="flex gap-x-3">
-      <!-- "Create Post" button -->
-      <a href="{{ route('posts.create') }}" class="rounded-md px-3 py-2 bg-custom-blue text-white hover:outline hover:outline-1 hover:text-black hover:bg-transparent transition-all duration-150 ease-in-out">Create Post</a>
-
       <!-- User authentication and profile links -->
       @if(Route::has('login'))
       @auth
@@ -140,5 +136,5 @@ use Carbon\Carbon;
     </div>
     @endforeach
   </div>
-</section>
+</x-custom.section>
 </x-custom.layout>

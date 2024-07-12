@@ -5,60 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blog;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     //
     public function index()
     {
-        $blogs = Blog::all();
-        return view('blogs.index', ['blogs' => $blogs]);
+        $posts = Post::all();
+        return view('posts.index', ['blogs' => $posts]);
     }
-    public function show($id)
+    public function show(Post $post)
     {
-        $blog = Blog::find($id);
-        return view('blogs.show', compact('blog'));
+        return view('posts.show', ['blog'=> $post]);
     }
 
     public function create()
     {
-        return view('blogs.create');
+        return view('posts.create');
     }
 
-
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'tag' => 'required|string|max:255',
-    //         'read_minutes' => 'required|numeric',
-    //         'content' => 'required|string',
-    //         'posted_date' => 'required|date',
-    //         'image' => 'required|string|max:255', // Assuming the image field is required but not validating its format or size here
-    //     ]);
-
-    //     $blog = new Blog();
-    //     $blog->fill($validatedData);
-
-    //     $blog->status = 'Approved';
-    //     $blog->user_id = Auth::user()->id;
-    //     $blog->like_count = 0;
-    //     if ($blog->save()) {
-
-    //         return redirect()->route('posts.index')->with('success', 'Post created successfully');
-    //     } else {
-
-    //         return back()->withInput()->with('error', 'Post creation failed');
-    //     }
-    // }
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'tag' => 'required|string|max:255',
-            'read_minutes' => 'required|numeric',
+            'image' => 'required',
+            'description' => 'required',
             'content' => 'required|string',
         ]);
+
+
 
         $blog = new Blog();
         $blog->fill($validatedData);
@@ -66,7 +42,6 @@ class PostController extends Controller
         $blog->status = 'Approved';
         $blog->user_id = Auth::user()->id;
         $blog->like_count = 0; // No need to set it as it has a default value in the database
-
         if ($blog->save()) {
             return redirect()->route('posts.index')->with('success', 'Post created successfully');
         } else {
