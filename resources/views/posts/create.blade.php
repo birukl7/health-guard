@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-4">
-      <x-input-label for="duration" :value="__('Blog Title')" />
+      <x-input-label for="duration" :value="__('Blog Duration')" />
       <x-text-input id="duration" name="duration" type="text" class="mt-1 block w-full" autocomplete="duration" placeholder="5 minutes..."/>
       <x-input-error :messages="$errors->get('duration')" class="mt-2" />
     </div>
