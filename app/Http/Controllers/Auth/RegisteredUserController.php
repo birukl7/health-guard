@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
         //$user->addRole('admin');
         // $user->addRole($request->role_id);
         //$role = $request->role_id;
-        $user->attachRole($request->role_id);
+        $user->addRole($request->role_id);
         event(new Registered($user));
 
         Auth::login($user);

@@ -26,8 +26,6 @@
                                 </span>
 
                                 <span class="text-sm text-custom-lgray"><span>{{$psychologist->healthProfessionalProfile->years_of_experience}} &nbsp;</span>yrs of exp.</span>
-                                {{-- <span class="text-sm text-custom-lgray">1<span>+</span> Contributions
-                                </span> --}}
                                 <div class="mt-6 flex flex-wrap gap-4 justify-center">
                                     <a href="mailto:{{$psychologist->email}}" target="_blank"
                                         class="bg-custom-blue hover:bg-blue-400 text-white  py-2 px-4 rounded"><span><i class="fa-regular fa-envelope mr-2"></i></span>{{
@@ -59,7 +57,12 @@
                                     @endif
                                 </form>
                             @else
-                                <p class="text-sm text-center">Please create a studnet account to book this consultant.</p>
+
+                            <div class="flex flex-col items-center">
+                                <p class="text-sm text-center mb-3">Please create a studnet account to book this consultant.</p>
+                                <x-custom.button href="/students/create">Finish Student Account</x-custom.button>
+                            </div>
+
                             @endif
                             @if($notification)
                                 @if($notification->approval == 'pending')

@@ -1,7 +1,8 @@
-@extends('home.layout')
-@section('content')
-<section class="bg-white rounded-2xl m-4 mt-0   w-full">
-  <p class="p-5 pt-0 font-bold text-custom-lgray"><span class="text-red-700 text-3xl">*</span> Please add to persons to favorite list inorder to access them fastly.</p>
+<x-custom.layout>
+<x-custom.section >
+  <p class="p-5 pt-0 font-bold text-custom-lgray flex items-center gap-2"><span class="text-red-700 text-xl">*</span> <span class="text-sm">Please add to persons to favorite list inorder to access them fastly.</span></p>
+
+  <p class="p-5 pt-0 font-bold text-custom-lgray flex items-center gap-2"><span class="text-red-700 text-xl">*</span> <span class="text-sm">Please Double click on the name that comes under the search-bar</span></p>
 
     @include('Chatify::layouts.headLinks')
 
@@ -119,8 +120,8 @@
 
     @include('Chatify::layouts.modals')
     @include('Chatify::layouts.footerLinks')
-</section>
-@endsection
+</x-custom.section>
+</x-custom.layout>
 
 
 
