@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -17,6 +15,7 @@ use App\Http\Controllers\DrugUseTrackerController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\Admin\HealthProController;
 use App\Http\Controllers\AlcoholUseTrackerController;
+use App\Http\Controllers\AvatarImageController;
 use App\Http\Controllers\DepressionTrackerController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FilterController;
@@ -64,73 +63,21 @@ Route::middleware('auth')->group(
         Route::post('/book', [NotificationController::class, 'store']);
         Route::put('/book', [NotificationController::class, 'update'])->name('accept.offer');
         Route::get('/student/{id}', [UserController::class, 'showStudent']);
-        
-        Route::patch(
-            '/profile/picture',
-            function (Request $request) {
-                $request->validate([
-                    'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the uploaded file
-                ]);
-
-                if ($request->hasFile('avatar')) {
-                    $avatarFileName = time() . '.' . $request->avatar->getClientOriginalExtension();
-                    $request->avatar->storeAs('public/users-avatar', $avatarFileName); // Store the uploaded image in storage
-
-                    // Update user's avatar column
-                    $user = Auth::user();
-                    $user->avatar = $avatarFileName;
-                    $user->save();
-
-                    return redirect()->back()->with('success', 'Avatar uploaded successfully.');
-                }
-
-                return redirect()->back()->with('error', 'Failed to upload avatar.');
-            }
-        )->name('profile.picture');
     }
 );
-// Route::put('/students/{student}', [StudentProfileController::class, 'update'])->name('students.update');
+
 
 Route::middleware('auth')->group(
     function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-        // Route::resource('/chats', ChatMessageController::class);
-
-
         Route::resource('/students', StudentProfileController::class);
-
         Route::resource('/professionals', HealthProfessionalProfileController::class);
-
         Route::resource('/alcohols', AlcoholUseTrackerController::class);
         Route::resource('/depressions', DepressionTrackerController::class);
-
         Route::resource('/drugs', DrugUseTrackerController::class);
-
-        Route::patch(
-            '/profile/picture',
-            function (Request $request) {
-                $request->validate([
-                    'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the uploaded file
-                ]);
-
-                if ($request->hasFile('avatar')) {
-                    $avatarFileName = time() . '.' . $request->avatar->getClientOriginalExtension();
-                    $request->avatar->storeAs('public/users-avatar', $avatarFileName); // Store the uploaded image in storage
-
-                    // Update user's avatar column
-                    $user = Auth::user();
-                    $user->avatar = $avatarFileName;
-                    $user->save();
-
-                    return redirect()->back()->with('success', 'Avatar uploaded successfully.');
-                }
-
-                return redirect()->back()->with('error', 'Failed to upload avatar.');
-            }
-        )->name('profile.picture');
+        Route::patch('/profile/picture', AvatarImageController::class)->name('profile.picture');
     }
 );
 
@@ -161,15 +108,13 @@ Route::controller(GoogleController::class)->group(function () {
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::patch('/posts/{post}/edit', [PostController::class, 'show']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-
 
 Route::get('/experiences/create',[ExperienceController::class, 'create'])->middleware('auth');
 Route::post('/experiences',[ExperienceController::class, 'store'])->middleware('auth');
 Route::patch('/experiences/{experience}',[ExperienceController::class, 'update'])->middleware('auth');
 Route::get('/experiences/{experience}/edit',[ExperienceController::class, 'edit'])->middleware('auth');
 Route::delete('/experiences/{experience}',[ExperienceController::class, 'destroy'])->middleware('auth');
-
 
 require __DIR__ . '/auth.php';

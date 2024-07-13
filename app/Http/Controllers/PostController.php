@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blog;
 use App\Models\Post;
+use Illuminate\Validation\Rules\File;
 
 class PostController extends Controller
 {
@@ -25,27 +26,46 @@ class PostController extends Controller
         return view('posts.create');
     }
 
+    public function edit(Post $post){
+        return view('posts.edit',['blog'=>$post]);
+    }
+
     public function store(Request $request)
     {
+       // dd($request->all());
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required',
             'description' => 'required',
-            'content' => 'required|string',
+            'duration' => 'required|string',
+            'image'=> ['required', File::types(['png', 'jpg', 'webp', 'jpeg', 'gif']) ],
+            'issues'=> 'required'
         ]);
 
+        // $postImage = $request->validate([
+        //     'image'=> ['required', File::types(['png', 'jpg', 'webp', 'jpeg']) ],
+        // ]);
 
-
-        $blog = new Blog();
-        $blog->fill($validatedData);
-
-        $blog->status = 'Approved';
-        $blog->user_id = Auth::user()->id;
-        $blog->like_count = 0; // No need to set it as it has a default value in the database
-        if ($blog->save()) {
-            return redirect()->route('posts.index')->with('success', 'Post created successfully');
-        } else {
-            return back()->withInput()->with('error', 'Post creation failed');
+        if($request->hasFile('image')){
+            $imageFileName = time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->storeAs('public/post-image', $imageFileName);
         }
+
+        $user= Auth::user();
+        $post = $user->healthProfessionalProfile->posts()->create([
+            'title'=> $request->title,
+            'description'=> $request->description,
+            'duration'=> $request->duration,
+            'image'=> $imageFileName,
+        ]);
+
+        foreach($post->postTags->pluck('name')->toArray() as $tag){
+            $post->removePostTag($tag);
+        }
+
+        foreach($request->issues as $tag){
+            $post->postTag($tag);
+        }
+      
+        return redirect('/posts')->with('success', 'Post created successfully');
     }
 }

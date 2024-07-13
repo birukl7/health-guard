@@ -54,6 +54,7 @@
         </div>
     </section>
 
+
     <div class="pt-8 md:pt-0 md:w-full js-main-container bg-white ">
         <div class="bg-gray-100">
             <div class="container mx-auto py-8">
@@ -228,6 +229,64 @@
             </div>
         </div>
     </div>
+
+    <x-custom.h2-heading>
+        Blogs You Wrote
+    </x-custom.h2-heading>
+    @if (!Auth::user()->healthProfessionalProfile->posts)
+        <p class="mb-5"> You haven't posted any Blog.</p>
+        <x-custom.quaternary-button href="/posts/create">
+            Add Blog
+        </x-custom.quaternary-button>
+    @else
+        <div class="grid grid-cols-2 gap-x-3">
+            @foreach (Auth::user()->healthProfessionalProfile->posts as $blog)
+                <div class="bg-white p-6 rounded-xl shadow-xl my-5 relative">
+                    <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"
+                        style="background-image: url('{{asset('storage/post-image/'.$blog->image)}}');">
+                        {{-- @if(isset($blog->postTags))
+                            @foreach ($blog->postTags as $tag)
+                                <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">{{$tag->name}}</span>
+                            @endforeach
+                        @endif --}}
+
+                    </div>
+
+                    <div class="text-custom-lgray my-4" style="font-size: 13px;">
+                        <i class="fa-regular fa-clock mx-2"></i>
+                        <span class="mr-1">{{$blog->duration}}</span><span>mins-read</span>
+                    </div>
+
+                    <a href="/posts/{{$blog->id}}">
+                        <h3 class="font-bold my-3 ">
+                        {{$blog->title}}
+                        </h3>
+                    </a>
+
+                    <p class="text-custom-lgray">
+                        {{$blog->description}}
+                    </p>
+
+                    <div class="flex items-center gap-x-4 p-4 ">
+                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                        <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
+                        </div>
+                        <div class="flex flex-col">
+                        <strong>{{$blog->healthProfessionalProfile->first_name}}</strong>
+                         {{-- <span class="text-custom-lgray text-sm">{{$created}}</span> --}}
+                        </div>
+                    </div>
+
+                    {{-- <div>
+                        <a class="bg-custom-vlgray p-2 rounded-full text-custom-mgray px-4 absolute top-3 right-3" href="/posts/{{$blog->id}}/edit">Edit</a>
+                    </div> --}}
+                </div>
+            @endforeach
+        </div>
+        <x-custom.quaternary-button href="/posts/create">
+            Add Blog
+        </x-custom.quaternary-button>
+    @endif
 
     <script src="{{asset('script/navBar.js')}}"></script>
 </x-custom.section>

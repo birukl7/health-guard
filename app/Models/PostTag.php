@@ -10,6 +10,6 @@ class PostTag extends Model
     use HasFactory;
 
     public function posts(){
-        return $this->hasMany('posts');
+        return $this->belongsToMany('posts');
     }   
 }

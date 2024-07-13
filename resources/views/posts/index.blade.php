@@ -40,10 +40,10 @@ use Carbon\Carbon;
   </div>
 
    @php
-  $deps = $blogs->where('tag', 'LIKE', 'depression')->merge($blogs->where('tag', 'LIKE', 'Depression'));
-  $alcs = $blogs->where('tag', 'LIKE', 'alcoholism')->merge($blogs->where('tag', 'LIKE', 'Alcoholism'));
-  $drugs = $blogs->where('tag', 'LIKE', 'drugs')->merge($blogs->where('tag', 'LIKE', 'Drugs'));
-  $dlifes = $blogs->where('tag', 'LIKE', 'daily life')->merge($blogs->where('tag', 'LIKE', 'Daily Life'));
+  // $deps = $blogs->where('tag', 'LIKE', 'depression')->merge($blogs->where('tag', 'LIKE', 'Depression'));
+  // $alcs = $blogs->where('tag', 'LIKE', 'alcoholism')->merge($blogs->where('tag', 'LIKE', 'Alcoholism'));
+  // $drugs = $blogs->where('tag', 'LIKE', 'drugs')->merge($blogs->where('tag', 'LIKE', 'Drugs'));
+  // $dlifes = $blogs->where('tag', 'LIKE', 'daily life')->merge($blogs->where('tag', 'LIKE', 'Daily Life'));
   @endphp
 
   <!-- Category cards -->
@@ -56,7 +56,7 @@ use Carbon\Carbon;
         <strong class="font-bold text-xl">Depression</strong>
         <div class="text-custom-lgray text-sm pt-1">
           <i class="fa-regular fa-newspaper"></i>&nbsp;
-          <span>{{count($deps)}}</span>
+          {{-- <span>{{count($deps)}}</span> --}}
           <span>articles</span>
         </div>
       </div>
@@ -70,7 +70,7 @@ use Carbon\Carbon;
         <strong class="font-bold text-xl">Drugs</strong>
         <div class="text-custom-lgray text-sm pt-1">
           <i class="fa-regular fa-newspaper"></i>&nbsp;
-          <span>{{count($drugs)}}</span>
+          {{-- <span>{{count($drugs)}}</span> --}}
           <span>articles</span>
         </div>
       </div>
@@ -84,7 +84,7 @@ use Carbon\Carbon;
         <strong class="font-bold text-xl">Alcoholism</strong>
         <div class="text-custom-lgray text-sm pt-1">
           <i class="fa-regular fa-newspaper"></i>&nbsp;
-          <span>{{count($alcs)}}</span>
+          {{-- <span>{{count($alcs)}}</span> --}}
           <span>articles</span>
         </div>
       </div>
@@ -105,31 +105,31 @@ use Carbon\Carbon;
     @endphp
     <div class="bg-white p-6 rounded-xl shadow-xl my-5">
       <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"
-        style="background-image: url('{{asset('storage/users-avatar/'.$blog->user->avatar)}}');">
-        <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1">{{$blog->tag}}</span>
+        style="background-image: url('{{asset('storage/post-image/'.$blog->image)}}');">
+        <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1"></span>
       </div>
 
       <div class="text-custom-lgray my-4" style="font-size: 13px;">
         <i class="fa-regular fa-clock mx-2"></i>
-        <span class="mr-1">{{$blog->read_minutes}}</span><span>mins-read</span>
+        <span class="mr-1">{{$blog->duration}}</span><span>mins-read</span>
       </div>
 
-      <a href="/posts/show/{{$blog->id}}">
+      <a href="/posts/{{$blog->id}}">
         <h3 class="font-bold my-3 ">
           {{$blog->title}}
         </h3>
       </a>
 
       <p class="text-custom-lgray">
-        {{$blog->content}}
+        {{$blog->description}}
       </p>
 
       <div class="flex items-center gap-x-4 p-4 ">
         <div class="w-10 h-10 rounded-full overflow-hidden">
-          <img src="{{asset('storage/users-avatar/'.$blog->user->avatar)}}" alt="">
+          <img src="{{asset('storage/post-image/'.$blog->image)}}" alt="">
         </div>
         <div class="flex flex-col">
-          <strong>{{$blog->user->name}}</strong>
+          <strong>{{$blog->healthProfessionalProfile->first_name}}</strong>
           <span class="text-custom-lgray text-sm">{{$created}}</span>
         </div>
       </div>
