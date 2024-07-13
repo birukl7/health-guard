@@ -1,5 +1,4 @@
 <x-custom.layout>
-
 <x-custom.section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
   <h2 class="font-bold text-3xl my-4 mb-6">Create Article</h2>
 

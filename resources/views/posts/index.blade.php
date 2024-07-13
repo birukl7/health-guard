@@ -120,13 +120,13 @@ use Carbon\Carbon;
         </h3>
       </a>
 
-      <p class="text-custom-lgray">
+      <p class="text-custom-lgray line-clamp-3">
         {{$blog->description}}
       </p>
 
       <div class="flex items-center gap-x-4 p-4 ">
         <div class="w-10 h-10 rounded-full overflow-hidden">
-          <img src="{{asset('storage/post-image/'.$blog->image)}}" alt="">
+          <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
         </div>
         <div class="flex flex-col">
           <strong>{{$blog->healthProfessionalProfile->first_name}}</strong>

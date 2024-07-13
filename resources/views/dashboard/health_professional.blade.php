@@ -263,7 +263,7 @@
                         </h3>
                     </a>
 
-                    <p class="text-custom-lgray">
+                    <p class="text-custom-lgray line-clamp-3">
                         {{$blog->description}}
                     </p>
 

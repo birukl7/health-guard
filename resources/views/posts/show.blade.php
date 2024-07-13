@@ -57,9 +57,9 @@
         {{__('Delete Post')}}
     </x-danger-button>
 
-    <form action="/post/{{$blog->id}}" method="post">
+    <form action="/posts/{{$blog->id}}" method="post" id="deleteForm" class="hidden">
         @csrf
-        @method('DELETE')
+        @method('DELETE') 
     </form>
 @endcan
 </x-custom.section>
