@@ -1,5 +1,4 @@
-@extends('home.layout')
-@section('content')
+<x-custom.layout>
 
 <section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
 @php
@@ -27,6 +26,8 @@
 
   $reliefDeg = (string) $reliefPercent * (9/5);
   $reliefDegValue = (string) $reliefDeg . 'deg';
+
+ // dd($doctors);
 @endphp
   @php
     $user = Auth::user();
@@ -511,7 +512,6 @@
         @foreach ($doctors as $doctor)
         @include('home.partials.doctor-card', [
                         'doctor' => $doctor,
-
                     ])
         @endforeach
       @endif
@@ -557,4 +557,4 @@
     </footer>
   <script src="{{asset('script/navBar.js')}}"></script>
 </section>
-@endsection
+</x-custom.layout>

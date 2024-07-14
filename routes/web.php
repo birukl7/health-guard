@@ -32,10 +32,10 @@ Route::post('/filter', FilterController::class);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/health_professional/{id}', [UserController::class, 'showPsychologist'])->name('health_professional');
     Route::get('/student/status', [StudentController::class, 'showSetStatus']);
     Route::get('/student/questions', [StudentController::class, 'showStatusQuestions']);
 });
+Route::get('/health_professional/{healthProfessionalProfile}', [UserController::class, 'showPsychologist'])->name('health_professional');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');

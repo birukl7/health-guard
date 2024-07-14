@@ -18,6 +18,13 @@ class Experience extends Model
         'end_date',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'start_date',
+        'end_date',
+    ];
+
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }

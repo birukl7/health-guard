@@ -58,7 +58,7 @@ class DrugUseTrackerController extends Controller
         $drug->fill($validated);
         $drug->score = number_format($score, 1);
         $drug->save();
-        return redirect()->route('students.create')->with('success', 'Drugs usage assesment informations created successfully.');
+        return redirect('/dashboard')->with('success', 'Drugs usage assesment informations created successfully.');
     }
 
     /**
@@ -113,13 +113,13 @@ class DrugUseTrackerController extends Controller
             $drug->update($validated);
 
             // Redirect or return a response
-            return redirect()->route('students.create')->with('success', 'Drug usage assessment questions updated successfully.');
+            return redirect('/dashboard')->with('success', 'Drug usage assessment questions updated successfully.');
         } catch (ModelNotFoundException $e) {
             // Handle the case where the alcohol record for the authenticated user is not found
-            return redirect()->back()->with('error', 'Alcohol record not found for the authenticated user.');
+            return redirect('/dashboard')->with('error', 'Alcohol record not found for the authenticated user.');
         } catch (\Exception $e) {
             // Handle other types of exceptions
-            return redirect()->back()->with('error', 'An error occurred while updating the alcohol assessment questions.');
+            return redirect('/dashboard')->with('error', 'An error occurred while updating the alcohol assessment questions.');
         }
     }
 

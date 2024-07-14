@@ -23,7 +23,7 @@
                 @php
                     
                 @endphp
-                <input type="text" class="messenger-search" placeholder="Search" value="{{session('chatName')}}"/>
+                <input type="text" class="messenger-search" placeholder="Search" value="{{ session('chatName') ? session('chatName') : ''}}"/>
                 {{-- Tabs --}}
                 {{-- <div class="messenger-listView-tabs">
                     <a href="#" class="active-tab" data-view="users">

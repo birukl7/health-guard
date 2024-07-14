@@ -1485,16 +1485,18 @@ $(document).ready(function () {
   //   console.log('hei')
   // })
   window.onload = function() {
-    // Check if the element exists
+    // Check if the element exists and if the value is not empty
     const value = $(".messenger-search").val();
+    if($.trim(value) === '') return;
     if ($.trim(value).length > 0) {
-      $(".messenger-search").trigger("focus");
-      debouncedSearch();
+        $(".messenger-search").trigger("focus");
+        debouncedSearch();
     } else {
-      $(".messenger-tab").hide();
-      $('.messenger-listView-tabs a[data-view="users"]').trigger("click");
+        $(".messenger-tab").hide();
+        $('.messenger-listView-tabs a[data-view="users"]').trigger("click");
     }
-};
+  };
+
 
 
 

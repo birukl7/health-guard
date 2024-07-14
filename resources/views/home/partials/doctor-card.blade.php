@@ -5,8 +5,6 @@
     }else {
         $profile = $doctor->healthProfessionalProfile;
     }
-
-    
 @endphp
 
 <div class="shadow- shadow-xl  rounded-xl p-2 px-5 relative" style="height: 460px;">
@@ -28,11 +26,11 @@
 
         <div class="flex flex-col">
             @if(Request::is('dashboard'))
-                <a href="{{route('health_professional', ['id' => $pp->id])}}"><strong class="text-xl">{{ $profile->first_name }} {{ $profile->last_name }}</strong></a>
+                <a href="/health_professional/{{$profile->id}}"><strong class="text-xl">{{ $profile->first_name }} {{ $profile->last_name }}</strong></a>
             @else
-                <a href="{{route('health_professional', ['id' => $doctor->id])}}"><strong class="text-xl">{{ $profile->first_name }} {{ $profile->last_name }}</strong></a>
+                <a href="/health_professional/{{$profile->id}}"><strong class="text-xl">{{ $profile->first_name }} {{ $profile->last_name }}</strong></a>
             @endif
-            <span class="text-custom-lgray my-1 mb-4">{{ $doctor->email }}</span>
+            <span class="text-custom-lgray my-1 mb-4">{{ $profile->email }}</span>
           
             <span class="te text-custom-gray mb-3"><i class="fa-solid fa-location-dot"></i> <span>{{$profile->location}}</span></span>
             <span class="text-sm text-custom-lgray"><span>{{$profile->years_of_experience}}</span>yrs of exp.</span>
@@ -60,7 +58,7 @@
             <span class="font-bold">Free</span>
             <span class="text-sm  text-custom-lgray">Online/Offline</span>
         </div>
-        <a href="{{route('health_professional', ['id' => $doctor->id])}}">
+        <a href="/health_professional/{{$profile->id}}">
 
             @if(Request::is('dashboard'))
                 <div class="bg-custom-blue text-white text-sm rounded-full px-3 py-3">

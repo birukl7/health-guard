@@ -27,12 +27,12 @@ class HealthProfessionalProfileFactory extends Factory
                 $nameParts = explode(' ', User::find($attributes['user_id'])->name, 2);
                 return isset($nameParts[1]) ? $nameParts[1] : fake()->lastName();
             },
-            'gender' => fake()->randomElement(['male', 'female']),
+            'gender' => fake()->randomElement(['Male', 'Female', 'Other']),
             'about'=> fake()->sentence(),
             'description'=> fake()->paragraph(),
             'date_of_birth'=> fake()->date(),
-            'age' => fake()->numberBetween(25, 65),
-            'specialization' => fake()->jobTitle(),
+            'age' => fake()->numberBetween(20, 80),
+            'specialization' => fake()->randomElement(['Clinical Psychology', 'Counseling Psychology', 'School Psychology', 'Forensic Psychology', 'Industrial-Organizational Psychology', 'Health Psychology', 'Neuropsychology', 'Developmental Psychology', 'Social Psychology','Experimental Psychology', 'Congnitive Psychology', 'Environmental Psychology',]),
             'phone_number' => fake()->phoneNumber(),
             'location' => fake()->address(),
             'linkedin' => fake()->url(),

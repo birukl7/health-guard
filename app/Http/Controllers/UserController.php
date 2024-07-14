@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
+use App\Models\HealthProfessionalProfile;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,24 +35,25 @@ class UserController extends Controller
         return view('student_view.index', ['student' => $student, 'notification' => $notifications]);
     }
 
-    public function showPsychologist($id) {
-        $psychologist = User::findOrFail($id);
+    public function showPsychologist(HealthProfessionalProfile $healthProfessionalProfile) {
+       // $psychologist = User::findOrFail($id);
 
         // if(Auth::user()->hasRole('health_professional'))
-
-        if($psychologist){
+       // dd($healthProfessionalProfile);
+        if($healthProfessionalProfile && Auth::user()){
             $notifications = Notification::where('sender_id', Auth::user()->id)
-            ->where('receiver_id', $psychologist->id)
+            ->where('receiver_id', $healthProfessionalProfile->id)
             ->get()->first();
-            
+            // dd('failure');
             if($notifications){
                 $user = User::findOrFail($notifications->receiver_id);
-                return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> $notifications, 'userm' => $user]);
+                return view('health_professionals.show', ['psychologist' => $healthProfessionalProfile, 'notification'=> $notifications, 'userm' => $user]);
             }else {
-                return view('health_professionals.show', ['psychologist' => $psychologist, 'notification'=> null]); 
+                return view('health_professionals.show', ['psychologist' => $healthProfessionalProfile, 'notification'=> null]); 
             }
 
         }
+        return view('health_professionals.show', ['psychologist' => $healthProfessionalProfile, 'notification'=> null]); 
 
     }
 }
