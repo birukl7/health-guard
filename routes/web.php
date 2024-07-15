@@ -26,7 +26,7 @@ use App\Http\Controllers\PychologistController;
 use App\Http\Controllers\ResultController;
 
 Route::view('/', 'welcome');
-Route::get('/pychologists', PychologistController::class);
+Route::get('/psychologists', PychologistController::class);
 Route::post('/search', ResultController::class);
 Route::post('/filter', FilterController::class);
 

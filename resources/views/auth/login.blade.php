@@ -2,6 +2,15 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <div class="my-5">
+        <x-input-label value="Demo Student Email: kebedek@gmail.com" />
+        <x-input-label value="Demo Student Password: biruklemma" />
+    </div>
+
+    <div class="my-5">
+        <x-input-label value="Demo Psychologist Email: derick86@example.net" />
+        <x-input-label value="Demo Psychologist Password: biruklemma" />
+    </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
 

@@ -1,6 +1,5 @@
-@extends('home.layout')
-@section('content')
-  <section class="bg-white rounded-2xl m-4 pt-0 mt-0 p-7 w-full ">
+<x-custom.layout>
+  <x-custom.section>
     @php
       $style = 'focus:outline-none border-b-2 border-blue-500 text-blue-700';
     @endphp
@@ -109,5 +108,5 @@
     </div>
 
 
-  </section>
-@endsection
+  </x-custom.section>
+</x-custom.layout>

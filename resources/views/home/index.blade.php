@@ -285,7 +285,7 @@
 
       </section>
 
-
+      <x-custom.footer></x-custom.footer>
       <script src="{{asset('script/homeCards.js')}}"></script>
     </main>
 </x-layout>

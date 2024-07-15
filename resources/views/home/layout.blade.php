@@ -84,8 +84,8 @@
 
 
 
-            <a href="/pychologists" class="">
-              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('pychologists*') ? $bg : '' }}  {{ Request::is('health_professional*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
+            <a href="/psychologists" class="">
+              <li class="hover:bg-custom-vlgray hover:border-r-2 rounded-xl rounded-tr-none rounded-br-none cursor-pointer {{ Request::is('psychologists*') ? $bg : '' }}  {{ Request::is('health_professional*') ? $bg : '' }} py-5 pl-6   my-1 "><div><i class="mr-4 fa-solid fa-user-doctor " ></i><span class="">Pyschologists</span></div></li>
             </a>
 
           <a href="/dashboard">

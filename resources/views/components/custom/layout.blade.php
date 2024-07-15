@@ -76,7 +76,7 @@
                 Home
             </x-custom.nav-link>
 
-            <x-custom.nav-link href="/pychologists" :active="request()->is('pychologists') || request()->is('health_professional')">
+            <x-custom.nav-link href="/psychologists" :active="request()->is('psychologists') || request()->is('health_professional')">
               <x-slot:headings>
                 <i class="mr-4 fa-solid fa-user-doctor " ></i>
               </x-slot:headings>

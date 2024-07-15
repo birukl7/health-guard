@@ -7,7 +7,7 @@
     }
 @endphp
 
-<div class="shadow- shadow-xl  rounded-xl p-2 px-5 relative" style="height: 480px;">
+<div class="shadow- shadow-xl  rounded-xl p-2 px-5 relative" style="height: 490px;">
     <div class="flex items-start gap-x-6">
 
         <div>
