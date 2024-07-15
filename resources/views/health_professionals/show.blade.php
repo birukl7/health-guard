@@ -10,10 +10,16 @@
                         <div class="bg-white shadow rounded-lg p-6">
 
                             <div class="flex flex-col items-center">
-                                <img src="{{asset('storage/users-avatar/'.$psychologist->user->avatar)}}"
+
+                                @if (Str::startsWith($psychologist->user->avatar, ['http://', 'https://']))
+                                    <img src="{{ $psychologist->user->avatar }}" alt="" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                                @else
+                                    <img src="{{ asset('storage/users-avatar/'.$psychologist->user->avatar) }}" alt="" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                                @endif
+                                {{-- <img src="{{asset('storage/users-avatar/'.$psychologist->user->avatar)}}"
                                     class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
 
-                                </img>
+                                </img> --}}
                                 <h1 class="text-xl font-bold">{{$psychologist->first_name}} {{$psychologist->last_name}}</h1>
                                 <p class="text-gray-700">{{$psychologist->specialization}}</p>
 
@@ -207,7 +213,7 @@
 
                                             <p>
                                                
-                                                <span class="text-gray-700">{{\Carbon\Carbon::parse($experience->start_date)->format('M Y')}} - {{\Carbon\Carbon::parse($experience->start_date)->format('M Y')}}</span>
+                                                <span class="text-gray-700">{{\Carbon\Carbon::parse($experience->start_date)->format('M Y')}} - {{\Carbon\Carbon::parse($experience->end_date)->format('M Y')}}</span>
                                             </p>
                                         </div>
                                             <p>

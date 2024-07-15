@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(HealthProfessionalProfileSeeder::class);
-        $this->call(LaratrustSeeder::class);
+        
+            $this->call(HealthProfessionalProfileSeeder::class);
+        
+       
+        //$this->call(LaratrustSeeder::class);
     }
 }

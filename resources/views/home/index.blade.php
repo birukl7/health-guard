@@ -104,13 +104,21 @@
           <div class="absolute  bg-white p-5 rounded-xl flex flex-col md:flex-row gap-y-5 md:gap-0 shadow-lg  top-24 right-5 left-5" >
 
             <div class="flex flex-1 flex-col items-start gap-y-3 pl-3 md:pl-0 justify-between">
-              <span class="text- text-custom-lgray text-sm">Type of counseling</span>
-              <select name="counseling" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
+              <span class="text- text-custom-lgray text-sm">Type of Specialization</span>
+              <select name="specialization" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
                 <option value="all">All Type</option>
-                <option value="clinical">Clinical</option>
-                <option value="depression">Depression</option>
-                <option value="alcholism">Alcholism</option>
-                <option value="drug">Drug</option>
+                <option value="Clinical Psychology">Clinical Psychology</option>
+                <option value="Counseling Psychology">Counseling Psychology</option>
+                <option value="School Psychology">School Psychology</option>
+                <option value="Forensic Psychology">Forensic Psychology</option>
+                <option value="Industrial-Organizational Psychology">Industrial-Organizational Psychology</option>
+                <option value="Health Psychology">Health Psychology</option>
+                <option value="Neuropsychology">\Neuropsychology</option>
+                <option value="Developmental Psychology">Developmental Psychology</option>
+                <option value="Social Psychology">Social Psychology</option>
+                <option value="Experimental Psychology">Experimental Psychology</option>
+                <option value="Congnitive Psychology">Congnitive Psychology</option>
+                <option value="Environmental Psychology">Environmental Psychology</option>
               </select>
             </div>
 
@@ -137,20 +145,26 @@
                     <option value="wolaita sodo"> 
                     <option value="dilla">
                     <option value="woldia">
+                    <option value="Milan">
+                    <option value="Seoul">
+                    <option value="Busan">
+                    <option value="Rome">
+                    <option value="Guadalajara">
+                    <option value="Mexico City">
+                    <option value="Chiang Mai">
                     <!-- Add more options for other cities as needed -->
                 </datalist>
             </div>
 
             <div class="flex flex-1 flex-col items-start gap-y-3 justify-between md:border-l-2 pl-3  border-custom-vlgray">
-              <span class="text- text-custom-lgray text-sm">Age</span>
-              <select name="age" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
+              <span class="text- text-custom-lgray text-sm">Experience</span>
+              <select name="experience" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
                 <option value="all">All</option>
-                <option value="65+">65+</option>
-                <option value="50+">50+</option>
-                <option value="40+">40+</option>
-                <option value="35+">35+</option>
-                <option value="25+">25+</option>
-                <option value="20+">20+</option>
+                <option value="0-1">0-1</option>
+                <option value="2-5">2-5</option>
+                <option value="5-7">5-7</option>
+                <option value="7-10">7-10</option>
+                <option value="10+">10+</option>
               </select>
             </div>
 
@@ -158,14 +172,14 @@
               <span class="text- text-custom-lgray text-sm">Gender</span>
               <select name="gender" class="outline-none border-none focus:outline-none p-0 w-full"  id="">
                 <option value="All">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div>
-              <button class=" bg-custom-vlgray p-5 rounded-xl">
+              <button class=" bg-custom-vlgray p-5 rounded-xl" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
@@ -234,8 +248,13 @@
         @endphp
 
         @php
-        $i = 0;
+          $i = 0;
+         // dd($doctors);
         @endphp
+
+        {{-- @if($doctors)
+          <p>Result Not Found</p>
+        @endif --}}
         
         @if(isset($doctors))
           @foreach ($doctors as $doctor)

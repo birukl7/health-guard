@@ -15,32 +15,38 @@ class FilterController extends Controller
         $request->validate([
             'city' => 'nullable|string|max:25', // Adjust max length as needed
         ]);
-        $counseling = $request->input('counseling');
+        $specialization = $request->input('specialization');
         $city = $request->input('city');
-        $age = $request->input('age');
+        $experience = $request->input('experience');
         $gender = $request->input('gender');
     
         $doctors = User::whereHas('roles', function ($query) {
                 $query->where('name', 'health_professional');
             })
-            ->whereHas('healthProfessionalProfile', function ($query) use ($city) {
-                $query->where('location', 'like', "%$city%");
-            });
+            ->whereHas('healthProfessionalProfile')->orderBy('created_by', 'desc');
     
-        if ($counseling && $counseling != 'all') {
-            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($counseling) {
-                $query->whereJsonContains('issues', $counseling);
+        if ($specialization && $specialization != 'all') {
+            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($specialization) {
+                $query->where('specialization', 'like', "%$specialization%");
+            });
+        }
+
+        if ($city && $city != 'all') {
+            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($city) {
+                $query->where('location', 'like', "%$city%");
             });
         }
     
-        if ($age && $age != 'all') {
-            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($age) {
-                $query->where('age', '>=', $age);
+        if ($experience && $experience != 'all') {
+            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($experience) {
+                $query->where('years_of_experience', 'like', "%$experience%");
             });
         }
     
         if ($gender && $gender != 'All') {
-            $doctors->where('gender', $gender);
+            $doctors->whereHas('healthProfessionalProfile', function ($query) use ($gender) {
+                $query->where('gender', 'like', "%$gender%");
+            });
         }
     
         // dd($doctors);

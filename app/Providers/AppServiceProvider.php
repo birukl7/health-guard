@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::preventLazyLoading();
+        //Model::preventLazyLoading();
         Gate::define('edit-experience', function(User $user, HealthProfessionalProfile $hProff){
             return $hProff->user->is($user);
         });

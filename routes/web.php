@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlofgController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\Admin\StudentController;

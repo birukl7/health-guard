@@ -75,8 +75,8 @@ class HealthProfessionalProfileController extends Controller
             'twitter' => 'nullable|string|max:255',
             'price' => 'required|string|in:free,paid',
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
-            'issues' => 'nullable|array',
-            'issues.*' => 'string',
+            // 'issues' => 'nullable|array',
+            // 'issues.*' => 'string',
 
         ]);
         $issuesJson = json_encode($request->input('issues', []));

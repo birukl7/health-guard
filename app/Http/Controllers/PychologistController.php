@@ -15,7 +15,10 @@ class PychologistController extends Controller
         $perPage = 6;
         $doctors = User::whereHas('roles', function ($query) {
             $query->where('name', 'health_professional');
-        })->whereHas('healthProfessionalProfile')->paginate(6);
+        })->whereHas('healthProfessionalProfile')
+          ->with('healthProfessionalProfile')
+          ->orderBy('created_at', 'desc') // Order by the most recent created_at value
+          ->simplePaginate(6);
     
         return view('home.index', ['doctors' => $doctors]);
     }

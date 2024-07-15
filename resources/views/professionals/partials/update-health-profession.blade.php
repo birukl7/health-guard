@@ -138,12 +138,6 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        {{-- <div>
-            <x-input-label for="license" :value="__('Upload a license (PDF, JPG, JPEG, PNG and less than 4Mb)')" />
-            <input id="license" type="file" name="license" class="mt-1 inline w-full" />
-            <x-input-error :messages="$errors->get('license')" class="mt-2" />
-        </div> --}}
-
         <div>
             <x-input-label for="linkedin link" :value="__('Your Linkedin link')" />
             <x-text-input id="linkedin" name="linkedin" type="text" class="mt-1 block w-full" :value="old('name', $user->healthProfessionalProfile->linkedin)"  autocomplete="linkedin" />
