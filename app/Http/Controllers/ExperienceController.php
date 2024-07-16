@@ -23,11 +23,9 @@ class ExperienceController extends Controller
     {
         if(Auth::user()->hasRole('health_professional')){
             return view('experiences.create');
-        }else{
-            abort(404);
         }
-        
-        
+
+            abort(403);  
     }
 
     /**

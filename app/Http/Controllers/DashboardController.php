@@ -32,15 +32,20 @@ class DashboardController extends Controller
             // dd($doctor);
             if(isset($depression) && isset($alcohol) && isset($drug)) {
                 return view('dashboard.student', ['depression'=> $depression, 'alcohol' => $alcohol, 'drug' => $drug, 'doctors'=> $doctor]);
-            } else if(isset($depression) && isset($alcohol)) {
+            }
+            if(isset($depression) && isset($alcohol)) {
                 return view('dashboard.student', ['depression'=> $depression, 'alcohol' => $alcohol, 'doctors'=>$doctor]);
-            } else if(isset($depression) && isset($drug)) {
+            } 
+            if(isset($depression) && isset($drug)) {
                 return view('dashboard.student', ['depression'=> $depression, 'drug' => $drug, 'doctors'=>$doctor]);
-            } else if(isset($depression)) {
+            } 
+            if(isset($depression)) {
                 return view('dashboard.student', ['depression'=> $depression, 'doctors'=>$doctor]);
-            } else if(isset($alcohol)) {
+            } 
+            if(isset($alcohol)) {
                 return view('dashboard.student', [ 'alcohol' => $alcohol, 'doctors'=>$doctor]);
-            } else if(isset($drug)) {
+            } 
+            if(isset($drug)) {
                 return view('dashboard.student', [ 'drug' => $drug, 'doctors'=>$doctor]);
             } else {
                 return view('dashboard.student', ['doctors'=>$doctor]);
