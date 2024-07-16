@@ -92,8 +92,6 @@ class NotificationController extends Controller
      */
     public function update(Request $request)
     {
-        
-        $userId = Auth::user()->id;
         $notId = (int)$request->input('id'); // Corrected the way of accessing request parameter
         // Create a new notification
         $notification = Notification::findOrFail($notId);

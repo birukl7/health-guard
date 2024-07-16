@@ -112,7 +112,6 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::post('/posts', [PostController::class, 'store'])->name('posts.edit');
 Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-
 Route::get('/experiences/create',[ExperienceController::class, 'create'])->middleware('auth');
 Route::post('/experiences',[ExperienceController::class, 'store'])->middleware('auth');
 Route::patch('/experiences/{experience}',[ExperienceController::class, 'update'])->middleware('auth');

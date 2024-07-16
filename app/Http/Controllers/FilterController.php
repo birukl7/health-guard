@@ -27,7 +27,7 @@ class FilterController extends Controller
     
         if ($specialization && $specialization !== 'all') {
             $doctors->whereHas('healthProfessionalProfile', function ($query) use ($specialization) {
-                $query->where('specialization', 'like', "%$specialization%");
+                $query->where('specialization', 'like', "%{$specialization}%");
             });
         }
 

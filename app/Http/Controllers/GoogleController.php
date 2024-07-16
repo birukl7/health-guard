@@ -37,14 +37,12 @@ class GoogleController extends Controller
                 //$newUser->name = $user->name;
                 $newUser->google_id = $user->id;
                 $newUser->save();
-
-
                 //var_dump('new user', $newUser);
-                $vars = [
-                    'name' => $newUser->name,
-                    'google id' => $newUser->google_id,
-                    'password' => $user->password,
-                ];
+                // $vars = [
+                //     'name' => $newUser->name,
+                //     'google id' => $newUser->google_id,
+                //     'password' => $user->password,
+                // ];
                 //var_dump($vars);
 
                 Auth::login($newUser);
@@ -58,8 +56,6 @@ class GoogleController extends Controller
 
     public function finishUp(Request $request)
     {
-
-        $authType = $request->authType;
 
         $user = auth()->user();
 

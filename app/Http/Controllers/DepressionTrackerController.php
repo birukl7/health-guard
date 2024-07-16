@@ -137,7 +137,7 @@ class DepressionTrackerController extends Controller
 
                 $score += $mapNum[$answer];
                 $numss[] = $mapNum[$answer];
-            } elseif ($num == '3' || $num == '6' || $num == '9') {
+            } elseif ($num === '3' || $num === '6' || $num === '9') {
                 $mapNum = [
                     'rarely' => 1,
                     'sometimes' => 2,
@@ -152,7 +152,7 @@ class DepressionTrackerController extends Controller
                 $numss[] = $mapNum[$answer];
             }
         }
-        $score = 100.0 * ($score / 20.0);
+        $score = 100.0 * ($score/20.0);
 
         $validated['user_id'] = $userId;
         //$validated['score'] = $score;

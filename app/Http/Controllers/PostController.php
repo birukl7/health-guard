@@ -71,7 +71,10 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'duration' => 'required|string',
-            'image'=> ['required', File::types(['png', 'jpg', 'webp', 'jpeg', 'gif']) ],
+            'image'=> [
+                'required', 
+                File::types(['png', 'jpg', 'webp', 'jpeg', 'gif']) 
+                ],
             'issues'=> 'required'
         ]);
 
