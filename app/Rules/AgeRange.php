@@ -14,7 +14,7 @@ class AgeRange implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attriute, $value)
     {
         $dob = Carbon::parse($value);
         $age = $dob->age;

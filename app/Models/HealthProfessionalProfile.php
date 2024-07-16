@@ -12,7 +12,7 @@ class HealthProfessionalProfile extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

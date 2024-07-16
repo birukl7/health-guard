@@ -12,7 +12,6 @@ class PychologistController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $perPage = 6;
         $doctors = User::whereHas('roles', function ($query) {
             $query->where('name', 'health_professional');
         })->whereHas('healthProfessionalProfile')

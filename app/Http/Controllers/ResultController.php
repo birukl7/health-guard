@@ -13,7 +13,6 @@ class ResultController extends Controller
     public function __invoke(Request $request)
     {
         $keyword = $request->input('search');
-        // return $keyword;
         $doctors = User::whereHas('roles', function ($query) {
             $query->where('name', 'health_professional');
         })
@@ -34,9 +33,6 @@ class ResultController extends Controller
                 });
         })
         ->paginate(6);
-
-       
-
     return view('home.index', ['doctors' => $doctors]);
     }
 }

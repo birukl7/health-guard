@@ -25,25 +25,25 @@ class FilterController extends Controller
             })
             ->whereHas('healthProfessionalProfile')->orderBy('created_by', 'desc');
     
-        if ($specialization && $specialization != 'all') {
+        if ($specialization && $specialization !== 'all') {
             $doctors->whereHas('healthProfessionalProfile', function ($query) use ($specialization) {
                 $query->where('specialization', 'like', "%$specialization%");
             });
         }
 
-        if ($city && $city != 'all') {
+        if ($city && $city !== 'all') {
             $doctors->whereHas('healthProfessionalProfile', function ($query) use ($city) {
                 $query->where('location', 'like', "%$city%");
             });
         }
     
-        if ($experience && $experience != 'all') {
+        if ($experience && $experience !== 'all') {
             $doctors->whereHas('healthProfessionalProfile', function ($query) use ($experience) {
                 $query->where('years_of_experience', 'like', "%$experience%");
             });
         }
     
-        if ($gender && $gender != 'All') {
+        if ($gender && $gender !== 'All') {
             $doctors->whereHas('healthProfessionalProfile', function ($query) use ($gender) {
                 $query->where('gender', 'like', "%$gender%");
             });

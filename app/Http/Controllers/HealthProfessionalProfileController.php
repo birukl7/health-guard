@@ -7,7 +7,6 @@ use App\Rules\AgeRange;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class HealthProfessionalProfileController extends Controller

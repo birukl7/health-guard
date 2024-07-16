@@ -31,8 +31,7 @@ class PostController extends Controller
     }
 
     public function update(Request $request, Post $post){
-         // dd($request->all());
-        $validatedData = $request->validate([
+         $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required',
         'duration' => 'required|string',
@@ -68,7 +67,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
   
-        $validatedData = $request->validate([
+         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required',
             'duration' => 'required|string',

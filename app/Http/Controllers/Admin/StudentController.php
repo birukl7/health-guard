@@ -79,9 +79,4 @@ class StudentController extends Controller
         $title = $request->title;
         $questions = $request->questions; 
     }
-
-    public function setStatus(Request $request)
-    {
-
-    }
 }

@@ -52,7 +52,7 @@ class GoogleController extends Controller
                 return view('auth.google-quick-login', ['user' => $newUser]);
             }
         } catch (Exception $e) {
-            dd($e->getMessage());
+           // dd($e->getMessage());
         }
     }
 

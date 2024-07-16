@@ -13,7 +13,6 @@
     </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        04512247
 
         <!-- Email Address -->
         <div>

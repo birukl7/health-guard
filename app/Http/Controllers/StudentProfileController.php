@@ -65,8 +65,6 @@ class StudentProfileController extends Controller
     public function store(Request $request)
     {
         $userId = Auth::id();
-
-        // Validate the request data
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
             'last_name' => 'required|string|min:2|max:255',
@@ -111,7 +109,6 @@ class StudentProfileController extends Controller
         $student->fill($validated);
         $student->save();
     
-        // Redirect or return a response
         return redirect()->route('students.create')->with('success', 'Student Profile created successfully.');
     }
 
