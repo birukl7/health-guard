@@ -1,7 +1,7 @@
 <x-custom.layout>
 
 
-    <main class=" md:w-full bg-white rounded-2xl m-4 pt-10 p-7 w-full ">
+    <main class=" md:w-full bg-white rounded-2xl sm:m-4  pt-10 p-7 w-full ">
     <!-- The welcome part -->
       <div class="flex justify-between sticky top-0 z-10 bg-white py-7">
 
@@ -20,19 +20,15 @@
         @if(Route::has('login'))
           @auth
           
-          <form action="/search" method="POST" class="flex">
+          <form action="/search" method="POST" class="sm:flex hidden ">
             @method('POST')
             @csrf
             <input type="search" name="search" class=" right-full mr-3 rounded-xl  border-none  transition-all duration-400 ease-in-out bg-custom-vvlgary p-0  py-0 focus:outline-none w-0" placeholder="search" id="search-bar">
             <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray cursor-pointer" id="search-contain">
             <i class="fa-solid fa-magnifying-glass rotate"></i> 
-          </div>
+            </div>
           </form>
-
-          
-
-
-
+        
           <script>
             const searchContain = document.querySelector('#search-contain')
             const searchBar = document.querySelector('#search-bar')
@@ -56,7 +52,6 @@
             })
           </script>
 
-         
 
           <a href="{{route('notifications.index')}}">
             <div class="relative py-2 px-3 bg-white outline outline-1 rounded-full outline-custom-lgray">
@@ -194,7 +189,7 @@
         </div>
       </div>
 
-      <section class=" mt-96 md:mt-28 pl-5">
+      <section class=" mt-96 md:mt-28 sm:pl-5">
         <div class="flex items-center justify-between my-5 mb-10">
           <h2 class="text-2xl font-bold ">Best for you</h2>
           @if( Request::is('pychologists'))
@@ -205,7 +200,7 @@
         </div>
 
         <!-- grid for pychologists card -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-6" id="pychologist-card-contanier">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 sm:gap-x-5 gap-y-6" id="pychologist-card-contanier">
         @php
           if (!function_exists('generateRandomDecimal')) {
               function generateRandomDecimal()
@@ -256,29 +251,32 @@
           <p>Result Not Found</p>
         @endif --}}
         
-        @if(isset($doctors))
-          @foreach ($doctors as $doctor)
-              @include('home.partials.doctor-card', [
-                  'doctor' => $doctor,
-                  'decimal' => $decimals[$i],
-                  'color' => $colors[$i]
-              ])
-              @php
-              $i++;
-              @endphp
-          @endforeach
-        @else
-          @foreach ($results as $result)
-              @include('home.partials.doctor-card', [
-                  'doctor' => $result,
-                  'decimal' => $decimals[$i],
-                  'color' => $colors[$i]
-              ])
-              @php
-              $i++;
-              @endphp
-          @endforeach
-        @endif
+        @if(isset($doctors) && count($doctors) > 0)
+        @foreach ($doctors as $doctor)
+            @include('home.partials.doctor-card', [
+                'doctor' => $doctor,
+                'decimal' => $decimals[$i],
+                'color' => $colors[$i]
+            ])
+            @php
+                $i++;
+            @endphp
+        @endforeach
+    @elseif(isset($results) && count($results) > 0)
+        @foreach ($results as $result)
+            @include('home.partials.doctor-card', [
+                'doctor' => $result,
+                'decimal' => $decimals[$i],
+                'color' => $colors[$i]
+            ])
+            @php
+                $i++;
+            @endphp
+        @endforeach
+    @else
+        <p class="text-center">No results found.</p>
+    @endif
+    
           
         </div>
           <div class=" mt-4">{{$doctors->links()}}</div>

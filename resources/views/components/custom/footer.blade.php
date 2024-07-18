@@ -1,8 +1,8 @@
-<footer class="flex flex-col sm:flex-row mb-10 mt-10 gap-x-16">
+<footer class="flex flex-col sm:flex-row mb-10 mt-20 gap-x-16">
 
-  <ul class="w-60 ">
+  <ul class="sm:w-60 ">
       <a href="/">
-          <h1 class="font-bold text-2xl text-custom-blue mb-2">Health-Guard</h1>
+          <h1 class="font-bold text-3xl sm:text-2xl text-custom-blue mb-4">Health-Guard</h1>
       </a>
       <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
       <address>

@@ -27,9 +27,7 @@ class ResultController extends Controller
                         ->orWhere('hospital_affiliation', 'like', "%$keyword%")
                         ->orWhere('phone_number', 'like', "%$keyword%")
                         ->orWhere('location', 'like', "%$keyword%")
-                        ->orWhere('license', 'like', "%$keyword%")
-                        ->orWhere('years_of_experience', 'like', "%$keyword%")
-                        ->orWhereJsonContains('issues', $keyword);
+                        ->orWhere('years_of_experience', 'like', "%$keyword%");
                 });
         })
         ->paginate(6);
