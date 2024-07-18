@@ -1,8 +1,8 @@
 <x-custom.layout>
     <x-custom.section>
-        <div class="flex flex-col h-screen items-center bg-no-repeat " style="background-image: url('{{ url('images/wave.png') }}');">
+        <div class="flex flex-col md:h-screen h-auto items-center bg-no-repeat " style="background-image: url('{{ url('images/wave.png') }}');">
         <!-- Landing page         -->
-        <div class="flex md:flex-row flex-col justify-start items-center h-screen" id="hero-section">
+        <div class="flex md:flex-row flex-col justify-start items-center sm:h-screen" id="hero-section">
             <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
             <div>
                 <h1 class="text-6xl font-bold w-11/12 ">Break Free <span class=" text-blue-700">from</span>  Depression </h1>
@@ -37,13 +37,13 @@
             </div>
     
             </div>
-            <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
+            <div id="hero-image bg-green" class="bg-green md:w-3/4 w-full  ">
                 <img src="{{ asset('images/file.png')}}" alt="" class="w-full " id="hero-image" >
             </div>
         </div>
     
                 <!-- numbers -->
-            <ul id="data" class="flex md:flex-row flex-col justify-around p-3 py-10 mt-5 sm:-mt-10 rounded-lg bg-slate-200 dark:bg-transparent ">
+            <ul id="data" class="flex md:flex-row flex-col justify-around p-3 sm:py-10 sm:-mt-10 rounded-lg bg-slate-200 dark:bg-transparent mt-24">
                 <li class=" p-3 px-10 border-r-2 border-slate-700 text-black"> <div><strong class="text-3xl text-black "><span id="js-finish">4500</span>+</strong ><p class="text-black font-robotoCondensed">Finish Candidates</p></div></li>
                 <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-year">9</span>+</strong><p class="font-robotoCondensed">Years of Experience</p></div></li>
                 <li class=" p-3 px-10 border-r-2 border-slate-700 "> <div><strong class="text-3xl p"><span id="js-excellence">350</span>+</strong><p class="font-robotoCondensed" >Excellence Awards</p></div></li>
@@ -110,12 +110,12 @@
             </script>
         </div>
     
-        <div class="flex md:flex-row flex-col justify-start items-center show hero-section" id="hero-section">
-            <div id="hero-image" class="bg-green md:w-3/4  ">
+        <div class="flex md:flex-row flex-col justify-start items-center show hero-section sm:mt-10" id="hero-section">
+            <div id="hero-image" class="bg-green md:w-3/4 ">
                 <img src="{{ asset('images/Helping a partner.gif')}}" alt="" class="w-full " id="hero-image" >
             </div>
     
-            <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+            <div id="hero-text" class=" flex items-center sm:pt-36 md:pt-0">
             <div>
                 <h1 class="text-6xl font-bold w-11/12 ">We're here to lift you up </h1>
                 <p class="my-6 w-10/12 font-robotoCondensed">With its roots firmly grounded in psychology, Health-Guard seamlessly blends technology and human understanding to provide holistic support for mental well-being
@@ -141,12 +141,12 @@
             </div>
         </div>
     
-        <div class="flex md:flex-row flex-col justify-start items-center show hero-section" id="hero-section">
+        <div class="flex md:flex-row flex-col justify-start items-center show hero-section mb-10" id="hero-section">
             <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
                 <img src="{{ asset('images/Doctors-pana.png')}}" alt="" class="w-full " id="hero-image" >
             </div>
     
-            <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+            <div id="hero-text" class=" flex items-center mt:pt-36 pt-2 md:pt-0">
                 <div>
                     <h1 class="text-6xl font-bold w-11/12 ">Are you a health professional? </h1>
                     <p class="my-6 w-10/12 font-robotoCondensed">With its roots firmly grounded in psychology, Health-Guard seamlessly blends technology and human understanding to provide holistic support for mental well-being

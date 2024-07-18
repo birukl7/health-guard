@@ -44,13 +44,12 @@
       </div>
     @endif
 
-    <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start h-auto">
-        <div class="w-custom-4  rounded-xl overflow-hidden">
+    <section class="p-3 rounded-xl bg-custom-graish mt-10 flex sm:flex-row flex-col justify-start h-auto">
+        <div class="sm:w-custom-4  rounded-xl overflow-hidden">
             <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
         </div>
-        <div class="flex flex-col py-20 px-28">
+        <div class="flex flex-col sm:py-20 sm:px-28 p-7">
             <p class="font-semibold">Do you know blogging is a feature allowed for only health professionals?</p>
-
         </div>
     </section>
 
@@ -239,7 +238,7 @@
             Add Blog
         </x-custom.quaternary-button>
     @else
-        <div class="grid grid-cols-2 gap-x-3">
+        <div class="grid sm:grid-cols-2 grid-cols-1 ms:grid-cols-3 gap-x-3">
             @foreach (Auth::user()->healthProfessionalProfile->posts as $blog)
                 <div class="bg-white p-6 rounded-xl shadow-xl my-5 relative">
                     <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"

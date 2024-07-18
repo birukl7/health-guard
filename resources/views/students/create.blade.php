@@ -1,6 +1,5 @@
-@extends('home.layout')
-@section('content')
-<section class="bg-white flex flex-col rounded-2xl m-4 pt-10 p-7 w-full">
+<x-custom.layout>
+<x-custom.section>
     @php
     $user = Auth::user();
     $text_color = 'text-custom-blue';
@@ -45,11 +44,11 @@
         </div>
 
         @if(!$user->alcoholUseTracker || !$user->drugUseTracker || !$user->depressionTracker)
-        <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start ">
-            <div class="w-custom-4  rounded-xl h-full overflow-hidden">
-                <img src="{{asset('images/helena-lopes.jpg')}}" alt="">
+        <section class="p-3 pr-3 rounded-xl bg-custom-graish mt-10 flex sm:flex-row flex-col justify-start ">
+            <div class="sm:w-custom-4 rounded-xl sm:h-full  overflow-hidden">
+                <img src="{{asset('images/helena-lopes.jpg')}}" alt="" class="">
             </div>
-            <div class="flex flex-col py-20 px-28">
+            <div class="flex flex-col sm:py-20 sm:px-28 mt-5">
                 <p class="font-semibold">
                     what is your main concern right now?
                 </p>
@@ -120,7 +119,7 @@
                 </div>
             </div>
             @else
-            <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
+            <div class="flex sm:flex-row flex-col gap-y-2 sm:gap-x-0  justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10">
 
                 <div class="flex items-center js-icon">
                     <i class="fa-regular fa-folder text-3xl"></i>
@@ -166,7 +165,7 @@
             @endif
 
             @if($user->depressionTracker)
-            <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 ">
+            <div class="flex sm:flex-row flex-col gap-y-2 sm:gap-x-0 justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 ">
 
                 <div class="flex items-center js-icon-1">
                     <i class="fa-regular fa-folder text-3xl"></i>
@@ -210,7 +209,7 @@
 
 
         @if($user->alcoholUseTracker)
-        <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
+        <div class="flex sm:flex-row flex-col gap-y-2 sm:gap-x-0 justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
 
             <div class="flex items-center js-icon-2">
                 <i class="fa-regular fa-folder text-3xl"></i>
@@ -254,7 +253,7 @@
         @endif
 
         @if($user->drugUseTracker)
-        <div class="flex justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 mx-8">
+        <div class="flex sm:flex-row flex-col gap-y-2 sm:gap-x-0 justify-between items-center px-5 pr-10 pt-16 shadow-xl pb-10 ">
 
             <div class="flex items-center js-icon-3">
                 <i class="fa-regular fa-folder text-3xl"></i>
@@ -298,20 +297,23 @@
 
         @endif
 
-        <section class="p-3 rounded-xl bg-custom-graish mt-10 flex justify-start h-auto">
+        <section class="p-3 rounded-xl bg-custom-graish mt-10 flex sm:flex-row flex-col justify-start h-auto">
 
-            <div class="w-custom-4  rounded-xl overflow-hidden">
+            <div class="sm:w-custom-4  rounded-xl overflow-hidden">
                 <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
             </div>
 
-            <div class="flex flex-col py-20 px-28">
+            <div class="flex flex-col sm:py-20 sm:px-28 mt-4">
                 <p class="font-semibold">Learn university life psychology now and teach your friend always to be
                     happy!</p>
                 <button class="bg-black text-white w-40 p-3 text-sm rounded-full mt-5"><span>Learn More</span>
                     &gt;</button>
             </div>
         </section>
+
+        <x-custom.footer />
     </div>
  
-</section>
-@endsection
+    
+</x-custom.section>
+</x-custom.layout>

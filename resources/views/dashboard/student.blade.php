@@ -1,6 +1,6 @@
 <x-custom.layout>
 
-<section class="bg-white rounded-2xl m-4 pt-10 p-7 w-full">
+<x-custom.section>
 @php
   $basicPercent = 1;
   $relaxPercent = 1;
@@ -274,7 +274,7 @@
   @endif
 
   
-  <div class="flex space-x-4 py-10">
+  <div class="flex sm:flex-row flex-col py-10">
     <!-- Card 1 -->
     <div class="bg-white rounded-lg p-4 shadow-lg flex items-center space-x-8 w-full relative">
       <img src="{{asset('images/john-schnobrich.jpg')}}" alt="" class="w-12 h-12 rounded-full">
@@ -311,7 +311,7 @@
   </div>
 
   <h1 class="font-bold p-3 text-2xl">Today's Status</h1>
-  <div class=" flex justify-around gap-x-20 py-8">
+  <div class=" flex sm:flex-row gap-y-5 flex-col justify-around gap-x-20 py-8">
     <!-- cards -->
     <div class="flex flex-col items-center gap-y-8 shadow-xl p-3 px-10 rounded-md">
       <span class="text-xl">Basics</span>
@@ -327,7 +327,6 @@
         </div>
       </div>
     </div>
-
         <!-- cards -->
     <div class="flex flex-col items-center gap-y-8 shadow-xl p-3 rounded-md">
       <p class="text-xl">Relaxation</p>
@@ -380,7 +379,7 @@
 
 
   <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
-      <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+      <div id="hero-text" class=" flex items-center sm:pt-36 pt-2 md:pt-0 p-3">
       <div>
           <h1 class="text-6xl font-bold w-11/12 ">Take quizzes </h1>
           <p class="my-6 w-10/12 font-robotoCondensed">
@@ -414,11 +413,11 @@
   </div>
 
   <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
-      <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
+      <div id="hero-image bg-green" class="bg-green order-2 md:w-3/4  ">
           <img src="{{ asset('images/Publish article-pana.png')}}" alt="" class="w-full " id="hero-image" >
       </div>
 
-      <div id="hero-text" class=" flex items-center pt-36 md:pt-0 ml-10">
+      <div id="hero-text" class=" flex order-1 items-center sm:pt-36 md:pt-0 ">
         <div>
             <h1 class="text-6xl font-bold w-11/12 ">Read Articles</h1>
             <p class="my-6 w-10/12 font-robotoCondensed">Regularly reading articles is key to enhancing comprehension and retention. Over time, this practice sharpens your cognitive skills and expands your knowledge base.
@@ -442,7 +441,7 @@
   </div>
 
   <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
-      <div id="hero-text" class=" flex items-center pt-36 md:pt-0">
+      <div id="hero-text" class=" flex items-center sm:pt-36 pt-3 md:pt-0">
       <div>
           <h1 class="text-6xl font-bold w-11/12 ">Is Addiction Your Big Concern? </h1>
           <p class="my-6 w-10/12 font-robotoCondensed">
@@ -455,28 +454,28 @@
                   <a href="{{route('students.create')}}">
                       <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                       text-white rounded-full hover:shadow-lg 
-                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Addictions</button>
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out  md:mt-0 sm:mt-3 w-80">Addictions</button>
                   </a>
                   <a href="{{route('alcohols.create')}}">
                       <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                       text-white rounded-full hover:shadow-lg 
-                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Alcoholism</button>
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out md:mt-0 sm:mt-3 w-80">Alcoholism</button>
                   </a>
                   <a href="{{route('drugs.create')}}">
                       <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                       text-white rounded-full hover:shadow-lg 
-                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Drug</button>
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out md:mt-0 sm:mt-3 w-80">Drug</button>
                   </a>
                   <a href="{{route('depressions.create')}}">
                       <button type="submit" class="px-7 py-3 hover:outline hover:outline-1 hover:outline-blackhover:text-black  bg-black 
                       text-white rounded-full hover:shadow-lg 
-                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out mt-3 md:mt-0 sm:mt-3 w-80">Depression</button>
+                      hover:bg-transparent hover:text-black hover:px-10 transition-all duration-500 ease-in-out md:mt-0 sm:mt-3 w-80">Depression</button>
                   </a>
                 </div>
 
                 <a href="#" class="">
                     <button type="submit" class="px-7 py-3 outline outline-1 outline-white  bg-custom-blue 
-                    text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out  md:mt-0 sm:mt-20  mt-10">More about Addiction
+                    text-white rounded-full hover:shadow-lg hover:px-10 transition-all duration-500 ease-in-out  md:mt-0 sm:mt-20  mt-10 mb-6">More about Addiction
                 </a>
                 
               </span>
@@ -506,7 +505,7 @@
 
 
   <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Current Consultations</span></h2>
-  <div class="p-7 grid grid-cols-3 gap-3">
+  <div class="sm:p-7 pt-3 grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1  gap-3">
       @if(isset($doctors))
 
         @foreach ($doctors as $doctor)
@@ -516,45 +515,7 @@
         @endforeach
       @endif
     </div>
-
-  <footer class="flex mb-10 mt-10 gap-x-16">
-        <div class="w-60">
-            <a href="/">
-                <h1 class="font-bold text-2xl text-custom-blue mb-2">Health-Guard</h1>
-            </a>
-            <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
-            <address>
-                <div class="font-semibold">
-                    <a href="#">+251(34356856)</a>
-                    <a href="#">mobile@number.com</a>
-                </div>
-            </address>
-        </div>
-
-        <ul class="mx-16">
-            <li class="text-xl font-semibold mb-2">Quick Links</li>
-            <li>Dashboard</li>
-            <li>Profile</li>
-            <li>Blog</li>
-            <li>Setting</li>
-        </ul>
-
-        <ul class="mr-16">
-            <li class="text-xl font-semibold mb-2">Resources</li>
-            <li>Meditations</li>
-            <li>Blogs</li>
-            <li>Chats</li>
-            <li>FAQs</li>
-        </ul>
-
-        <ul>
-            <li class="text-xl font-semibold mb-2">Support</li>
-            <li>Forums</li>
-            <li>Documentation</li>
-            <li>Terms</li>
-            <li>Community</li>
-        </ul>
-    </footer>
+    <x-custom.footer />
   <script src="{{asset('script/navBar.js')}}"></script>
-</section>
+</x-custom.section>
 </x-custom.layout>

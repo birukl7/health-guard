@@ -37,7 +37,7 @@
 
 
     <header
-      class="pr-3 w-full flex md:inline-block gap-x-4 md:gap-x-0 justify-start items-center md:w-80 pt-10 pl-1 md:pl-0 bg-custom-graish header-js transition-all  duration-200 ease-in-out fixed top-0 bottom-0  z-50">
+      class="pr-3 w-0 flex md:inline-block gap-x-4 md:gap-x-0 justify-start items-center md:w-80 pt-10 pl-1 md:pl-0 bg-custom-graish header-js transition-all  duration-200 ease-in-out fixed top-0 bottom-0  z-50">
 
       <div
         class="flex items-center gap-x-4 fixed md:static right-0 left-0 top-0 px-3 pt-3 pb-3 bg-white  md:bg-inherit z-20 md:z-0 md:block md:p-0 shadow-lg md:shadow-none">
@@ -189,7 +189,7 @@
 
     </header>
 
-    <div class="pt-8 pl-custom-5 md:pt-0 md:w-full js-main-container ">
+    <div class="pt-8 md:pl-custom-5 md:pt-0 md:w-full w-full js-main-container ">
       {{$slot}}
     </div>
   </div>

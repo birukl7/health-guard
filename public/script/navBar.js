@@ -1,11 +1,7 @@
 const _navToggleBtn = document.querySelector('.nav-toggle-js');
-
 const navToggleBtnIcon = document.querySelector('.nav-toggle-js i')
-
 const navUls = document.querySelectorAll('nav ul a span')
-
 const headerJs = document.querySelector('.header-js')
-
 const logoJs = document.querySelector('.js-logo')
 const bodyMain = document.querySelector('.js-main-container')
 const hamburger = document.querySelector('#hamburger');

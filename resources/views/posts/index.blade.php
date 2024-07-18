@@ -36,7 +36,7 @@ use Carbon\Carbon;
 
   <div class="flex items-center justify-between my-5 mb-10">
     <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-2xl my-4 mb-6">Top categories</span><span class="px-2 py-1 bg-custom-vlgray rounded-full">3</span></h2>
-    <button class="bg-custom-vlgray px-6 py-2 rounded-full flex justify-between items-center gap-x-4"><span>See all</span> &gt;</button>
+    <button class="bg-custom-vlgray px-6 py-2 rounded-full sm:flex justify-between items-center gap-x-4 hidden "><span>See all</span> &gt;</button>
   </div>
 
    @php
@@ -47,7 +47,7 @@ use Carbon\Carbon;
   @endphp
 
   <!-- Category cards -->
-  <div class="grid grid-cols-3 gap-x-8">
+  <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-8">
     <div class="flex items-center gap-x-5 p-4 shadow-xl rounded-xl py-6">
       <div class="w-16 h-16 rounded-full overflow-hidden border border-white  shadow-xl ">
         <img src="{{asset('images/Depression.jpg')}}" alt="">
@@ -97,16 +97,16 @@ use Carbon\Carbon;
   </div>
 
   <!-- Article cards -->
-  <div class="grid grid-cols-3 gap-x-5 gap-y-8">
+  <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-5 gap-y-8">
     @foreach ($blogs as $blog)
     @php
     $createdAtCarbon = Carbon::parse($blog->created_at);
     $created = $createdAtCarbon->diffForHumans();
     @endphp
-    <div class="bg-white p-6 rounded-xl shadow-xl my-5">
+    <div class="bg-white w-full p-6 rounded-xl shadow-xl my-5">
       <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"
         style="background-image: url('{{asset('storage/post-image/'.$blog->image)}}');">
-        <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1"></span>
+        {{-- <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1"></span> --}}
       </div>
 
       <div class="text-custom-lgray my-4" style="font-size: 13px;">
@@ -136,5 +136,6 @@ use Carbon\Carbon;
     </div>
     @endforeach
   </div>
+  <x-custom.footer />
 </x-custom.section>
 </x-custom.layout>

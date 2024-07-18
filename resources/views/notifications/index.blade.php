@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="container mx-auto text-center py-4">
+      <div class="container mx-auto text-center py-4 flex flex-wrap gap-y-4">
         <button class="mx-2 pb-3 hover:text-blue-700 focus:outline-none {{ Request::is('notifications') ? $style : '' }}">All recently added</button>
         <button class="mx-2 pb-3  hover:text-blue-700 ">From Health-Guard</button>
         <button class="mx-2 pb-3 text-gray-500 hover:text-blue-700 focus:outline-none">New podcasts</button>
@@ -75,7 +75,7 @@
             $createdAt = $notifyReceive->created_at->diffForHumans();
         @endphp
         <!-- Display information about $receiverUser or use it as needed -->
-        <div class="bg-white p-4 rounded-lg shadow-lg max w-1/2 relative outline outline-1 outline-custom-lgray ml-12">
+        <div class="bg-white p-4 rounded-lg shadow-lg max sm:w-1/2 relative outline outline-1 ml-0 w-full outline-custom-lgray">
             <div class="flex items-center">
               <a href="student/{{$senderUser->id}}">
                 <img src="{{asset('storage/users-avatar/'.$senderUser->avatar)}}" alt="Profile Picture" class="w-12 h-12 rounded-full border-2 border-gray-300"/>
@@ -87,7 +87,7 @@
                 
               </div>
             </div>
-            <p class="mt-2 ml-16 text-gray-800"><span>{{$senderUser->name}}</span> has invited you for consultion.</p>
+            <p class="mt-2 sm:ml-16 text-gray-800"><span>{{$senderUser->name}}</span> has invited you for consultion.</p>
 
             <div class="absolute right-5 top-8 flex items-center flex-col">
               <span class="text-xs text-gray-500 mb-3">{{$createdAt}}</span>
