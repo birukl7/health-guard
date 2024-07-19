@@ -153,7 +153,9 @@ use Carbon\Carbon;
     </div>
     @endforeach
   </div>
-  {{$blogs->links()}}
+    <div class="sm:mx-10 mx-6 mt-4">
+      {{$blogs->links()}}
+    </div>
   <x-custom.footer />
 </x-custom.section>
 </x-custom.layout>

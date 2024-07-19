@@ -271,7 +271,7 @@
           @endif
      
         </div>
-          <div class=" mt-4">{{$doctors->links()}}</div>
+          <div class=" mt-4 sm:mx-10">{{$doctors->links()}}</div>
 
       </section>
 

@@ -39,7 +39,6 @@ class PostController extends Controller
         'issues'=> 'required'
         ]);
 
-
         if($request->hasFile('image')){
             $imageFileName = time().'.'.$request->image->getClientOriginalExtension();
             $request->image->storeAs('public/post-image', $imageFileName);
