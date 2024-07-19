@@ -43,8 +43,7 @@
         class="flex items-center gap-x-4 fixed md:static right-0 left-0 top-0 px-3 pt-3 pb-3 bg-white  md:bg-inherit z-20 md:z-0 md:block md:p-0 shadow-lg md:shadow-none">
         <div class='w-7 h-1 mr-1  bg-slate-100 dark:bg-slate-900 rounded-full relative after:bg-slate-100 after:dark:bg-slate-900 after:block after:w-full after:absolute after:top-2 after:h-1 after:rounded-full
                 before:bg-slate-100 before:dark:bg-slate-900 before:block before:w-full before:absolute before:bottom-2 before:h-1 before:rounded-full cursor-pointer before:transition-all  before:ease-in-out before:duration-200 after:transition-all after:ease-in-out after:duration-200
-                md:hidden' onClick="toggleMobileNav
-                ()" id='hamburger'></div>
+                md:hidden' onClick="toggleMobileNav()" id='hamburger'></div>
 
         <div class="flex items-center gap-x-5 m-4 z-20">
           <a href="/">

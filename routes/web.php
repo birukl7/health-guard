@@ -24,8 +24,15 @@ use App\Http\Controllers\HealthProfessionalProfileController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PychologistController;
 use App\Http\Controllers\ResultController;
+use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\Rule;
 
 Route::view('/', 'welcome');
+
+Route::get('/showmail', function(){
+    return view('vendor.mail.html.panel');
+});
 Route::get('/psychologists', PychologistController::class);
 Route::post('/search', ResultController::class);
 Route::post('/filter', FilterController::class);
@@ -70,7 +77,21 @@ Route::middleware('auth')->group(
 Route::middleware('auth')->group(
     function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::patch('/profile', function(Request $request){
+           // dd($request->user());
+            $valid = $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
+            ]);
+
+            $valid['email'] = strtolower($valid['email']);
+
+            $request->user()->update($valid);
+        
+            //dd($request->user());
+            return Redirect::route('profile.edit');
+
+        } //[ProfileController::class, 'update'])->name('profile.update');
+    );
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::resource('/students', StudentProfileController::class);
         Route::resource('/professionals', HealthProfessionalProfileController::class);
@@ -96,8 +117,8 @@ Route::get('health/{id}/delete', [HealthProController::class, 'destroy']);
 Route::resource('health', HealthProController::class);
 
 //blog
-Route::get('blog/{id}/delete', [BlogController::class, 'destroy']);
-Route::resource('blog', BlogController::class);
+// Route::get('blog/{id}/delete', [BlogController::class, 'destroy']);
+// Route::resource('blog', BlogController::class);
 
 Route::controller(GoogleController::class)->group(function () {
     Route::post('googleFinishUp', [GoogleController::class, 'finishUp'])->name('googleFinishUp');

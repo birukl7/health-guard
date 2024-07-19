@@ -1,6 +1,6 @@
-@extends('home.layout')
-@section('content')
-<section class="bg-white rounded-2xl m-4 pt-0 mt-0 p-7 w-full ">
+<x-custom.layout>
+
+<x-custom.section class="bg-white rounded-2xl m-4 pt-0 mt-0 p-7 w-full ">
 @php
     $user = Auth::user();
     $text_color = 'text-custom-blue';
@@ -85,5 +85,5 @@
   </div>
   </div>
     </div>
-</section>
-@endsection
+</x-custom.section>
+</x-custom.layout>

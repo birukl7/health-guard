@@ -1,4 +1,4 @@
-const _navToggleBtn = document.querySelector('.nav-toggle-js');
+ const _navToggleBtn = document.querySelector('.nav-toggle-js');
 const navToggleBtnIcon = document.querySelector('.nav-toggle-js i')
 const navUls = document.querySelectorAll('nav ul a span')
 const headerJs = document.querySelector('.header-js')
@@ -34,7 +34,7 @@ const guardText = document.querySelector('.guard-js')
    navUls.forEach((navUl)=>{
       navUl.classList.toggle('hidden');
    })
-   headerJs.classList.toggle('w-full')
+  // headerJs.classList.toggle('w-20')
    headerJs.classList.toggle('md:w-80')
    bodyMain.classList.toggle('pl-custom-5')
    bodyMain.classList.toggle('pl-custom-6')

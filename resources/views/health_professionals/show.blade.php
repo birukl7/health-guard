@@ -64,8 +64,8 @@
                                     </form>
                                 @else
                                 <div class="flex flex-col items-center">
-                                    <p class="text-sm text-center mb-3">Please create a studnet account to book this consultant.</p>
-                                    <x-custom.button href="/students/create">Finish Student Account</x-custom.button>
+                                    <p class="text-sm text-center mb-3">Please create a student account to book this consultant.</p>
+                                    {{-- <x-custom.button href="/students/create">Finish Student Account</x-custom.button> --}}
                                 </div>
                                 @endif
 

@@ -12,9 +12,6 @@
         </p>
     </header>
 
-    @php
-        echo ($user->studentProfile->first_name);
-    @endphp
     <form method="post" action="{{ route('students.update', ['student' => Auth::user()->id]) }}" class="mt-6 space-y-6">
         @csrf
         @method('PUT')

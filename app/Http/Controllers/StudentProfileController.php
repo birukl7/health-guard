@@ -118,7 +118,6 @@ class StudentProfileController extends Controller
     public function update(Request $request,string $id)
     {
        
-        
         // Validate the request data
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
@@ -161,6 +160,7 @@ class StudentProfileController extends Controller
 
         $user = Auth::user();
         $user->name = $validated['first_name'].' '.$validated['last_name'];
+        $user->save();
         
         // Update the student record with the validated data
         $student->update($validated);

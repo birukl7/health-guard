@@ -238,46 +238,38 @@
               $colors[] = getColorClass($randomDecimal);
             }
           }
-
           $i = 0;
         @endphp
 
         @php
           $i = 0;
-         // dd($doctors);
-        @endphp
-
-        {{-- @if($doctors)
-          <p>Result Not Found</p>
-        @endif --}}
-        
-        @if(isset($doctors) && count($doctors) > 0)
-        @foreach ($doctors as $doctor)
-            @include('home.partials.doctor-card', [
-                'doctor' => $doctor,
-                'decimal' => $decimals[$i],
-                'color' => $colors[$i]
-            ])
-            @php
-                $i++;
-            @endphp
-        @endforeach
-    @elseif(isset($results) && count($results) > 0)
-        @foreach ($results as $result)
-            @include('home.partials.doctor-card', [
-                'doctor' => $result,
-                'decimal' => $decimals[$i],
-                'color' => $colors[$i]
-            ])
-            @php
-                $i++;
-            @endphp
-        @endforeach
-    @else
-        <p class="text-center">No results found.</p>
-    @endif
-    
-          
+        @endphp        
+          @if(isset($doctors) && count($doctors) > 0)
+              @foreach ($doctors as $doctor)
+                  @include('home.partials.doctor-card', [
+                      'doctor' => $doctor,
+                      'decimal' => $decimals[$i],
+                      'color' => $colors[$i]
+                    ])
+                  @php
+                      $i++;
+                  @endphp
+              @endforeach
+          @elseif(isset($results) && count($results) > 0)
+              @foreach ($results as $result)
+                  @include('home.partials.doctor-card', [
+                      'doctor' => $result,
+                      'decimal' => $decimals[$i],
+                      'color' => $colors[$i]
+                  ])
+                  @php
+                      $i++;
+                  @endphp
+              @endforeach
+          @else
+              <p class="text-center">No results found.</p>
+          @endif
+     
         </div>
           <div class=" mt-4">{{$doctors->links()}}</div>
 

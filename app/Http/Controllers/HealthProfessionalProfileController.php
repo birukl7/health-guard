@@ -24,8 +24,13 @@ class HealthProfessionalProfileController extends Controller
      */
     public function create(): View
     {
-        $tags = Auth::user()->healthProfessionalProfile->tags;
-        return view('professionals.create',['issues'=> $tags]);
+        
+        $tags = Auth::user()->healthProfessionalProfile;
+        if(isset($tags)){
+            $tags = Auth::user()->healthProfessionalProfile->tags;
+            return view('professionals.create',['issues'=> $tags]);
+        }
+        return view('professionals.create', ['issues' => $tags]);
     }
 
     /**
@@ -33,7 +38,8 @@ class HealthProfessionalProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = Auth::id();
+        
+        $user = Auth::user();
         $validated = $request->validate([
             'first_name' => 'required|string|min:2|max:255',
             'last_name' => 'required|string|min:2|max:255',
@@ -42,6 +48,7 @@ class HealthProfessionalProfileController extends Controller
             'date_of_birth' => ['required', 'date', new AgeRange],
             'specialization' => 'required|string',
             'hospital_affiliation' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
             'phone_number' => [
                 'required',
                 'string',
@@ -67,34 +74,26 @@ class HealthProfessionalProfileController extends Controller
                 },
             ],
             'location' => 'required|string|max:255',
-            'license' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            // 'license' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:4096',
             'linkedin' => 'nullable|string|max:255',
             'facebook' => 'nullable|string|max:255',
             'instagram' => 'nullable|string|max:255',
             'twitter' => 'nullable|string|max:255',
             'price' => 'required|string|in:free,paid',
             'years_of_experience' => 'required|string|in:0-1,2-5,5-7,7-10,10+',
-            // 'issues' => 'nullable|array',
-            // 'issues.*' => 'string',
-
         ]);
-        $issuesJson = json_encode($request->input('issues', []));
 
-        $validated['user_id'] = $userId;
-        $validated['issues'] = $issuesJson;
+        $health = $user->healthProfessionalProfile()->create($validated);
 
-        $dob = Carbon::createFromFormat('Y-m-d', $validated['date_of_birth']);
-        $currentDate = Carbon::now();
-        $age = $dob->diffInYears($currentDate);
+        // dd($health);
 
-        $validated['age'] = $age;
-        $validated['user_id'] = $userId;
-        $health = new HealthProfessionalProfile();
-        $health->fill($validated);
-        $health->save();
-            // $profile = new ProfessionalProfile();
-    // $profile->issues = $issuesJson;
-    // $profile->save();
+        foreach($request->issues as $issue){
+            $health->tag($issue);
+        }
+
+        $user->name = $validated['first_name'].' '.$validated['last_name'];
+
+       // dd($user);
         return redirect()->route('professionals.create')->with('success', 'Health professional profile created successfully.');
     }
 
@@ -170,6 +169,10 @@ class HealthProfessionalProfileController extends Controller
         foreach($request->issues as $issue){
             $health->tag($issue);
         }
+
+        $user = Auth::user();
+        $user->name = $validated['first_name'].' '.$validated['last_name'];
+        $user->save();
         
         $health->update($validated);
         return redirect()->route('professionals.create')->with('success', 'Health professional profile updated successfully.');

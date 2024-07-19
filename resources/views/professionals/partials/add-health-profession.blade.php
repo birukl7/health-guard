@@ -12,9 +12,9 @@
         </p>
     </header>
 
-    <form method="POST" action="/professionals" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form method="POST" action="{{route('professionals.store')}}" class="mt-6 space-y-6">
         @csrf
-
+        @method('POST')
          <div>
             <x-input-label for="add_first_name" :value="__('First name')" />
             <x-text-input id="add_first_name" name="first_name" type="text" class="mt-1 block w-full" autocomplete="first-name" :value="old('first_name', $name_array[0])"/>
@@ -38,6 +38,7 @@
             <textarea id="age" name="about" type="text" class="mt-1 block w-full" autocomplete="about"></textarea>
             <x-input-error :messages="$errors->get('about')" class="mt-2" />
         </div>
+
 
         <div>
             <x-input-label for="description" :value="__('Description (3000 characters )*')" />
@@ -70,6 +71,18 @@
                 <option value="Environmental Psychology">Environmental Psychology</option>
             </select>
             <x-input-error :messages="$errors->get('specialization')" class="mt-2" />
+        </div>
+
+        
+        <div>
+            <x-input-label for="gender" :value="__('Gender')" />
+            <select id="gender" name="gender" class="mt-1 block w-full" autocomplete="gender">
+                <option value="">Select Gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+            </select>
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
         </div>
 
 

@@ -4,6 +4,8 @@
         $user = Auth::user();
         $oldSpecialization = old('specialization', $user->healthProfessionalProfile->specialization ?? '');
 
+        $oldGender = old('gender', $user->healthProfessionalProfile->gender ?? '');
+
         $oldPrice = old('price', $user->healthProfessionalProfile->price ?? '');
 
         $oldExperience = old('years_of_experience', $user->healthProfessionalProfile->years_of_experience ?? '');
@@ -48,6 +50,17 @@
                 {{ trim(old('about', $user->healthProfessionalProfile->about)) }}
             </textarea>
             <x-input-error :messages="$errors->get('about')" class="mt-2" />
+        </div>
+
+        <div>
+            <x-input-label for="gender" :value="__('Gender')" />
+            <select id="gender" name="gender" class="mt-1 block w-full" autocomplete="gender">
+                <option value="">Select Gender</option>
+                <option value="Female" {{ $oldGender == 'Female' ? 'selected' : '' }}>Female</option>
+                <option value="Male" {{ $oldGender == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Other" {{ $oldGender == 'Other' ? 'selected' : '' }}>Other</option>
+            </select>
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
         </div>
 
         <div>
@@ -169,7 +182,7 @@
               <option value="paid" {{ $oldPrice === 'paid' ? 'selected' : '' }}>Paid (coming soon)</option>
           </select>
           <x-input-error :messages="$errors->get('price')" class="mt-2" />
-      </div>
+        </div>
 
 
       <div>

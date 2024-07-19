@@ -413,11 +413,11 @@
   </div>
 
   <div class="flex md:flex-row flex-col justify-start items-center " id="hero-section">
-      <div id="hero-image bg-green" class="bg-green order-2 md:w-3/4  ">
+      <div id="hero-image bg-green" class="bg-green order-2 sm:order-1 md:w-3/4  ">
           <img src="{{ asset('images/Publish article-pana.png')}}" alt="" class="w-full " id="hero-image" >
       </div>
 
-      <div id="hero-text" class=" flex order-1 items-center sm:pt-36 md:pt-0 ">
+      <div id="hero-text" class=" flex order-1 sm:order-2 items-center sm:pt-36 md:pt-0 sm:ml-4">
         <div>
             <h1 class="text-6xl font-bold w-11/12 ">Read Articles</h1>
             <p class="my-6 w-10/12 font-robotoCondensed">Regularly reading articles is key to enhancing comprehension and retention. Over time, this practice sharpens your cognitive skills and expands your knowledge base.
@@ -482,17 +482,11 @@
       </div>
       </div>
 
-
-
-
-
       <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
           <img src="{{ asset('images/Credit assesment-amico.png')}}" alt="" class="w-full " id="hero-image" >
       </div>
   </div>
 
-
-  
   <section class="p-3 rounded-xl my-12 bg-custom-graish mt-10 flex justify-start h-auto">
     <div class="w-custom-4  rounded-xl overflow-hidden">
       <img src="{{asset('images/zachary-nelson.jpg')}}" alt="">
@@ -506,13 +500,17 @@
 
   <h2 class="flex items-center gap-x-4 ml-5"><span class="font-bold text-4xl my-4 mb-6">Current Consultations</span></h2>
   <div class="sm:p-7 pt-3 grid sm:grid-cols-2 md:grid-cols-3 grid-cols-1  gap-3">
-      @if(isset($doctors))
-
+      @if(isset($doctors) && count($doctors) > 0)
         @foreach ($doctors as $doctor)
-        @include('home.partials.doctor-card', [
-                        'doctor' => $doctor,
-                    ])
+          @include('home.partials.doctor-card', [
+                          'doctor' => $doctor,
+                      ])
         @endforeach
+      @else
+        <div class="flex flex-col items-center mx-auto">
+          <p class="text-center mb-5">You have no current consultations.</p>
+          <x-custom.button href="/psychologists">Meet a health-professional</x-custom.button>
+        </div>
       @endif
     </div>
     <x-custom.footer />

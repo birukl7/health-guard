@@ -31,7 +31,6 @@
                 <i class="fa-solid fa-star" style="color: #ffffff;font-size:12px"></i>
                 <span style="font-size: 12px;"></span>
             </div>
-
         </div>
 
         <div class="flex flex-col">
