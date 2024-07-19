@@ -142,7 +142,7 @@
         </div>
     
         <div class="flex md:flex-row flex-col justify-start items-center show hero-section mb-10" id="hero-section">
-            <div id="hero-image bg-green" class="bg-green md:w-3/4  ">
+            <div id="hero-image bg-green" class="bg-green md:w-3/4 sm:order-2">
                 <img src="{{ asset('images/Doctors-pana.png')}}" alt="" class="w-full " id="hero-image" >
             </div>
     

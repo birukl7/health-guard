@@ -3,13 +3,9 @@
         $name_array = explode(" ",Auth::user()->name);
         $user = Auth::user();
         $oldSpecialization = old('specialization', $user->healthProfessionalProfile->specialization ?? '');
-
         $oldGender = old('gender', $user->healthProfessionalProfile->gender ?? '');
-
         $oldPrice = old('price', $user->healthProfessionalProfile->price ?? '');
-
         $oldExperience = old('years_of_experience', $user->healthProfessionalProfile->years_of_experience ?? '');
-
         $oldIssues = $issues->pluck('name')->toArray() ?? [];
 
     @endphp

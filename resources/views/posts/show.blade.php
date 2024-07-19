@@ -3,12 +3,17 @@
 @php
    $createdAtCarbon = Carbon\Carbon::parse($blog->created_at); 
    $created = $createdAtCarbon->diffForHumans();
+   if(Str::startsWith($blog->image, ['http://', 'https://'])){
+    $picture = $blog->image;
+   }else{
+    $picture = asset('storage/post-image/'.$blog->image);
+   }
 @endphp
 <x-custom.section>
 
     <div class="p-6">
         <div class="rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat mb-4"
-            style="background-image: url('{{asset('storage/post-image/'.$blog->image)}}'); height: 300px;"></div>
+            style="background-image: url('{{$picture}}'); height: 300px;"></div>
 
         <div class="text-custom-lgray mb-4">
             <i class="fa-regular fa-clock mx-2"></i>
@@ -22,7 +27,11 @@
 
         <div class="flex items-center gap-x-4">
             <div class="w-10 h-10 rounded-full overflow-hidden">
-                <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
+                @if (Str::startsWith($blog->healthProfessionalProfile->user->avatar, ['http://', 'https://']))
+                    <img src="{{$blog->healthProfessionalProfile->user->avatar}}" alt="">
+                @else
+                    <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
+                @endif
             </div>
             <div class="flex flex-col">
                 <strong>{{$blog->healthProfessionalProfile->first_name}}</strong>

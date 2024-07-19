@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\HealthProfessionalProfile;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -91,6 +92,10 @@ class HealthProfessionalProfileSeeder extends Seeder
                     'end_date' => $end_date->format('Y-m-d'),
                 ]);
             }
+
+            $post = Post::factory()->create([
+                'health_professional_profile_id' => $professional->id,
+            ]);
 
             
        // }

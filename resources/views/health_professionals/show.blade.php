@@ -212,7 +212,6 @@
                                             <span class="text-gray-700 font-bold text-[16px] uppercase">{{$experience->title}}</span>
 
                                             <p>
-                                               
                                                 <span class="text-gray-700">{{\Carbon\Carbon::parse($experience->start_date)->format('M Y')}} - {{\Carbon\Carbon::parse($experience->end_date)->format('M Y')}}</span>
                                             </p>
                                         </div>
@@ -247,7 +246,7 @@
                                         <hr class="mt-2">
                                     </div>
                                     @endforeach
-                                @else
+                                @
                                     <p>This health Professional hasn't posted any experiences.</p>
                                 @endif
                                     

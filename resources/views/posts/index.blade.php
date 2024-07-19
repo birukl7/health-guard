@@ -18,7 +18,14 @@ use Carbon\Carbon;
 
       <div class="w-10 h-10 rounded-full overflow-hidden">
         <a href="{{route('profile.edit')}}">
-          <img src="{{asset('storage/users-avatar/'.Auth::user()->avatar)}}" alt="">
+          
+          @if (Str::startsWith(Auth::user()->avatar, ['http://', 'https://']))
+            <img src="{{Auth::user()->avatar}}" alt="">
+          @else
+            <img src="{{asset('storage/users-avatar/'.Auth::user()->avatar)}}" alt="">
+          @endif
+
+
         </a>
       </div>
       @else
@@ -102,10 +109,15 @@ use Carbon\Carbon;
     @php
     $createdAtCarbon = Carbon::parse($blog->created_at);
     $created = $createdAtCarbon->diffForHumans();
+      if(Str::startsWith($blog->image, ['http://', 'https://'])){
+      $picture = $blog->image;
+      }else{
+        $picture = asset('storage/post-image/'.$blog->image);
+      }
     @endphp
     <div class="bg-white w-full p-6 rounded-xl shadow-xl my-5">
-      <div class="rounded-lg overflow-hidden w-80 h-44 bg-cover bg-center bg-no-repeat relative"
-        style="background-image: url('{{asset('storage/post-image/'.$blog->image)}}');">
+      <div class="rounded-lg overflow-hidden  h-44 bg-cover bg-center bg-no-repeat relative"
+        style="background-image: url('{{$picture}}');">
         {{-- <span class="text-sm bg-white p-2 rounded-lg absolute bottom-0 left-0 m-1"></span> --}}
       </div>
 
@@ -126,7 +138,12 @@ use Carbon\Carbon;
 
       <div class="flex items-center gap-x-4 p-4 ">
         <div class="w-10 h-10 rounded-full overflow-hidden">
-          <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
+          @if (Str::startsWith($blog->healthProfessionalProfile->user->avatar, ['http://', 'https://']))
+            <img src="{{$blog->healthProfessionalProfile->user->avatar}}" alt="">
+          @else
+            <img src="{{asset('storage/users-avatar/'.$blog->healthProfessionalProfile->user->avatar)}}" alt="">
+          @endif
+
         </div>
         <div class="flex flex-col">
           <strong>{{$blog->healthProfessionalProfile->first_name}}</strong>
@@ -136,6 +153,7 @@ use Carbon\Carbon;
     </div>
     @endforeach
   </div>
+  {{$blogs->links()}}
   <x-custom.footer />
 </x-custom.section>
 </x-custom.layout>
