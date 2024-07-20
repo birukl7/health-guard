@@ -1,5 +1,7 @@
 @php
     $user = Auth::user();
+    $value = $user->can('edit-health-profile');
+    $value2 = Auth::user()->can('edit-student-profile');
 @endphp
 <section>
     <header>
@@ -51,7 +53,12 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @if ($value || $value2)
+            <x-primary-button disabled>{{ __('Save') }}</x-primary-button>
+                <p class="text-xs">You can not edit email of demo account.</p>
+            @else
+                <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @endif
 
             @if (session('status') === 'profile-updated')
                 <p

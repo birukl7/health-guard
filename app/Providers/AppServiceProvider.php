@@ -46,5 +46,13 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('edit-post', function(User $user, Post $post){
             return $post->healthProfessionalProfile->user->is($user);
         });
+
+        Gate::define('edit-health-profile', function(User $user){
+            return User::find(11)->is($user);
+        });
+
+        Gate::define('edit-student-profile', function(User $user){
+            return User::find(13)->is($user);
+        });
     }
 }

@@ -1,3 +1,7 @@
+@php
+    $value = Auth::user()->can('edit-health-profile');
+    $value2 = Auth::user()->can('edit-student-profile');
+@endphp
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900 ">
@@ -9,11 +13,22 @@
         </p>
     </header>
 
-    <x-danger-button
+    @if ($value || $value2)
+        <x-danger-button disabled
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
+            >{{ __('Delete Account') }}</x-danger-button>
+        <p class="text-xs">You can not edit email of demo account.</p>
+    @else
+        <x-danger-button disabled
+        x-data=""
+        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+            >{{ __('Delete Account') }}</x-danger-button>
+    @endif
 
+    @if ($value || $value2)
+        
+    @else
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
             @csrf
@@ -46,10 +61,12 @@
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-danger-button class="ms-3">
+
+                    <x-danger-button class="ms-3">
                     {{ __('Delete Account') }}
-                </x-danger-button>
+                    </x-danger-button>
             </div>
         </form>
     </x-modal>
+    @endif
 </section>

@@ -124,6 +124,7 @@
             <x-custom.nav-link 
               :href="route('students.create')" 
               :active="
+                Request::is('students*') ||
                 Request::is('depressions*') ||
                 Request::is('alcohols*') ||
                 Request::is('professionals*')">

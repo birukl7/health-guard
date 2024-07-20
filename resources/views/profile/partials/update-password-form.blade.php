@@ -1,3 +1,9 @@
+@php
+    $value = Auth::user()->can('edit-health-profile');
+    $value2 = Auth::user()->can('edit-student-profile');
+
+@endphp
+
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 ">
@@ -32,7 +38,13 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+
+            @if ($value || $value2)
+                <x-primary-button disabled>{{ __('Save') }}</x-primary-button>
+                <p class="text-xs">You can not password of demo account.</p>
+            @else
+                <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @endif
 
             @if (session('status') === 'password-updated')
                 <p
