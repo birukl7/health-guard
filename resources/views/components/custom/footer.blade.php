@@ -7,7 +7,7 @@
       <p class="mb-2 ">No more time spending looking for study materials. All is here</p>
       <address>
           <div class="font-semibold">
-              <a href="#">+251(34356856)</a>
+              <a href="#">+251(xxxxxxx)</a>
               <a href="#">mobile@number.com</a>
           </div>
       </address>

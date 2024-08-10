@@ -3,6 +3,8 @@
     $value = $user->can('edit-health-profile');
     $value2 = Auth::user()->can('edit-student-profile');
 @endphp
+
+
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
